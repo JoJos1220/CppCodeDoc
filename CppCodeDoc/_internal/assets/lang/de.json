@@ -1,0 +1,66 @@
+{
+    "welcome": "Willkommen",
+    "exit": "Beenden",
+    "mainTabs": {
+        "start": "Startseite",
+        "settings": "Einstellungen",
+        "log": "Protokoll",
+        "about": "Über",
+        "help": "Hilfe",
+        "helpToolTip": "Hilfe anzeigen (auch über F1-Taste)"
+    },
+    "startTab": {
+        "ConfigPathPlaceHolder": "Konfig Datei auswählen",
+        "FileInputPlaceHolder": "(optional) spezifische Quelldatei auswahlen",
+        "SelectConfigFileButton": "Konfig Datei auswählen",
+        "SaveConfigFileButton": "💾 Konfig Datei speichern",
+        "SelectSourceFileButton": "Quelldatei",
+        "SelectSourceDirButton": "Quellverzeichnis",
+        "CreateDocButton": "Dokumentation erstellen",
+        "OpenOutputDirButton": "📂 Zielverzeichnis öffnen"
+    },
+    "settingsTab": {
+        "EnglishSuffix": "en",
+        "GermanSuffix": "de",
+        "LangComboLabel": "Sprache:",
+
+        "ReadOnlyCheckBox": "Schreibgeschüter Modus (keine Formatierung)",
+        "RecursiveCheckbox": "Rekursive Suche in Quellverzeichnissen",
+        "BackupDirPlaceHolder": "Backupverzeichnis (standard: './docs/backup')",
+        "BackupDirLabel": "(Optional) Backupverzeichnis:",
+        "BackupDirButton": "Backupverzeichnis auswählen",
+        "GeneralSettingsExpandable": "Generelle Einstellungen",
+
+        "HighlightToDoCheckbox": "TODO Kommentare hervorheben",
+        "showDocProgressCheckbox": "Dokumentationsfortschritt anzeigen",
+        "titlePlaceHolder": "Dokument Titel (z.B. '📄 Projektspezifische C++ Dokumentation')",
+        "titleLabel": "Dokument Titel:",
+        "docVersionPlaceHolder": "Dokument Version (z.B. 'v1.0.0')",
+        "docVersionLabel": "Dokument Version:",
+        "docAuthorPlaceHolder": "Dokument Author (z.B. 'Max Mustermann')",
+        "docAuthorLabel": "Dokument Author:",
+        "docDatePlaceHolder": "e.g. '27.05.2024'",
+        "docDateLabel": "Erstellungsdatum:",
+        "docLogoPlaceHolder": "Dokument Logopfad (z.B. './assets/logo.svg')",
+        "docLogoLabel": "Dokument Logopfad:",
+        "DocSettingsExpandable": "Dokument Einstellungen",
+
+        "HMTLprefix": "html",
+        "MDprefix": "md",
+        "Allprefix": "alle",
+        "OutputFormatInputLabel": "Ausgabeformat:",
+        "Doxygenprefix": "doxygen",
+        "Defaultprefix": "standard",
+        "HeaderCommentStyleLabel": "Kopfzeilen Kommentarstyl:",
+        "OutputPathInputPlaceholder": "Ausgabepfad ohne Dateiendung (z.B. './docs/Dokumentation_<version>')",
+        "OutputPathInputLabel": "Ausgabepfad:",
+        "OutputDirButton": "Ausgabeverzeichnis auswahlen",
+        "OutputSettingsExpandable": "Ausgabe Einstellungen"
+    },
+    "loggingTab": {
+        "OpenOutputLogDirButton": "📂 Log Verzeichnis öffnen"
+    },
+    "states": {
+        "ready": "Status: Bereit"
+    }
+}

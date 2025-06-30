@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"  # path to requirements.txt 
+    schedule:
+      interval: "weekly"         # or: "daily", "monthly"
+      day: "monday"              
+      time: "02:30"              
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    labels:
+      - "dependencies"
+    assignees:
+      - "Jojos1220"              
+    open-pull-requests-limit: 10
+    rebase-strategy: "auto"

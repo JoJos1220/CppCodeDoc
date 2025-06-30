@@ -1,0 +1,58 @@
+# CppCodeDoc — Licensed under the GNU General Public License v3.0 (GPLv3-or-later)
+# SPDX-License-Identifier: GPLv3-or-later
+# Copyright (C) 2025 Jojo1220
+# See https://www.gnu.org/licenses/gpl-3.0.html
+
+# Doc. source_dir: select complete directory for processing.
+  # if not specified: ./src Folder is selected
+# source_dir: ./doc/CppCodeDoc/fileExamples
+# source_dir: ./assets/fileExamples
+
+# Doc. recursive: select true or false for recursive processing of source_dir
+  # if not specified: true is selected
+recursive: true
+
+# Doc. output_format: select markdown 'md' or 'html' Format
+    # you can also selcet more then one format by using [md, html]
+    # if not specified: "md" is selected
+output_format: [md, html]
+
+# Doc. output_path: select output path of the destination file if you want none default:
+  # if not specified: ./docs/Documentation_<version>
+# output_path: ./docs/Documentation
+
+# Doc. readonly: select true or false for Editing the Code HeaderComments/PostComments
+  # false: SourceCode is going to be edited
+  # true: SourceCode is only "readed" without editing! (also, value if NOT specified)
+readonly: false 
+
+# Doc. backup_path: if specified/selected, an copy is generated of the edited file bevor
+# changes has been done. If not specified, NO Backup will be created. Only valid, if readonly is
+# set to "true"
+  # if not specified, no Backup will be created!
+backup_path: ./docs/Backup
+
+# Doc. headerCommentStyle: select "default" or "doxygen" styled format
+  # if not specified: "default"
+headerCommentStyle: doxygen
+
+# Doc. Document Specific Settings
+#######################################################################################
+document:
+  # Doc. title: if not specified: 📄 Documentation
+  title: "📄 Projektspezifische C++ Dokumentation"
+  # Doc. version:  if not specified: v1.0
+  version: "1.0.0"
+  # Doc. author:  if not specified: Unknown
+  author: "Max Mustermann"
+  # Doc. date:  if not specified: auto
+  date: auto      # Select date e.g. '2025-02.13' or 'auto' for current date
+  # Doc. logoPath: if not specified: ./doc/CppCodeDoc/generator/img/logo.svg
+  logoPath: ../generator/img/Logo.svg
+  #logoPath: ./assets/logo.svg
+  # Doc. Highlight "TODO" in Result Documentation. If Comments have "TODO" prefix, it will visible be highlighted in the report
+    #if not specified: true
+  highlightTodo: true
+  # Doc. Show Documentation Progress
+    # if not specified: true
+  showDocProgress: true

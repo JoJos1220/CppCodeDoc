@@ -1,0 +1,27 @@
+2025-06-18 16:03:46,608 - INFO - Logging setup complete
+2025-06-18 16:03:46,625 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-06-18 16:03:46,625 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-06-18 16:03:46,731 - INFO - Application started
+2025-06-18 16:03:48,483 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-06-18 16:03:48,488 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-06-18 16:03:48,489 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-06-18 16:03:48,494 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-06-18 16:03:48,498 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-06-18 16:03:48,501 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-06-18 16:03:48,504 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-06-18 16:03:48,504 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-06-18 16:03:48,508 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-06-18 16:03:48,522 - INFO - App started (GUI Mode)
+2025-06-18 16:03:48,567 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-06-18 16:03:50,166 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-06-18 16:03:50,698 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-06-18 16:04:04,731 - INFO - Opening Help window
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-06-18 16:04:04,733 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
