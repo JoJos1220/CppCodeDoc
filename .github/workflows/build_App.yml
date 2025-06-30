@@ -1,0 +1,57 @@
+name: Run Compile, Pytest and run Software
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-script:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+ 
+    steps:
+      - name: Checkout code-repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python-version}}
+
+      - name: Install dependencies (PyQt5, Pytest)
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyQt5 pytest coverage
+        shell: bash
+
+      - name: Install libGL for PyQt5 (ONLY on Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1
+     
+      - name: Check Software Syntax
+        run: |
+            python -m py_compile ./src/CppCodeDoc.py
+        shell: bash
+
+      - name: Run Pytest for CppCodeDoc-Project
+        run: |
+            coverage run --source=src -m pytest ./test -vv
+            coverage xml -o coverage.xml
+            coverage report
+        shell: bash
+
+      - name: Run CppCodeDoc script - headless - without GUI
+        run: |
+            export QT_QPA_PLATFORM=offscreen
+            python ./src/CppCodeDoc.py --NoGui|| {
+              echo "::error ::❌ Documented Functions are only covering $? %"
+              exit 1
+            }
+        shell: bash

@@ -1,0 +1,79 @@
+name: Build and Test Software Installer
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-installer:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code-repository
+        uses: actions/checkout@v3
+
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+        shell: powershell
+        continue-on-error: true
+
+      - name: Install Inno Setup
+        run: |
+          Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "is.exe"
+          Start-Process -FilePath .\is.exe -ArgumentList "/VERYSILENT", "/DIR=C:\InnoSetup" -Wait
+        shell: powershell
+
+      - name: Add Inno Setup to PATH
+        run: echo "C:\InnoSetup" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
+        shell: powershell
+
+      - name: Build Project with Convert_PyToExe.py - Script
+        run: |
+          $env:PYTHONIOENCODING = "utf-8"
+          python .\scripts\Convert_PyToExe.py
+        shell: powershell
+
+      - name: Run CppCodeDoc Installer with highest version
+        run: |
+          $installerFiles = Get-ChildItem -Path .\Installer\CppCodeDoc_*_Installer.exe
+          if (-not $installerFiles) {
+              Write-Error "No Installer files found!"
+              exit 1
+          }
+
+          # Extract versions to run latest installer within actions
+          $versioned = $installerFiles | ForEach-Object {
+              if ($_ -match "CppCodeDoc_([0-9\.]+)_Installer\.exe") {
+                  [PSCustomObject]@{
+                      File = $_
+                      Version = [Version]$Matches[1]
+                  }
+              }
+          }
+
+          $latest = $versioned | Sort-Object Version -Descending | Select-Object -First 1
+
+          if (-not $latest) {
+              Write-Error "No valid installer version found!"
+              exit 1
+          }
+
+          Write-Host "using installer: $($latest.File.FullName) with version $($latest.Version)"
+          & $latest.File.FullName /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /DIR="C:\TestInstallDir"
+        shell: powershell
+
+      - name: Run App and Test It
+        run: |
+          $exePath = "C:\TestInstallDir\CppCodeDoc.exe"
+          if (Test-Path $exePath) {
+              Start-Process -FilePath $exePath -ArgumentList "--NoGui"
+              Start-Sleep -Seconds 5
+          } else {
+              Write-Error "CppCodeDoc.exe not found!"
+              Exit 1
+          }
+        shell: powershell

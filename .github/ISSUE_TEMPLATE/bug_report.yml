@@ -1,0 +1,128 @@
+name: Bug Report
+description: Report a bug, attach logs and config files, and help us improve.
+title: "[Bug] "
+labels: [bug]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thank you for taking the time to submit a bug report!**
+
+        🛠️ Please fill out the form below as completely as possible.
+
+        📎 **Note on File Uploads**  
+        To share logs, config files, or source code:
+        - Either paste the content directly in the corresponding field, **or**
+        - **drag and drop the file** into the issue comments section.
+
+  - type: input
+    id: bug_summary
+    attributes:
+      label: Bug Summary
+      description: A short and concise description of the bug.
+      placeholder: "e.g., Crash when starting the application on Linux"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Provide the steps to reproduce the issue.
+      placeholder: |
+        1. Launch the application
+        2. Open the XYZ menu
+        3. Click "Start"
+        4. The application crashes
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: "The application should launch and display the dashboard without crashing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: OS, application version, hardware, etc.
+      placeholder: |
+        - OS: Windows 11 / Ubuntu 22.04
+        - Version: v1.2.3
+        - Architecture: x64 / ARM
+    validations:
+      required: true
+
+  - type: textarea
+    id: logfile
+    attributes:
+      label: Log File
+      description: Paste the relevant part of the log here, or upload the file after submitting this form.
+      placeholder: |
+        Example:
+        ```
+        [ERROR] Failed to connect to server: timeout
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: configfile
+    attributes:
+      label: Configuration File
+      description: Paste your config file here, or upload it after submission.
+      placeholder: |
+        Example:
+        ```
+        setting1: true
+        setting2: "value"
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: reportfile
+    attributes:
+      label: HTML or Markdown Report
+      description: Paste content of the report, or mention that you'll upload it afterward.
+      placeholder: |
+        Example:
+        ```
+        <html>
+          <head>...</head>
+          <body>Report content</body>
+        </html>
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: sourcefile
+    attributes:
+      label: Source Code File (Optional)
+      description: Paste relevant code or upload it after submission.
+      placeholder: |
+        Example:
+        ```cpp
+        void setup() {
+          Serial.begin(9600);
+        }
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add screenshots, error messages, or other context here.
+      placeholder: "Any other observations, workarounds, or relevant context."
+    validations:
+      required: false
