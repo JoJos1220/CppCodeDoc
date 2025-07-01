@@ -1,0 +1,7 @@
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+scripts/version_info.txt
+CppCodeDoc.spec
+pylint-output.json
+pylint-report.html

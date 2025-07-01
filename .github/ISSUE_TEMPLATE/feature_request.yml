@@ -1,0 +1,79 @@
+name: Feature Request
+description: Suggest a new feature, improvement, or enhancement.
+title: "[Feature] "
+labels: [enhancement]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks for helping improve this project! 🎉**
+
+        Please describe your feature idea clearly so we can evaluate and potentially implement it.  
+        If relevant, you can include mockups, code examples, or link to related issues.
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature Title
+      description: A short and clear name for the feature.
+      placeholder: "e.g., Dark mode for the web interface"
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: What is the feature?
+      description: Describe the feature you’re requesting.
+      placeholder: |
+        Example:
+        Add support for a dark theme in the UI that can be toggled in the settings.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: Explain the issue or use case this feature addresses.
+      placeholder: |
+        Example:
+        Working at night makes the current UI hard to use because of the brightness.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Suggest how you would like this to be implemented (if you have an idea).
+      placeholder: |
+        Example:
+        - Add a toggle in the settings menu
+        - Use a CSS class to switch between themes
+        - Store preference in local storage
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Mention other ideas or workarounds you’ve thought of or tried.
+      placeholder: |
+        Example:
+        - Manually adjust monitor brightness
+        - Use browser extension for dark mode
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add screenshots, references, mockups, or links to similar features in other tools.
+      placeholder: "Any visual aids or external references that can help us understand better."
+    validations:
+      required: false
