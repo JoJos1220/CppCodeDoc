@@ -12,7 +12,7 @@ PyQt5==5.15.11
 # Third-Party Package name/License: Markdown: Unknown
 Markdown==3.8
 # Third-Party Package name/License: pytest: MIT
-pytest==8.3.5
+pytest==8.4.1
 # Third-Party Package name/License: requests: Apache-2.0
 requests==2.32.3
 # Third-Party Package name/License: stdlib-list: Unknown
