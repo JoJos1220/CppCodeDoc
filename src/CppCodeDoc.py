@@ -2,7 +2,11 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, sys, argparse, subprocess, re
+import os
+import sys
+import argparse
+import subprocess
+import re
 from datetime import datetime
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -13,7 +17,8 @@ ensure_modules([("PyQt5", "PyQt5"),
                 ("requests", "requests"),
                 ("yaml", "pyYAML"),
                 ("markdown", "markdown")])
-import requests, yaml
+import requests
+import yaml
 
 from markdown import markdown
 
@@ -74,7 +79,7 @@ class DocGeneratorApp(QWidget):
         self.is_dark_mode = pref_ui_mode
 
         self.icon_path = resource_path("../utils/icon/icon.ico", "assets/icon.ico")
-        print(f"Icon Path: {self.icon_path}")    
+        print(f"Icon Path: {self.icon_path}")
         if os.path.exists(self.icon_path):
             self.setWindowIcon(QIcon(self.icon_path))
         else:
@@ -112,12 +117,12 @@ class DocGeneratorApp(QWidget):
 
         # ProjectLogo and Sponsorship Icons -------------------------------------------------------------------------------
         box_widget = QWidget()
-        box_widget.setFixedWidth(410) 
+        box_widget.setFixedWidth(410)
         box_layout = QVBoxLayout(box_widget)
         box_layout.setContentsMargins(0, 0, 0, 0)
         box_layout.setSpacing(0)
-        
-        # Button mit Icon oberhalb des Logos
+
+        # Button with Icon above the logo
         spacer = QWidget()
         spacer.setFixedHeight(75)
         box_layout.addWidget(spacer)
@@ -404,7 +409,7 @@ class DocGeneratorApp(QWidget):
     def save_preferences(self, config_file, lang, dark_mode):
         self.settings.setValue("config_file", config_file)
         self.settings.setValue("language", lang)
-        self.settings.setValue("dark_mode", dark_mode)  
+        self.settings.setValue("dark_mode", dark_mode)
 
     def save_config_to_yaml(self):
         # Bevor saving, updating UI Values
@@ -625,7 +630,8 @@ class DocGeneratorApp(QWidget):
 
         # Output format input (ComboBox for multiple formats)
         self.output_format_input = QComboBox()
-        self.output_format_input.addItems([self.translator.translate("settingsTab.HMTLprefix"), self.translator.translate("settingsTab.MDprefix"), self.translator.translate("settingsTab.Allprefix")])  # Dropdown with 'md' and 'html' options
+        # Dropdown with 'md' and 'html' options
+        self.output_format_input.addItems([self.translator.translate("settingsTab.HMTLprefix"), self.translator.translate("settingsTab.MDprefix"), self.translator.translate("settingsTab.Allprefix")])
         self.output_format_input.currentTextChanged.connect(lambda: self._configChanged())
         self.output_format_input_label = QLabel(self.translator.translate("settingsTab.OutputFormatInputLabel"))
         output_layout.addWidget(self.output_format_input_label)
@@ -681,7 +687,7 @@ class DocGeneratorApp(QWidget):
         # Button to open Output-Directory of the log
         self.open_outputLog_dir_button = QPushButton(self.translator.translate("loggingTab.OpenOutputLogDirButton"))
         self.open_outputLog_dir_button.clicked.connect(lambda: self.open_output_directory("log"))
-        layout.addWidget(self.open_outputLog_dir_button) 
+        layout.addWidget(self.open_outputLog_dir_button)
 
         tab.setLayout(layout)
         return tab
@@ -786,7 +792,7 @@ class DocGeneratorApp(QWidget):
         self.help_dialog = self.ContentDialogWindow(help_content, title="Changelog")
         self.help_dialog.show()
 
-    def select_file(self, target="source", mode="file"):  
+    def select_file(self, target="source", mode="file"):
         if mode == "file":
             if target == "source":
                 file_path, _ = QFileDialog.getOpenFileName(
@@ -861,10 +867,10 @@ class DocGeneratorApp(QWidget):
 
         if "output_format" in self.config:
             formats = self.config["output_format"]
-            if(len(formats) < 2):
-                if(formats[0] == "html"):
+            if (len(formats) < 2):
+                if (formats[0] == "html"):
                     self.output_format_input.setCurrentIndex(0)
-                if(formats[0] == "md"):
+                if (formats[0] == "md"):
                     self.output_format_input.setCurrentIndex(1)
             else:
                 self.output_format_input.setCurrentIndex(2)
@@ -916,12 +922,13 @@ class DocGeneratorApp(QWidget):
         if output_path:
             dir_path = os.path.dirname(os.path.abspath(output_path))
             if os.path.exists(dir_path):
+                #dir_path is validadet --> safe to call subprozess
                 if sys.platform == "win32":
-                    subprocess.run(["explorer", dir_path])
+                    subprocess.run(["explorer", dir_path], check=False)
                 elif sys.platform == "darwin":
-                    subprocess.run(["open", dir_path])
+                    subprocess.run(["open", dir_path], check=False)
                 else:
-                    subprocess.run(["xdg-open", dir_path])
+                    subprocess.run(["xdg-open", dir_path], check=False)
             else:
                 self.append_log(f"⚠️ Output directory not found: {dir_path}")
         else:
@@ -1077,7 +1084,7 @@ class DocGeneratorApp(QWidget):
 
         output_path_input = self.output_path_input.text().strip()
         if output_path_input:
-            if(check_input_string_looks_like_path(output_path_input)):
+            if (check_input_string_looks_like_path(output_path_input)):
                 self.config["output_path"] = output_path_input
             else:
                 logger.log(f"Output Path is not valid - abort: {output_path_input}", "warning")
@@ -1286,13 +1293,14 @@ def main():
     if args.NoGui:
         total_done = run_cli_mode(args)
         print(f'Total Documentation done: {total_done}%')
-        if(total_done < 99):
+        if (total_done < 99):
             sys.exit(total_done)
     else:
-        app = QApplication(sys.argv)  
+        app = QApplication(sys.argv)
         window = DocGeneratorApp(config_path = args.config)
         window.show()
         sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()

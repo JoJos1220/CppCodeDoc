@@ -3,7 +3,8 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 from datetime import datetime
 from configSetup.installModules import ensure_modules
@@ -13,7 +14,7 @@ import yaml
 
 def load_config(config_path = ""):
     errors = []
-    
+
     def get_with_fallback(d, key, fallback, section="root"):
         value = d.get(key, fallback)
         if key not in d:
