@@ -3,7 +3,9 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, re, shutil
+import os
+import re
+import shutil
 from pathlib import PurePath
 
 def normalize_signature(sig: str) -> str:
@@ -59,7 +61,7 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
 
     for idx, line in enumerate(lines):
         stripped = line.strip()
-        
+
         # Kommentare überspringen
         if stripped.startswith("/*"):
             if "*/" in stripped:

@@ -328,14 +328,78 @@ def compile_inno_setup_script(iss_path):
         print(f"FileError: {e}")
     except Exception as e:
         print(f"Unkown Error: {e}")
-        
+
+
+def run_pylint_analysis(source_dir="./src", json_output="pylint-output.json", html_output="pylint-report.html", fail_under_score=None):
+    """
+    Checking code-quality by runnint pylint-code-analysis and generating a report in html/json file out of src directory.
+    Build is canceling if pylint returns an error, or score is below fial_under_score!
+    """
+    print("🔍 Running pylint analysis...")
+
+    # exit codes
+    pylint_exit_messages = {
+        0:  "✅ No issues found.",
+        1:  "❌ Fatal message issued.",
+        2:  "❌ Error message issued.",
+        4:  "⚠️ Warning message issued.",
+        8:  "ℹ️ Refactor message issued.",
+        16: "ℹ️ Convention message issued.",
+        30: "❌ Score below threshold (--fail-under).",
+        32: "❌ Usage error.",
+        64: "❌ Internal pylint error.",
+    }
+
+    # Step 1: call pylint with JSON - output with fail-under if set
+    try:
+        args = ["pylint", source_dir, "--output-format=json"]
+        if fail_under_score is not None:
+            args.append(f"--fail-under={fail_under_score}")
+
+        with open(json_output, "w", encoding="utf-8") as out_file:
+            result = subprocess.run(
+                args,
+                stdout=out_file,
+                stderr=subprocess.PIPE,
+                text=True,
+                check=False
+            )
+
+        exit_code = result.returncode
+        message = pylint_exit_messages.get(exit_code, f"⚠️ Unknown exit code: {exit_code}")
+        print(f"📄 Pylint finished with exit code {exit_code}: \"{message}\"")
+
+        if exit_code not in (0, 4, 8, 16):
+            sys.exit(exit_code)
+        else:
+            print(f"✅ pylint JSON output created: {json_output}")
+
+    except Exception as e:
+        print(f"❌ Unexpected error during pylint execution: {e}")
+        sys.exit(1)
+
+    # Step 2: JSON → HTML
+    try:
+        subprocess.run(
+            ["pylint-json2html", "-f", "json", json_output, "-o", html_output],
+            check=True
+        )
+        print(f"✅ HTML report saved as '{html_output}'")
+
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Failed to create HTML report: {e}")
+        sys.exit(1)
+
+
 def convert_to_exe(script_path):
     """
     Convertion of a python based application to a executable (.exe) file using PyInstaller.
     """
     try:
         from src.configSetup.installModules import ensure_modules
-        ensure_modules([("PyInstaller", "pyinstaller")])
+        ensure_modules([("PyInstaller", "pyinstaller"),
+                        ("pylint", "pylint"),
+                        ("","pylint-json2html")])
         import PyInstaller
     except ImportError:
         print("PyInstaller is not installed. install it by using 'pip install pyinstaller'.")
@@ -410,6 +474,9 @@ def convert_to_exe(script_path):
     inno_script_path = create_inno_setup_script(exe_name, __title__, __version__, __author__, __year__, __file_extension__.lstrip('.'))
     print(f"Installer script created at: {inno_script_path}")
     compile_inno_setup_script(inno_script_path)
+
+    # Checking code quality with pylint
+    run_pylint_analysis(source_dir="./src", fail_under_score=5.0)
 
 if __name__ == "__main__":
     # Update/Recreate the list of imports
