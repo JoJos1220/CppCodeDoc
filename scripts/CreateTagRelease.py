@@ -11,7 +11,7 @@ from src.utils.app_info import (__version__, __author__)
 
 # ======= Configuration ==========
 OWNER = f"{__author__}"                                                 # Repository-Owner (GitHub-Username)
-REPO = "CppCodeDoc-private"                                             # Repository-Name
+REPO = "CppCodeDoc"                                             # Repository-Name
 CATEGORY_NAME = "General"                                               # Discussion-Categorie (shown discussion categorie in Github)
 TITLE = "Release of CppCodeDoc Version " + __version__                  # Discussion title
 INSTALLER_PATH = f".\installer\CppCodeDoc_{__version__}_Installer.exe"  # Discussion appendix
