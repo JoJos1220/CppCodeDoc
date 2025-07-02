@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['C:\\000_Projekte\\100_PlatformIO\\CppCodeDoc-private\\src\\CppCodeDoc.py'],
+    ['C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\CppCodeDoc.py'],
     pathex=['./src'],
     binaries=[],
     datas=[('LICENSE.txt', 'assets\\LICENSE'), ('help.md', 'assets'), ('changelog.md', 'assets'), ('.\\src\\lang', 'assets\\lang'), ('.\\src\\fileExamples\\testFile.h', 'assets\\fileExamples'), ('.\\src\\config.yaml', 'assets'), ('.\\src\\generator\\img\\logo.svg', 'assets'), ('.\\src\\generator\\img\\Ko-fi.svg', 'assets'), ('.\\src\\generator\\img\\paypal.svg', 'assets'), ('.\\src\\generator\\img\\github.svg', 'assets'), ('.\\src\\generator\\img\\DarkMode.svg', 'assets'), ('.\\src\\utils\\icon\\icon.ico', 'assets'), ('.\\src\\utils\\icon\\FileExtension.ico', 'assets'), ('.\\src\\generator\\img\\Reference.png', 'assets')],
@@ -32,7 +32,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='C:\\000_Projekte\\100_PlatformIO\\CppCodeDoc-private\\scripts\\version_info.txt',
+    version='C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\scripts\\version_info.txt',
     uac_admin=True,
     icon=['src\\utils\\icon\\icon.ico'],
 )
