@@ -13,7 +13,6 @@ def get_cpp_files(path, arguments):
         if path.endswith((".cpp", ".h", ".hpp", ".cxx", ".ino")):
             cpp_files.append(path)
         return cpp_files
-    
     if os.path.isdir(path):
         if recursive:
             for root, _, files in os.walk(path):

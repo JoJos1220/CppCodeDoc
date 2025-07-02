@@ -3,7 +3,12 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, sys, subprocess, tempfile, getpass, requests
+import os
+import sys
+import subprocess
+import tempfile
+import getpass
+import requests
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -11,7 +16,7 @@ from src.utils.app_info import (__version__, __author__)
 
 # ======= Configuration ==========
 OWNER = f"{__author__}"                                                 # Repository-Owner (GitHub-Username)
-REPO = "CppCodeDoc"                                             # Repository-Name
+REPO = "CppCodeDoc"                                                     # Repository-Name
 CATEGORY_NAME = "General"                                               # Discussion-Categorie (shown discussion categorie in Github)
 TITLE = "Release of CppCodeDoc Version " + __version__                  # Discussion title
 INSTALLER_PATH = f".\installer\CppCodeDoc_{__version__}_Installer.exe"  # Discussion appendix
@@ -26,9 +31,9 @@ def update_wiki_from_help(github_token, repo_owner, repo_name, help_md_path, tag
         try:
             print("Cloning wiki repo...")
             subprocess.run(["git", "clone", wiki_repo_url, tmpdir], check=True)
-            
+
             wiki_home_path = os.path.join(tmpdir, "Home.md")
-            
+
             print(f"Copying {help_md_path} to {wiki_home_path}...")
             with open(help_md_path, "r", encoding="utf-8") as src_file:
                 content = src_file.read()
@@ -109,8 +114,8 @@ def create_github_release(version, github_token, exe_path):
 ---
 
 ## 📚 Useful Links
-[![Documentation](https://img.shields.io/badge/-Documentation-blue?style=for-the-badge&logo=read-the-docs)]({wiki_url})  
-[![Issues](https://img.shields.io/badge/-Issue_Tracker-orange?style=for-the-badge&logo=github)]({issues_url})  
+[![Documentation](https://img.shields.io/badge/-Documentation-blue?style=for-the-badge&logo=read-the-docs)]({wiki_url})
+[![Issues](https://img.shields.io/badge/-Issue_Tracker-orange?style=for-the-badge&logo=github)]({issues_url})
 [![Download](https://img.shields.io/badge/-Latest_Release-green?style=for-the-badge&logo=github)]({latest_release_url})
 [![Discussions](https://img.shields.io/badge/-Discussions-purple?style=for-the-badge&logo=github)]({discussions_url})
 ---
@@ -126,7 +131,7 @@ def create_github_release(version, github_token, exe_path):
         "prerelease": False
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, timeout=10)
     if response.status_code != 201:
         print(f"❌ Error on creating GitHub release: {response.status_code} – {response.text}")
         return
@@ -147,7 +152,8 @@ def create_github_release(version, github_token, exe_path):
         upload_response = requests.post(
             f"{upload_url}?name={file_name}",
             headers=upload_headers,
-            data=f
+            data=f,
+            timeout=10
         )
 
     if upload_response.status_code == 201:
@@ -215,7 +221,7 @@ def run_query(query, github_token, variables=None):
         "Authorization": f"Bearer {github_token}",
         "Content-Type": "application/json"
     }
-    response = requests.post(API_URL, json={"query": query, "variables": variables or {}}, headers=HEADERS)
+    response = requests.post(API_URL, json={"query": query, "variables": variables or {}}, headers=HEADERS, timeout=10)
     if response.status_code != 200:
         raise requests.exceptions.HTTPError(f"Query failed with code {response.status_code}: {response.text}")
     return response.json()
@@ -285,7 +291,10 @@ def create_discussion(repo_id, category_id, github_token, title, body):
     })
     return result["data"]["createDiscussion"]["discussion"]["url"]
 
+
 if __name__ == "__main__":
+
+
     """
     Main Script. Ensure that in previous step, the "Convert_PyToExe.py" script was run to create the installer.
     This script will create a Git tag, a GitHub release, and a discussion for the release.
@@ -296,7 +305,7 @@ if __name__ == "__main__":
         print("➡️  Please build the installer before running this release script.")
         exit(1)
 
-    github_token = getpass.getpass("🔑 Enter GitHub Classic-Token: ")  
+    github_token = getpass.getpass("🔑 Enter GitHub Classic-Token: ")
     
     # update wiki from help.md bevor creating tag
     update_wiki_from_help(github_token, OWNER, REPO, "./help.md", __version__)

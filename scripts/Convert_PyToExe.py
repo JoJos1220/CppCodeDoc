@@ -3,7 +3,10 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os, re, subprocess
+import sys
+import os
+import re
+import subprocess
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -18,7 +21,7 @@ from src.utils.app_info import (__title__, __version__, __file_extension__,
 
 def create_inno_setup_script(exe_name, app_title, app_version, app_author, app_date, app_file_identifier):
     """
-    Creation of Inno Setup Script (.iss) to create a Installer for the application. 
+    Creation of Inno Setup Script (.iss) to create a Installer for the application.
     """
     script_content = f"""
 #define AppName "{app_title}"
@@ -81,7 +84,7 @@ Filename: "{{sysnative}}\\ie4uinit.exe"; Parameters: "-show"; StatusMsg: "Refres
 Filename: "{{sys}}\\ie4uinit.exe"; Parameters: "-ClearIconCache"; StatusMsg: "Clearing Icon-Cache..."; Flags: runhidden; Check: not IsWin64
 Filename: "{{sys}}\\ie4uinit.exe"; Parameters: "-show"; StatusMsg: "Refreshing Explorer-Icons..."; Flags: runhidden; Check: not IsWin64
 """
-    
+
     # Saving of .iss file
     base_dir = os.path.dirname(os.path.abspath(__file__))
     inno_script_path = os.path.join(base_dir, "..", f"{exe_name}_Installer.iss")
@@ -90,15 +93,15 @@ Filename: "{{sys}}\\ie4uinit.exe"; Parameters: "-show"; StatusMsg: "Refreshing E
     
     return inno_script_path
 
-def run_inno_setup(installer_script_path):
-    """
-    Calling inno setup compiler with .iss file, within a subprocess to create the installer.
-    """
-    command = ["ISCC", installer_script_path]
-    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
-    print(process.stdout.decode())
-    print(process.stderr.decode())
+#def run_inno_setup(installer_script_path):
+#    """
+#    Calling inno setup compiler with .iss file, within a subprocess to create the installer.
+#    """
+#    command = ["ISCC", installer_script_path]
+#    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#    
+#    print(process.stdout.decode())
+#    print(process.stderr.decode())
 
 def create_version_file(exe_name, app_title, app_version, app_description, app_date, author):
     """
@@ -155,14 +158,14 @@ VSVersionInfo(
 
     return version_file_path
 
-def run(cmd, check=True):
-    """"
-    Run a shell command and return the result.
-    If check is True, it will raise an exception if the command fails.
-    """
-    print(f"🔧 Running: {cmd}")
-    result = subprocess.run(cmd, shell=True, check=check, text=True)
-    return result
+#def run(cmd, check=True):
+#    """"
+#    Run a shell command and return the result.
+#    If check is True, it will raise an exception if the command fails.
+#    """
+#    print(f"🔧 Running: {cmd}")
+#    result = subprocess.run(cmd, shell=True, check=check, text=True)
+#    return result
 
 def get_latest_tag():
     """"
@@ -226,7 +229,8 @@ def generate_changelog(new_version):
 
         for ctype in order:
             if commit_groups[ctype]:
-                changelog_lines.append(f"### {type_titles[ctype]}")
+                changelog_lines.append(f"## {type_titles[ctype]}")
+                changelog_lines.append("")  # Spacing Line after Header 
                 for desc in commit_groups[ctype]:
                     changelog_lines.append(f"* {desc}")
                 changelog_lines.append("")
@@ -463,9 +467,9 @@ def convert_to_exe(script_path):
     
     if os.path.isfile(exe_path):
         print(f".exe-file created successfull at: {exe_path}")
-        print(f"⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️\n")
-        print(f"--❌------ DO NOT FORGET TO CREATE THE INSTALLER ------❌--\n")
-        print(f"⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️")
+        print("⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️\n")
+        print("--❌------ DO NOT FORGET TO CREATE THE INSTALLER ------❌--\n")
+        print("⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️")
     else:
         print(f"Error during creation of .exe file in {exe_path}. Check previous log outputs!")
         return
@@ -479,6 +483,8 @@ def convert_to_exe(script_path):
     run_pylint_analysis(source_dir="./src", fail_under_score=5.0)
 
 if __name__ == "__main__":
+
+    
     # Update/Recreate the list of imports
     findImports.main()
 

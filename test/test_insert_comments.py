@@ -3,11 +3,12 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 from pathlib import Path
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.formatter.code_parser import insert_comments 
+from src.formatter.code_parser import insert_comments
 
 # MOCK extract_functions Implementation
 def extract_functions(file_path):

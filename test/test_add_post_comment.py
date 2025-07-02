@@ -3,7 +3,8 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 from unittest.mock import patch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -29,7 +30,7 @@ def test_post_comment_added_correctly(mock_find_end_line):
 def test_post_comment_removes_inline_comment(mock_find_end_line):
     lines = [
         "void compute() {",
-        "  return;", 
+        "  return;",
         "} // old comment"
     ]
     mock_find_end_line.return_value = 2

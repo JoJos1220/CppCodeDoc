@@ -3,7 +3,12 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, sys, logging, tempfile, shutil, pytest
+import os
+import sys
+import logging
+import tempfile
+import shutil
+import pytest
 from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

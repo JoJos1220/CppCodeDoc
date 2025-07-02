@@ -41,6 +41,5 @@ class ExpandableWidget(QFrame):
             expanded = self.toggle_button.isChecked()
             self.content_widget.setVisible(expanded)
             self.toggle_button.setText("▾" if expanded else "▸")  # Change the symbol based on expansion state
-        
         def setWidgetTitle(self, title):
             self.header_label.setText(title)

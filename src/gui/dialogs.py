@@ -23,7 +23,7 @@ class ContentDialogWindow(QDialog):
             self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
 
             self.icon_path = resource_path("../utils/icon/icon.ico", "assets/icon.ico")
-            print(f"Icon Path: {self.icon_path}")    
+            print(f"Icon Path: {self.icon_path}")
             if os.path.exists(self.icon_path):
                 self.setWindowIcon(QIcon(self.icon_path))
             else:

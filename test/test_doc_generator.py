@@ -3,7 +3,9 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os, pytest
+import sys
+import os
+import pytest
 from pathlib import Path
 from unittest.mock import patch
 
@@ -94,7 +96,6 @@ def test_generate_documentation_readonly(arguments, tmp_path):
          patch("src.formatter.code_parser.replace_comments") as mock_replace, \
          patch("src.formatter.code_parser.make_file_backup") as mock_backup, \
          patch("src.formatter.doxygen_generator.generate_doxygen_comment"):
-        
         result = generate_documentation(arguments, source_files)
 
     assert result == mock_functions

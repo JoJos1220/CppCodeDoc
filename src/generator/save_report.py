@@ -27,5 +27,4 @@ def save_documentation(arguments, all_functions):
         else:
             print(f"❌ Invalid Output Format: {format}")
             raise ValueError(f"Invalid Output Format: {format}")
-        
     return file_path, todo_stats

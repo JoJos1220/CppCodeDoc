@@ -43,11 +43,11 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
     match_count = 0
     lines = content.splitlines()
     if function_name.startswith("operator"):
-        # Operator-Name, aber wir dürfen keine alphanumerischen Zeichen escapen
-        # Nur die Sonderzeichen hinter dem "operator" sollen escaped werden
+        # Operator-name, but no alphanumeric characters should be escaped
+        # Only escape special characters after "operator"
         base = "operator"
         suffix = function_name[len(base):]
-        # Nur Sonderzeichen im Suffix escapen
+        # only escape special characters in the suffix
         escaped_suffix = re.escape(suffix)
         escaped_name = base + escaped_suffix
     else:
@@ -62,7 +62,7 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
     for idx, line in enumerate(lines):
         stripped = line.strip()
 
-        # Kommentare überspringen
+        # Ingoring comments
         if stripped.startswith("/*"):
             if "*/" in stripped:
                 continue
@@ -75,17 +75,17 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
         if stripped.startswith("//"):
             continue
 
-        # Funktionsdefinition erkennen
+        # Check for function definition
         if start_index is None:
-            # Prüfung auf Konstruktor/Destruktor oder Funktion (keine Funktionsaufrufe)
+            # Checking for Constructor/Destructor or function definition (NO FUNCTION CALLS)
             if re.search(rf'{escaped_name}\s*\(', stripped):
                 print("[code_parser][find_function_start_line] → function definition found!")
                 is_definition = bool(re.match(
                     rf'^\s*(?:[\w:\s<>\[\],*&]+)?\s*{escaped_name}\s*\(',
                     stripped
                 ))
-                
-                # Destruktorerkennung für einzeilige Definitionen
+
+                # Checking for one-liner-Destructor/Constructor definition
                 is_destructor = bool(re.match(
                     rf'^\s*{escaped_name}\s*\(\s*\)\s*\{{.*\}}\s*;',
                     stripped
@@ -99,7 +99,7 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
                     start_index = idx
                     buffer = stripped
                     
-                    # Behandlung des Destruktors
+                    # Applying to the destructor or constructor
                     if is_destructor:
                         print("  [DEBUG] Destruktor erkannt.")
                         actual_params = extract_param_signature(buffer)
@@ -108,14 +108,14 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
                         if param_signature is None or normalize_signature(actual_params).lower() == normalize_signature(param_signature).lower():
                             match_count += 1
                             if match_count == occurrence:
-                                print("  ✅ Match gefunden (Destructor found)")
+                                print("  ✅ Match found (Destructor found)")
                                 return start_index
                             else:
-                                print("  ➕ Passender Funktionsstart, aber nicht die gewünschte Vorkommnis.")
+                                print("  ➕ Matching function start, but not correct function order.")
                                 start_index = None
                                 buffer = ""
                     
-                    # Konstruktor oder andere Funktion
+                    # Constructor or other function
                     if "{" in stripped:
                         actual_params = extract_param_signature(buffer)
                         print(f"  [DEBUG] actual_params = '{actual_params}'")
@@ -123,49 +123,48 @@ def find_function_start_line(content: str, function_name: str, param_signature: 
                         if param_signature is None or normalize_signature(actual_params).lower() == normalize_signature(param_signature).lower():
                             match_count += 1
                             if match_count == occurrence:
-                                print("  ✅ Match gefunden (inline)")
+                                print("  ✅ Match found (inline)")
                                 return start_index
                             else:
-                                print("  ➕ Passender Funktionsstart, aber nicht die gewünschte Vorkommnis.")
+                                print("  ➕ Matching function start, but not correct function order.")
                                 start_index = None
                                 buffer = ""
                         else:
-                            print("  ❌ Kein Match, zurücksetzen")
+                            print("  ❌ No Match, reset")
                             start_index = None
                             buffer = ""
         else:
             buffer += " " + stripped
             if "{" in stripped:
                 print(f"\n[Line {idx}] {line.strip()}")
-                print("  → Ende der Funktionsdeklaration (mehrzeilig)")
+                print("  → End of Functiondeclaration (multiline)")
                 actual_params = extract_param_signature(buffer)
                 print(f"  [DEBUG] actual_params = '{actual_params}'")
                 print(f"  [DEBUG] expected      = '{param_signature}'")
                 if not param_signature or normalize_signature(actual_params).lower() == normalize_signature(param_signature).lower():
                     match_count += 1
                     if match_count == occurrence:
-                        print("  ✅ Match gefunden (mehrzeilig)")
+                        print("  ✅ Match found (multiline)")
                         return start_index
                     else:
-                        print("  ➕ Passender Funktionsstart, aber nicht die gewünschte Vorkommnis.")
+                        print("  ➕ Matching function start, but not correct function order.")
                         start_index = None
                         buffer = ""
                 else:
-                    print("  ❌ Kein Match, zurücksetzen")
+                    print("  ❌ No Match, reset")
                     start_index = None
                     buffer = ""
 
-    print("🔚 Funktion nicht gefunden.")
+    print("🔚 Function not found.")
     return -1
 
 def remove_strings_and_comments(lines):
     in_block_comment = False
     result = []
 
-    # Gemeinsame Regex für Literale
+    # Total Regex for Literale
     string_regex = re.compile(r'"(\\.|[^"\\])*"')
     char_regex = re.compile(r"'(\\.|[^'\\])'")
-
 
     for line in lines:
         if not in_block_comment:
@@ -195,9 +194,9 @@ def remove_strings_and_comments(lines):
 
 def find_function_end_line(lines, start_line):
     """
-    Sucht ab Zeile start_line nach der Zeile, in der die Funktion endet.
-    Dabei werden öffnende und schließende geschweifte Klammern gezählt.
-    Rückgabe: Die Zeilennummer (inklusive Startzeile) der schließenden geschweiften Klammer.
+    Seaching for the end of a function starting at start_line.
+    During that, opening and closing curly braces are counted.
+    Retuns: The line number (including start_line) of the closing curly brace.
     """
     brace_count = 0
     cleaned_lines = remove_strings_and_comments(lines)
@@ -224,17 +223,17 @@ def mask_templates(line: str):
         elif line[i] == '>' and stack:
             stack.pop()
             if not stack:
-                # vollständiger Template-Block
+                # total template-block
                 original = line[last_pos:i+1]
                 placeholder = f"__TPL{placeholder_count}__"
                 templates.append((placeholder, original))
                 masked += line[:last_pos] + placeholder
                 line = line[i+1:]
-                i = -1  # starte neu auf verkürzter Zeile
+                i = -1
                 placeholder_count += 1
         i += 1
 
-    masked += line  # Rest
+    masked += line
     return masked, dict(templates)
 
 def extract_multiline_comments(lines):
@@ -268,8 +267,7 @@ def join_multiline_function_declarations(lines):
     while i < len(lines):
         raw = lines[i].strip()
 
-        # Direkt übernehmen, wenn Leerzeile oder nur Kommentar
-        # Direkt übernehmen, wenn Sichtbarkeitsmodifikator
+        # Take directly, if empty line, only comment or visibility modifier
         if not raw or raw.startswith(("//", "/*", "*", "*/")) or raw in ("public:", "private:", "protected:"):
             joined.append(lines[i])
             mapping.append(i)
@@ -284,7 +282,7 @@ def join_multiline_function_declarations(lines):
             i += 1
             continue
 
-        # Sonderfall: mehrere Funktionen in einer Zeile → erst später splitten
+        # Special case: multiple functions in one line → split later
         if ('(' in raw and '{' in raw and raw.endswith('}')
             and (raw.count('{') > 1 or raw.count('}') > 1)):
             joined.append(lines[i])
@@ -326,19 +324,19 @@ def join_multiline_function_declarations(lines):
             starts.append(i)
             i += 1
 
-    # Nachträgliches Splitten von zusammengesetzten Funktionsdefinitionen
+    # Splitting multi-line function declarations into individual lines
     split_lines, split_mapping, split_startlines = [], [], []
 
     for line, idx, start in zip(joined, mapping, starts):
-        # Kommentare entfernen, damit sie das Splitten nicht verhindern
+        # delete commments to prevent splitting issues
         line_clean = re.sub(r'/\*.*?\*/', '', line).strip()
 
-        # Split an } + optional Kommentar + neuer Funktionskopf
+        # splitting only if there is a '}' + optional comment + new function head
         parts = re.split(
             r'}\s*(?=(?:/\*.*?\*/\s*)*[\w:~]+\s+[\w:~]+\s*\()',  # match "int sub(", "void foo(", etc.
             line_clean
         )
-        # Die Split-Teile wieder mit geschlossener Klammer auffüllen, außer beim letzten Teil
+        # filling the split parts with the closing brace, only if it is not the last part
         for j, part in enumerate(parts):
             if j < len(parts) - 1:
                 part += '}'
@@ -351,17 +349,17 @@ def join_multiline_function_declarations(lines):
     final_lines, final_mapping, final_startlines = [], [], []
 
     for line, idx, start in zip(split_lines, split_mapping, split_startlines):
-        # Kommentar entfernen für Analyse (beim finalen Output bleibt der Kommentar erhalten)
+        # delete comments to prevent splitting issues
         line_clean = re.sub(r'/\*.*?\*/', '', line).strip()
 
-        # Immer splitten, wenn genau eine öffnende und schließende Klammer und 'return' drin ist
+        # always split if there is a '}' + '{' + return in the line
         if line_clean.count('{') == 1 and line_clean.count('}') == 1:
             head, body = line.split('{', 1)
             body = body.strip()
             if body.endswith('}'):
                 body_content = body[:-1].strip()
 
-                # Prüfen ob 'return' im body_content oder ob ';' im body_content ist
+                # check if body_content is empty or contains 'return' or ';'
                 if (not body_content) or ('return' in body_content) or (';' in body_content):
                     final_lines.append(f"{head.strip()} {{")
                     final_mapping.append(idx)
@@ -379,8 +377,10 @@ def join_multiline_function_declarations(lines):
 
 
 def extract_comment_for_function(lines, orig_idx, multiline_comments):
-    # Kommentar direkt oberhalb finden (nur eigene Kommentarlinien)
-    # Check for Multiline-Blockkommentare
+    """
+    Extracts the comment directly above the function at orig_idx.
+    """
+    # Check for Multiline-Blockcomments
     comment = ''
     for start, end, ctext in reversed(multiline_comments):
         if end < orig_idx and all(lines[j].strip().startswith('/*') or lines[j].strip().startswith('*') for j in range(start, end+1)):
@@ -389,15 +389,15 @@ def extract_comment_for_function(lines, orig_idx, multiline_comments):
                 comment = ctext
             break
 
-    # Check for Signle-Line-Blockkommentare
+    # Check for Signle-Line-Blockcomments
     if not comment:
-        # Wenn kein /* */ Kommentar gefunden wurde: // Zeilen einsammeln
+        # If ther is no /* */ comment: // gathering lines
         collected = []
         j = orig_idx - 1
         while j >= 0:
             stripped = lines[j].strip()
             if not stripped:
-                # Sobald eine Leerzeile auftaucht -> ABBRECHEN
+                # If there is an empty line -> BREAK
                 break
             if stripped.startswith('#'):
                 j -= 1
@@ -406,7 +406,7 @@ def extract_comment_for_function(lines, orig_idx, multiline_comments):
                 collected.append(stripped)
                 j -= 1
             else:
-                # Sobald was anderes als // gefunden wird -> ABBRECHEN
+                # Somthing else then // found -> BREAK
                 break
         if collected:
             collected.reverse()
@@ -430,14 +430,13 @@ def sync_multiline_comments_to_joined_lines(multiline_comments, original_lines_c
         synced_comments: List of (start_idx_in_joined, end_idx_in_joined, text)
     """
     synced_comments = []
-    # Für jeden Kommentar prüfen wir, welcher Index in final_startlines auf ihn passt.
-    # Ein Kommentar kann mehrere Zeilen umfassen, es reicht Startindex zu mappen.
-    
+
+    # for each comment, we check which index in final_startlines fits it.
+    # A comment can span multiple lines, it is sufficient to map the start index.    
     for c_start, c_end, c_text in multiline_comments:
-        # Suche im final_startlines nach einem Index, der c_start umfasst:
-        # final_startlines gibt für joined_lines[i] die original Startzeile an.
-        # Wir suchen die joined_line, bei der final_startlines[i] <= c_start < final_startlines[i+1]
-        
+        # Seaching for the start and end index in final_startlines
+        # final_startlines is a list of start lines for each joined line.
+  
         start_idx_in_joined = None
         end_idx_in_joined = None
         
@@ -450,11 +449,11 @@ def sync_multiline_comments_to_joined_lines(multiline_comments, original_lines_c
             if start_line <= c_end < next_start_line:
                 end_idx_in_joined = i
                 
-            # Falls beide gefunden, abbrechen
+            # If both is found, abort
             if start_idx_in_joined is not None and end_idx_in_joined is not None:
                 break
         
-        # Falls nicht genau gefunden, grob abfangen:
+        # if not found, we try to find the closest match
         if start_idx_in_joined is None:
             start_idx_in_joined = 0
         if end_idx_in_joined is None:
@@ -466,27 +465,27 @@ def sync_multiline_comments_to_joined_lines(multiline_comments, original_lines_c
 
 def extract_functions_from_string(content: str, file_path: str = "<memory>"):
     """
-    Extrahiert Funktionen aus dem Inhalt.
-    Für jede Funktion wird ermittelt:
-      - name: Funktionsname
-      - return_type: Rückgabetyp
-      - params: Parameterliste als String
-      - const: True, falls "const" gesetzt ist
-      - comment: Vorangestellter Kommentarblock (falls vorhanden, direkt oberhalb, und nur mehrzeilige Kommentarzeile(n))
-      - isDoxygenComment: True, falls es einen Doxygen-Style-Comment gibt
-      - file: Dateiname
-    Ignoriert Control-Statements wie if, else, for, while, switch, case sowie Template-Zeilen.
+    Extracting functions from the given content string.
+    For each function we determine:
+    - The function name
+    - The return type
+    - The parameter list as a string
+    - Whether the function is marked as "const"
+    - A comment block directly above the function (if available, only multi-line comments)
+    - Whether the comment is a Doxygen-style comment
+    - The file name (or path) where the function is defined
+    ignores Control-Statements like if, else, for, while, switch, case and template lines.
     """
     lines = content.splitlines()
     functions = []
 
-    # Sammle Blockkommentare, die in eigenen Zeilen stehen
+    # Gathering Blockcomments in single-lines
     multiline_comments = extract_multiline_comments(lines)
 
-    # Füge mehrzeilige Deklarationen zusammen
+    # Gatehring multiline function declarations together
     joined_lines, _, final_startlines = join_multiline_function_declarations(lines)
 
-    # Synchronisiere multiline_comments auf joined_lines Index and popping out single-liner
+    # syncing multiline_comments to joined_lines Index and popping out single-liner
     synced_multiline_comments = sync_multiline_comments_to_joined_lines(multiline_comments, len(lines), final_startlines)
 
     for idx, (start, end, text) in reversed(list(enumerate(synced_multiline_comments))):
@@ -507,11 +506,11 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
     
     # Constructor/Destructor detection pattern
     ctor_pattern = re.compile(r"""
-        ^\s*(?P<name>(\w+::)?~?\w+)\s*              # Konstruktor-/Destruktornamen
+        ^\s*(?P<name>(\w+::)?~?\w+)\s*              # Const-/Destructor name
         \((?P<params>[^)]*)\)\s*                    # Parameter
-        (?:\s*:\s*(?P<initlist>[^{}]*))?            # Optional: Initialisierungsliste
-        (?P<const>const)?\s*                        # Optional: const
-        \{                                          # Öffnende Klammer
+        (?:\s*:\s*(?P<initlist>[^{}]*))?            # opt.: Initialisation list
+        (?P<const>const)?\s*                        # opt.: const
+        \{                                          # Opening Braces
         """, re.VERBOSE)
 
     control_keywords = ('if', 'else', 'for', 'while', 'switch', 'case')
@@ -534,7 +533,7 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
             match_tpl = re.match(r'^template\s+(__TPL\d+__)', template_line)
             if match_tpl:
                 template_params = match_tpl.group(1).strip()
-                # Demaskiere Function pattern back to original template
+                # demasking Function pattern back to original template
                 for key, val in tpl_map.items():
                     if template_params:
                         template_params = template_params.replace(key, val)
@@ -547,7 +546,7 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
         if re.match(rf"^\s*(?:{'|'.join(control_keywords)})\b", masked_line):
             continue
         
-        # Entferne einzeilige Blockkommentare (/* ... */) und Inline-Kommentare (// ...)
+        # Delete singelton blockkoments and inline-comments (/* ... */) (// ...)
         masked_line = re.sub(r'/\*.*?\*/', '', masked_line)
         masked_line = re.sub(r'//.*$', '', masked_line).rstrip()
 
@@ -560,16 +559,16 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
             continue
         
         if match and not masked_line.strip().endswith('{'):
-            # In den Originalzeilen prüfen, ob die nächste Zeile nur '{' enthält
+            # checking in originallines, if the next line has a '{'
             next_line_idx = idx + 1
             while next_line_idx < len(joined_lines):
                 next_line = re.sub(r'/\*.*?\*/', '', joined_lines[next_line_idx]).strip()
                 if next_line.startswith('{'):
-                    break  # gültiger Funktionsanfang
+                    break  # valid function call
                 elif not next_line or next_line.startswith('//') or next_line.startswith('/*'):
-                    next_line_idx += 1  # Leere Zeilen oder Kommentare überspringen
+                    next_line_idx += 1  # empty line, or ignore comment
                 else:
-                    match = None  # kein gültiger Funktionsanfang
+                    match = None  # no vaild function head found
                     break
 
         if match:
@@ -583,7 +582,7 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
             params = ctor_match.group('params').strip()
             constness = bool(ctor_match.group('const'))
 
-        # Demaskiere Function pattern back to original template
+        # demasking Function pattern back to original template
         for key, val in tpl_map.items():
             rtype = rtype.replace(key, val)
             params = params.replace(key, val)
@@ -593,8 +592,8 @@ def extract_functions_from_string(content: str, file_path: str = "<memory>"):
         is_template = bool(template_line)
         final_template_params = template_params if is_template else None
 
-        # Kommentar direkt oberhalb finden (nur eigene Kommentarlinien)
-        # Check for Multiline-Blockkommentare
+        # seaching for comment directly above 
+        # Checking for Multiline-blockcomments
         comment = extract_comment_for_function(lines, orig_idx, multiline_comments)
 
         # determine isDoxygenComment or not
@@ -692,15 +691,15 @@ def header_comment_exists(lines, func_start):
 
 def convert_single_line_comment_to_header(lines, func_start):
     """
-    Konvertiert einen existierenden Single-Line Kommentarblock (//) direkt oberhalb einer Funktion
-    in einen Standard-Blockkommentar (/* ... */).
+    Converting an existing single-line comment block (//) directly above a function
+    into a standard block comment (/* ... */).
     """
     if func_start == 0:
         return lines
 
     i = func_start - 1
 
-    # Ignoriere erstmal Leerzeilen
+    # ignoring empty lines
     while i >= 0 and lines[i].strip() == "":
         i -= 1
 
@@ -709,16 +708,16 @@ def convert_single_line_comment_to_header(lines, func_start):
 
     candidate = []
     while i >= 0 and lines[i].strip().startswith("//"):
-        candidate.insert(0, lines[i].strip()[2:].strip())  # "//" entfernen, Text extrahieren
+        candidate.insert(0, lines[i].strip()[2:].strip())  # "//" deleting, Text extracting
         i -= 1
 
     if not candidate:
-        return lines  # Kein Single-Line Kommentar vorhanden
+        return lines  # No Single-Line comments available
 
-    # Entferne alte Single-Line-Kommentare
+    # Deleting old single-line comments
     lines = lines[:i+1] + lines[func_start:]
 
-    # Baue neuen Blockkommentar
+    # Building new blockcomment
     header_block = [
         "/*-----------------------------------------------------------------------------",
     ]
@@ -732,43 +731,43 @@ def convert_single_line_comment_to_header(lines, func_start):
     header_block.append(" * ----------------------------------------------------------------------------")
     header_block.append("*/")
 
-    # Zwei Leerzeilen sicherstellen
+    # Ensuring to empty lines
     pre_part = lines[:i+1]
     while pre_part and pre_part[-1].strip() == "":
         pre_part.pop()
     pre_part.extend(["", ""])
 
-    # Neuen Header einfügen
+    # inserting new Header
     new_lines = pre_part + header_block + lines[i+1:]
     return new_lines
 
 def add_header_comment(lines, func_name, start_line, comment_text=None):
     """
-    Fügt vor der Funktion (genau an der Stelle start_line) einen Header-Kommentar ein,
-    sodass exakt zwei Leerzeilen vor dem Kommentar stehen und direkt danach der Kommentarblock.
-    Falls bereits ein Headerkommentar existiert (überprüft mittels header_comment_exists()),
-    wird nichts eingefügt.
+    Insert a header comment block before the function at start_line.
+    Bevor and after the comment block should be exactly two empty lines.
+    if there is already a valid header comment (checked with header_comment_exists()),
+    nothing will be inserted.
     """
     if header_comment_exists(lines, start_line):
-        return lines  # Es liegt schon ein gültiger Header vor.
+        return lines  # valid header already exists.
     
-    # Entferne vorhandene Leerzeilen am Ende des Abschnitts vor der Funktion
+    # Deleting empty lines at the end of the block before the function
     pre_part = lines[:start_line]
     while pre_part and pre_part[-1].strip() == "":
         pre_part.pop()
-    # Füge exakt zwei leere Zeilen ein
+    # Inserting two empty lines
     pre_part.extend(["", ""])
     
     if comment_text is None:
         comment_text = f"{func_name} -->> TODO: Add your description here"
     elif isinstance(comment_text, list):
-        # Wenn comment_text eine Liste ist, konvertiere sie in einen einzigen String
+        # if comment_text is a list, convert it to a single string
         comment_text = " ".join(comment_text)
 
-    # Jetzt den Kommentar in Zeilen aufteilen
+    # splitting up comment into lines
     comment_lines = comment_text.splitlines()
 
-    # Der Kommentarblock mit Sternchen vor jeder Zeile
+    # Block comment with starting "/*"
     header_block = [
         "/*-----------------------------------------------------------------------------"
     ]
@@ -780,15 +779,14 @@ def add_header_comment(lines, func_name, start_line, comment_text=None):
     header_block.append("*/")
     
     new_part = pre_part + header_block
-    # Füge den neuen Header direkt vor der Funktion ein
+    # inserting new header directly before the function
     new_lines = new_part + lines[start_line:]
     return new_lines
 
 def is_inside_multiline_comment(lines, line_index):
     """
-    Prüft, ob die gegebene Zeile Teil eines mehrzeiligen Blockkommentars ist.
-    Sucht rückwärts nach einem ungepaarten /* ohne zugehöriges */,
-    bis zum Anfang der Datei.
+    Checking, if the given line is part of a multiline comment.
+    Searching backwarts to the beginning of the file for an unparsed /* without */ 
     """
     up_to_line = "\n".join(lines[:line_index + 1])
     open_blocks = up_to_line.count("/*")
@@ -797,8 +795,8 @@ def is_inside_multiline_comment(lines, line_index):
 
 def add_post_comment(lines, func_name, func_start_line):
     """
-    Hängt an der Endzeile der Funktion (errechnet ab func_start_line) direkt einen Post-Comment an,
-    d. h. ohne zusätzliche Leerzeile. Vorhandene Inline-Kommentare in dieser Zeile werden entfernt.
+    Adding at the end of the function a Post-comment without empty line, basesd on func_start_line.
+    Existing Inline-comments will be deleted within this line.
     """
     end_line = find_function_end_line(lines, func_start_line)
     if end_line is None:
@@ -806,11 +804,11 @@ def add_post_comment(lines, func_name, func_start_line):
 
     original_line = lines[end_line].rstrip()
 
-    # 1. Prüfe auf mehrzeiligen Blockkommentar
+    # 1. checking against multiline-comment block
     if is_inside_multiline_comment(lines, end_line):
         return lines
 
-    # 2. Prüfe auf // Kommentar
+    # 2. Checking for // comment
     match = re.match(r'^(.*?)(//\s*)(.*)$', original_line)
     if match:
         code_part = match.group(1).rstrip()
@@ -818,18 +816,18 @@ def add_post_comment(lines, func_name, func_start_line):
         lines[end_line] = f"{code_part} /* {comment_text} */"
         return lines
 
-    # 3. Prüfe auf einzeiligen /* */ Kommentar
+    # 3. checking for /* */ Comment
     if re.search(r'/\*.*\*/', original_line):
         return lines
 
-    # 4. Kein Kommentar → neuen anhängen
+    # 4. No comment → appending new one
     lines[end_line] = original_line + f" /* {func_name}() */"
     return lines
 
 def make_file_backup(file_path, backup_base_path):
     """
-    Erstellt ein Backup der Datei im angegebenen Backup-Ordner.
-    Der Ordner wird erstellt, falls er noch nicht existiert.
+    Creating Backup of the file im destination backup-folder.
+    If folder does not exist, a new one is created
     """
     if (check_input_string_looks_like_path(backup_base_path)):
         if not os.path.exists(backup_base_path):
@@ -841,7 +839,7 @@ def make_file_backup(file_path, backup_base_path):
     filename = os.path.basename(file_path)
     backup_path = os.path.join(backup_base_path, filename + ".bak")
     shutil.copyfile(file_path, backup_path)
-    print(f"🔄 Backup erstellt: {backup_path}")
+    print(f"🔄 Backup created: {backup_path}")
     return True
 
 def check_input_string_looks_like_path(path_str: str) -> bool:

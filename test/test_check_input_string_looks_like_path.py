@@ -3,7 +3,9 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, sys, pytest
+import os
+import sys
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.formatter.code_parser import check_input_string_looks_like_path

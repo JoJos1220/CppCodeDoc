@@ -3,11 +3,12 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 from unittest.mock import patch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.utils.get_files import get_files 
+from src.utils.get_files import get_files
 
 class MockArguments:
     def __init__(self, file=None):

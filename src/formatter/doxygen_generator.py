@@ -50,7 +50,7 @@ def extract_brief_and_tags(body_lines):
             content = line[len("@note"):].strip()
             notes_lines.append([content] if content else [])
             current_tag = "note"
-        # Detection of Doxygen ALL OTHER - TAGs 
+        # Detection of Doxygen ALL OTHER - TAGs
         elif line.startswith("@"):
             # other Tags are ignored
             tag_match = re.match(r"@(\w+)\s*(.*)", line)
@@ -93,7 +93,6 @@ def extract_brief_and_tags(body_lines):
         name: "\n".join(f" *        {line.strip()}" if i > 0 else line.strip() for i, line in enumerate(lines)).strip()
         for name, lines in tparam_docs.items()
     }
-
 
     # @return documentation – if multiline return descriptions are present
     return_doc = "\n".join(
@@ -157,7 +156,7 @@ def extract_param_name(p):
     # Entferne Default-Wert
     p_clean = p.split('=')[0].strip() if '=' in p else p.strip()
 
-    # Funktionszeiger?
+    # Fucntionpointer?
     param_name, _ = extract_func_ptr_info(p_clean)
     if param_name:
         return param_name
