@@ -3,7 +3,10 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os, tempfile, pytest
+import sys
+import os
+import tempfile
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.generator.save_report import save_documentation

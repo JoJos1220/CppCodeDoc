@@ -3,10 +3,11 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.formatter.doxygen_generator import extract_brief_and_tags 
+from src.formatter.doxygen_generator import extract_brief_and_tags
 
 def test_extract_brief_and_tags_multiline():
     body_lines = [
@@ -36,7 +37,7 @@ def test_extract_brief_and_tags_multiline():
                " *        which should not contain spaces.",
         "value": "The value to be stored."
     }
-    expected_return = ("An error code\n" 
+    expected_return = ("An error code\n"
                       " *         indicating success or failure."
     )
     expected_note= (

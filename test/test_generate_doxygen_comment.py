@@ -3,10 +3,11 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.formatter.doxygen_generator import generate_doxygen_comment 
+from src.formatter.doxygen_generator import generate_doxygen_comment
 
 def test_generate_doxygen_with_existing_doxygen_comment():
     func = {

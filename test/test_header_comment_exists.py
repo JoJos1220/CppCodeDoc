@@ -3,52 +3,53 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.formatter.code_parser import header_comment_exists
 
 def test_valid_header_comment():
     lines = [
-        "/*", 
-        " * Dies ist ein Header-Kommentar", 
-        " */", 
-        "void meineFunktion() {", 
-        "    // Logik", 
+        "/*",
+        " * Dies ist ein Header-Kommentar",
+        " */",
+        "void meineFunktion() {",
+        "    // Logik",
         "}"
     ]
     assert header_comment_exists(lines, 3) is True
 
 def test_no_comment():
     lines = [
-        "int x = 0;", 
-        "", 
-        "void test() {}", 
+        "int x = 0;",
+        "",
+        "void test() {}",
     ]
     assert header_comment_exists(lines, 2) is False
 
 def test_comment_too_far():
     lines = [
-        "/* Kommentar */", 
-        "", 
-        "void test() {}", 
+        "/* Kommentar */",
+        "",
+        "void test() {}",
     ]
     assert header_comment_exists(lines, 2) is False
 
 def test_footer_comment_instead_of_header():
     lines = [
-        "void test() {", 
-        "    // Logik", 
-        "}", 
+        "void test() {",
+        "    // Logik",
+        "}",
         "/* Kommentar nach der Funktion */"
     ]
     assert header_comment_exists(lines, 0) is False  # func_start = 0, should return False
 
 def test_footer_disguised_as_header():
     lines = [
-        "}", 
-        "/* Kommentar */", 
-        "void test() {" 
+        "}",
+        "/* Kommentar */",
+        "void test() {"
     ]
     assert header_comment_exists(lines, 2) is False
 

@@ -3,12 +3,14 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, re, html
+import os
+import re
+import html
 
 def write_html_doc(functions, output_path, arguments, todo_stats):
     document_meta = arguments["document"]
     highlight_todo = document_meta.get("highlightTodo", False)
-    show_progress = document_meta.get("showDocProgress", True) 
+    show_progress = document_meta.get("showDocProgress", True)
 
     # Writing Output Document
     with open(output_path, "w", encoding="utf-8") as f:
@@ -16,7 +18,6 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
         logo_path = document_meta.get("logoPath")
         if logo_path:
             logo_html = f'<div style="text-align:left; margin-bottom: 20px;"><img src="file:///{logo_path}" alt="Logo" style="max-height: 100px;"></div>'
-        
         f.write(f"""
 <!DOCTYPE html>
 <html>
@@ -118,7 +119,7 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
         f.write("""
     <h2>📚 Table of Content</h2>
     <ul class="toc">
-""")    
+""")
         for func in functions:
             comment = func.get("doxygen", "")
             if highlight_todo:

@@ -3,7 +3,8 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.formatter.code_parser import extract_functions_from_string
@@ -233,7 +234,7 @@ def test_function_parsing_with_comments():
 
     assert result[0]['name'] == "AnothertestFunctionWithParams"
     assert "Doing some commenting" in result[0]['comment']
-    assert result[0]['isDoxygenComment'] == False
+    assert result[0]['isDoxygenComment'] is False
     assert result[1]['name'] == "NoCommentFunction"
     assert result[1]['comment'] == ""
     assert result[2]['name'] == "shouldNotHaveComment"
@@ -263,13 +264,13 @@ def test_function_parsing_with_comments():
     assert result[10]['name'] == "LED::LED"
     assert result[10]['return_type'] == ""
     assert result[10]['params'] == "byte pin"
-    assert result[11]['isDoxygenComment'] == True
+    assert result[11]['isDoxygenComment'] is True
     assert result[11]['return_type'] == "static void"
     assert result[12]['name'] == "jsonExtract"
     assert result[12]['return_type'] == "String"
     assert result[12]['params'] == "const String& json, const String& nameArg"
-    assert result[12]['comment'] == "// return a sub-json struct" 
-    assert result[12]['isDoxygenComment'] == False
+    assert result[12]['comment'] == "// return a sub-json struct"
+    assert result[12]['isDoxygenComment'] is False
     assert result[13]['name'] == "readFromFile"
     assert result[13]['return_type'] == "static std::map<std::string, std::vector<uint8_t>>"
     assert result[14]['name'] == "testPreProc"
@@ -282,7 +283,7 @@ def test_function_parsing_with_comments():
     assert result[15]['comment'] == expected_comment
     assert result[15]['return_type'] == "void"
     assert result[15]['params'] == ""
-    assert result[15]['isDoxygenComment'] == False
+    assert result[15]['isDoxygenComment'] is False
     assert result[16]['name'] == "test"
     assert result[17]['name'] == "operator="
     assert result[17]['params'] == "const File &other"
@@ -307,20 +308,20 @@ def test_function_parsing_with_comments():
     assert result[26]['name'] == "LED::LED"
     assert result[26]['params'] == "byte pin"
     assert result[26]['return_type'] == ""
-    assert result[26]['isDoxygenComment'] == False
+    assert result[26]['isDoxygenComment'] is False
     assert result[27]['name'] == "testObject"
     assert result[27]['params'] == "uint16_t data, const T &value"
     assert result[27]['return_type'] == "uint16_t"
-    assert result[27]['templateParams'] == "<class T>"  
+    assert result[27]['templateParams'] == "<class T>"
     assert result[28]['name'] == "AnotherObjectClassInstance"
     assert result[28]['params'] == "uint16_t data, const T &value"
     assert result[28]['return_type'] == "uint16_t"
-    assert result[28]['isDoxygenComment'] == False
+    assert result[28]['isDoxygenComment'] is False
     assert result[28]['templateParams'] == "<class T>"
     assert result[29]['name'] == "foo"
     assert result[29]['params'] == "T t, U u"
     assert result[29]['return_type'] == "void"
-    assert result[29]['isDoxygenComment'] == False
+    assert result[29]['isDoxygenComment'] is False
     assert result[29]['templateParams'] == "<typename T, typename U>"
-    
+
     assert len(result) == 30

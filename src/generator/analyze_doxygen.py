@@ -45,7 +45,6 @@ def analyze_doxygen_todos(doxygen_comment: str):
             if "TODO" in line:
                 has_todo_in_return = True
                 open_todo_blocks += 1
-    
     return {
         "documented_blocks": documented_blocks, # Total done comments
         "open_todo_blocks": open_todo_blocks,   # Total open comments

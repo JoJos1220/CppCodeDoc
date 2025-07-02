@@ -48,7 +48,6 @@ def write_markdown_doc(functions, output_path, arguments, todo_stats):
             stripped = stripped.lstrip("*").strip()
             if not stripped:
                 continue
-            
             if stripped.startswith("@"):
                 flush_tag()
                 parts = stripped.split(maxsplit=2)

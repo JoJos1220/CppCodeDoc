@@ -3,7 +3,8 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import os, logging
+import os
+import logging
 from logging.handlers import TimedRotatingFileHandler
 from PyQt5.QtCore import QTimer
 
@@ -55,5 +56,8 @@ class StreamLogger:
         logger.setLevel(logging.DEBUG)
         logger.addHandler(handler)
 
+
 # singleTon Class instance to globally ensure usage within project
+
+
 logger = StreamLogger()

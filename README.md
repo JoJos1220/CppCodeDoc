@@ -3,6 +3,8 @@
 ![Banner](img/Banner_CppCodeDoc.png)
 
 [![Build][build-shield]][build-url]
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/cf663cd1ca484c918db7333fe5e5e37d)](https://app.codacy.com/gh/JoJos1220/CppCodeDoc/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/cf663cd1ca484c918db7333fe5e5e37d)](https://app.codacy.com/gh/JoJos1220/CppCodeDoc/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 ![License][license-url]
 [![Release Version][realease-shield]][release-url]
 [![Release Date][releasedate-shield]][releasedate-url]

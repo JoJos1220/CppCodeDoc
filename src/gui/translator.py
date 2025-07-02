@@ -1,4 +1,5 @@
-import os, json
+import os
+import json
 
 from configSetup.configSetup import resource_path
 from streamLogger.log_setup import logger
@@ -18,14 +19,13 @@ class Translator:
                 return 0
 
         def load_translations(self):
-            
             print(f"Try to open and load language file: lang/{self.lang}.json")
 
             # Pfad zur Übersetzungsdatei je nach Sprache
             file_path = resource_path(f"../lang/{self.lang}.json", f"assets/lang/{self.lang}.json")
 
             if os.path.exists(file_path):
-                try: 
+                try:
                     with open(file_path, 'r', encoding='utf-8') as file:
                         return json.load(file)
                 except Exception as e:

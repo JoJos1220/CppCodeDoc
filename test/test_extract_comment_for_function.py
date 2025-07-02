@@ -3,7 +3,8 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import sys, os
+import sys
+import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.formatter.code_parser import extract_comment_for_function
@@ -22,7 +23,6 @@ def test_extract_multiline_comment():
     multiline_comments = [
         (3, 5, "This is a\nmulti-line\ncomment")  # Multiline comment starting at line 3
     ]
-    
     comment = extract_comment_for_function(lines, orig_idx, multiline_comments)
     assert comment == ""
 

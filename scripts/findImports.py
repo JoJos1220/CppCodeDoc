@@ -3,7 +3,9 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-import ast, sys, os
+import ast
+import sys
+import os
 import importlib.metadata
 from pathlib import Path
 from datetime import datetime
@@ -81,7 +83,6 @@ def resolve_modules(imports, stdlib, local_modules):
 
 
 def write_requirements_txt(packages):
-    
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def get_package_version(pkg_name):
