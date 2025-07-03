@@ -3,5 +3,9 @@ __pycache__/
 */*/__pycache__/
 scripts/version_info.txt
 CppCodeDoc.spec
-pylint-output.json
-pylint-report.html
+scripts_output.json
+scripts_report.html
+src_output.json
+src_report.html
+test_output.json
+test_report.html

@@ -3,9 +3,17 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Doxygen generator helping function modules.
+"""
+
 import re
 
 def extract_brief_and_tags(body_lines):
+    """
+    extracting brief description and tags out of
+    doxygen based base-lines
+    """
     brief_lines, return_lines, notes_lines = [], [], []
     current_tag, current_param, current_tparam = None, None, None
     param_docs, tparam_docs, other_tags = {}, {}, {}
@@ -80,17 +88,23 @@ def extract_brief_and_tags(body_lines):
                 other_tags[tag].append(line)
 
    # formating of @brief, @param and @return
-    brief_text = "\n".join(f" *        {line.strip()}" if i > 0 else line.strip() for i, line in enumerate(brief_lines)).strip()
+    brief_text = "\n".join(f" *        {line.strip()}"
+                           if i > 0
+                           else line.strip() for i, line in enumerate(brief_lines)).strip()
 
     # @param documentation – if multiline parameter descriptions are present
     param_docs = {
-        name: "\n".join(f" *        {line.strip()}" if i > 0 else line.strip() for i, line in enumerate(lines)).strip()
+        name: "\n".join(f" *        {line.strip()}"
+                        if i > 0
+                        else line.strip() for i, line in enumerate(lines)).strip()
         for name, lines in param_docs.items()
     }
 
     # @tparam documentation – multiline support
     tparam_docs = {
-        name: "\n".join(f" *        {line.strip()}" if i > 0 else line.strip() for i, line in enumerate(lines)).strip()
+        name: "\n".join(f" *        {line.strip()}"
+                        if i > 0
+                        else line.strip() for i, line in enumerate(lines)).strip()
         for name, lines in tparam_docs.items()
     }
 
@@ -101,7 +115,9 @@ def extract_brief_and_tags(body_lines):
         ).strip()
 
     notes_text = "\n".join(
-        "\n".join(f" *        {line.strip()}" if i > 0 else line.strip() for i, line in enumerate(note)).strip()
+        "\n".join(f" *        {line.strip()}"
+                  if i > 0 
+                  else line.strip() for i, line in enumerate(note)).strip()
         for note in notes_lines
     )
 
@@ -109,7 +125,8 @@ def extract_brief_and_tags(body_lines):
 
 def split_function_params(param_str):
     """
-    Splits function parameters, avoiding splits inside nested parentheses, angle brackets, and square brackets.
+    Splits function parameters, avoiding splits inside of 
+    nested parentheses, angle brackets, and square brackets.
     """
     params = []
     current = ""
@@ -174,11 +191,18 @@ def extract_param_name(p):
     return ""
 
 def clean_suffixes(text):
+    """
+    cleaning out suffix from text parameters.
+    """
     text = re.sub(r'( – default value if not overloaded: [^\(]+)', '', text)
     text = re.sub(r'( \(internal function parameter: [^)]+\))', '', text)
     return text.rstrip()
 
 def generate_doxygen_comment(func):
+    """
+    generation of doxygen based comments.
+    """
+
     param_lines, notes_text = [], []
     comment_text, return_doc = "", ""
     param_docs, tparam_docs, other_docs = {}, {}, {}
@@ -196,8 +220,9 @@ def generate_doxygen_comment(func):
             line = re.sub(r'^\*+\s?', '', line)  # führende * entfernen
             body_lines.append(line)
 
-        # Extrahiere brief und tags
-        comment_text, param_docs, return_doc, notes_text, tparam_docs, other_docs = extract_brief_and_tags(body_lines)
+        # extracting brief and tags
+        (comment_text, param_docs, return_doc,
+         notes_text, tparam_docs, other_docs) = extract_brief_and_tags(body_lines)
 
         if not comment_text:
             comment_text = f"TODO {func['name']} description."
@@ -215,7 +240,11 @@ def generate_doxygen_comment(func):
                 body_lines.append(line)
 
         # Alles zu einem zusammenhängenden Text verbinden
-        comment_text = "\n * ".join(body_lines) if body_lines else f"TODO {func['name']} description."
+        comment_text = (
+            "\n * ".join(body_lines)
+            if body_lines
+            else f"TODO {func['name']} description."
+        )
     else:
         # Kein Kommentar oder kein Doxygen-Format -> neuer Kommentar
         comment_text = f"TODO {func['name']} description."

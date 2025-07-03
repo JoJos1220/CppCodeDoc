@@ -60,5 +60,5 @@ def test_expandable_widget_title_set(app):
     label = QLabel("...")
     widget = ExpandableWidget("Start", label)
 
-    widget.setWidgetTitle("Neu")
+    widget.set_widget_title("Neu")
     assert widget.header_label.text() == "Neu"
