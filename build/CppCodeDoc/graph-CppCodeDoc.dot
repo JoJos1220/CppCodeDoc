@@ -1250,7 +1250,6 @@ charset="UTF-8";
 	"_weakrefset" [label="<f0> SourceModule| <f1> _weakrefset",shape="record"];
 	"linecache" [label="<f0> SourceModule| <f1> linecache",shape="record"];
 	"_posixsubprocess" [label="<f0> MissingModule| <f1> _posixsubprocess",shape="record"];
-	"ntpath" [label="<f0> SourceModule| <f1> ntpath",shape="record"];
 	"_json" [label="<f0> BuiltinModule| <f1> _json",shape="record"];
 	"_pickle" [label="<f0> BuiltinModule| <f1> _pickle",shape="record"];
 	"datetime" [label="<f0> SourceModule| <f1> datetime",shape="record"];
@@ -1770,13 +1769,9 @@ charset="UTF-8";
 		"ctypes.macholib" -> "ctypes.macholib.framework" [style="dotted"];
 		"ctypes.macholib" -> "ctypes.macholib.dylib" [style="dotted"];
 	}
-	subgraph "cluster_setuptools._distutils.command" {
-		label="setuptools._distutils.command";
-		"setuptools._distutils.command" -> "setuptools._distutils.command.check" [style="dotted"];
-		"setuptools._distutils.command" -> "setuptools._distutils.command.build_ext" [style="dotted"];
-		"setuptools._distutils.command" -> "setuptools._distutils.command.sdist" [style="dotted"];
-		"setuptools._distutils.command" -> "setuptools._distutils.command.build" [style="dotted"];
-		"setuptools._distutils.command" -> "setuptools._distutils.command.bdist" [style="dotted"];
+	subgraph "cluster_zipfile" {
+		label="zipfile";
+		"zipfile" -> "zipfile._path" [style="dotted"];
 	}
 	subgraph "cluster_setuptools._vendor.importlib_metadata.compat" {
 		label="setuptools._vendor.importlib_metadata.compat";
@@ -2384,9 +2379,9 @@ charset="UTF-8";
 		label="setuptools._vendor.wheel.vendored";
 		"setuptools._vendor.wheel.vendored" -> "setuptools._vendor.wheel.vendored.packaging" [style="dotted"];
 	}
-	subgraph "cluster_setuptools._vendor.backports.tarfile" {
-		label="setuptools._vendor.backports.tarfile";
-		"setuptools._vendor.backports.tarfile" -> "setuptools._vendor.backports.tarfile.compat" [style="dotted"];
+	subgraph "cluster_packaging.licenses" {
+		label="packaging.licenses";
+		"packaging.licenses" -> "packaging.licenses._spdx" [style="dotted"];
 	}
 	subgraph "cluster_setuptools._vendor.tomli" {
 		label="setuptools._vendor.tomli";
@@ -2507,14 +2502,13 @@ charset="UTF-8";
 	"<PyiModuleGraph>" -> "stat" [];
 	"<PyiModuleGraph>" -> "posix" [];
 	"<PyiModuleGraph>" -> "_sre" [];
-	"<PyiModuleGraph>" -> "gc" [];
+	"<PyiModuleGraph>" -> "ntpath" [];
 	"<PyiModuleGraph>" -> "time" [];
 	"<PyiModuleGraph>" -> "codecs" [];
 	"<PyiModuleGraph>" -> "_datetime" [];
 	"<PyiModuleGraph>" -> "datetime" [];
 	"<PyiModuleGraph>" -> "_pickle" [];
 	"<PyiModuleGraph>" -> "_json" [];
-	"<PyiModuleGraph>" -> "ntpath" [];
 	"<PyiModuleGraph>" -> "_posixsubprocess" [];
 	"<PyiModuleGraph>" -> "linecache" [];
 	"<PyiModuleGraph>" -> "_weakrefset" [];
@@ -5926,12 +5920,6 @@ charset="UTF-8";
 	"linecache" -> "sys" [];
 	"linecache" -> "tokenize" [];
 	"_posixsubprocess" -> "gc" [];
-	"ntpath" -> "os" [];
-	"ntpath" -> "sys" [];
-	"ntpath" -> "genericpath" [];
-	"ntpath" -> "_winapi" [];
-	"ntpath" -> "nt" [];
-	"ntpath" -> "string" [];
 	"_pickle" -> "codecs" [];
 	"_pickle" -> "copyreg" [];
 	"_pickle" -> "_compat_pickle" [];

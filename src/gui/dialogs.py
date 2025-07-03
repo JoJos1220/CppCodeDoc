@@ -22,6 +22,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 class ContentDialogWindow(QDialog):
+
     """
     class, to setup specific content-window-instance.
     """
