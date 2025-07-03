@@ -3,6 +3,11 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+automatically creation of installer application by:
+creting an .iss based file, compiling it to an .exe file
+"""
+
 import sys
 import os
 import re
@@ -19,7 +24,8 @@ from src.utils.app_info import (__title__, __version__, __file_extension__,
     gpl_v3_full_text, __license_text__
 )
 
-def create_inno_setup_script(exe_name, app_title, app_version, app_author, app_date, app_file_identifier):
+def create_inno_setup_script(exe_name, app_title, app_version,
+                             app_author, app_date, app_file_identifier):
     """
     Creation of Inno Setup Script (.iss) to create a Installer for the application.
     """
@@ -90,18 +96,6 @@ Filename: "{{sys}}\\ie4uinit.exe"; Parameters: "-show"; StatusMsg: "Refreshing E
     inno_script_path = os.path.join(base_dir, "..", f"{exe_name}_Installer.iss")
     with open(inno_script_path, "w") as script_file:
         script_file.write(script_content)
-    
-    return inno_script_path
-
-#def run_inno_setup(installer_script_path):
-#    """
-#    Calling inno setup compiler with .iss file, within a subprocess to create the installer.
-#    """
-#    command = ["ISCC", installer_script_path]
-#    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-#    
-#    print(process.stdout.decode())
-#    print(process.stderr.decode())
 
 def create_version_file(exe_name, app_title, app_version, app_description, app_date, author):
     """
@@ -158,15 +152,6 @@ VSVersionInfo(
 
     return version_file_path
 
-#def run(cmd, check=True):
-#    """"
-#    Run a shell command and return the result.
-#    If check is True, it will raise an exception if the command fails.
-#    """
-#    print(f"🔧 Running: {cmd}")
-#    result = subprocess.run(cmd, shell=True, check=check, text=True)
-#    return result
-
 def get_latest_tag():
     """"
     getting the latest git tag in the current repository.
@@ -174,7 +159,7 @@ def get_latest_tag():
     """
     try:
         tag = subprocess.check_output(
-            ['git', 'describe', '--tags', '--abbrev=0']
+            ['git', 'describe', '--tags', '--abbrev=0'], shell=False
         ).decode().strip()
         return tag
     except subprocess.CalledProcessError:
@@ -189,6 +174,11 @@ def generate_changelog(new_version):
     print(f"Last Tag: {last_tag}")
 
     range_spec = f"{last_tag}..HEAD" if last_tag else "HEAD"
+
+    # ✅ safety check - range_spec input validation for subprocess.run()
+    if not re.fullmatch(r'[\w.\-/]+(\.\.HEAD)?', range_spec):
+        raise ValueError(f"Unsafe range_spec detected: {range_spec}\n"
+                         "Shell-injection risk! This error is raised to protect subprocess.run().")
 
     try:
         # getting GIT-COMMITS
@@ -230,7 +220,7 @@ def generate_changelog(new_version):
         for ctype in order:
             if commit_groups[ctype]:
                 changelog_lines.append(f"## {type_titles[ctype]}")
-                changelog_lines.append("")  # Spacing Line after Header 
+                changelog_lines.append("")  # Spacing Line after Header
                 for desc in commit_groups[ctype]:
                     changelog_lines.append(f"* {desc}")
                 changelog_lines.append("")
@@ -260,7 +250,8 @@ def generate_changelog(new_version):
 
         if match:
             existing_block = match.group(1)
-            existing_body = normalize("\n".join(existing_block.splitlines()[2:]))  # skip 2 header lines
+            # skip 2 header lines
+            existing_body = normalize("\n".join(existing_block.splitlines()[2:]))
             new_body_normalized = normalize(new_body)
 
             if new_body_normalized in existing_body:
@@ -305,6 +296,9 @@ def compile_inno_setup_script(iss_path):
 
         if not os.path.isfile(iss_path):
             raise FileNotFoundError(f"The .iss-File can not be found: {iss_path}")
+        
+        if not iss_path.lower().endswith('.iss') or not re.fullmatch(r'[\w\s\-\./:\\]+', iss_path):
+            raise ValueError(f"Unsafe iss_path detected: {iss_path}")
 
         # start subprocess to run Inno Setup Compiler and log output in terminal
         process = subprocess.Popen(
@@ -334,9 +328,11 @@ def compile_inno_setup_script(iss_path):
         print(f"Unkown Error: {e}")
 
 
-def run_pylint_analysis(source_dir="./src", json_output="pylint-output.json", html_output="pylint-report.html", fail_under_score=None):
+def run_pylint_analysis(source_dir="./src", json_output="pylint-output.json",
+                        html_output="pylint-report.html", fail_under_score=None):
     """
-    Checking code-quality by runnint pylint-code-analysis and generating a report in html/json file out of src directory.
+    Checking code-quality by runnint pylint-code-analysis and
+    generating a report in html/json file out of src directory.
     Build is canceling if pylint returns an error, or score is below fial_under_score!
     """
     print("🔍 Running pylint analysis...")
@@ -386,7 +382,8 @@ def run_pylint_analysis(source_dir="./src", json_output="pylint-output.json", ht
     try:
         subprocess.run(
             ["pylint-json2html", "-f", "json", json_output, "-o", html_output],
-            check=True
+            check=True,
+            shell=False
         )
         print(f"✅ HTML report saved as '{html_output}'")
 
@@ -456,7 +453,8 @@ def convert_to_exe(script_path):
     print("Start .py to .exe conversion...")
 
     # calling PyInstaller within subprocess with output monitoring in terminal
-    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                             shell=False)
     print(process.stdout.decode())
     print(process.stderr.decode())
 
@@ -464,7 +462,7 @@ def convert_to_exe(script_path):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     dist_dir = os.path.join(base_dir, "..", "CppCodeDoc")
     exe_path = os.path.join(dist_dir, f"{exe_name}.exe")
-    
+
     if os.path.isfile(exe_path):
         print(f".exe-file created successfull at: {exe_path}")
         print("⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️----------⚠️⚠️⚠️⚠️⚠️\n")
@@ -473,18 +471,23 @@ def convert_to_exe(script_path):
     else:
         print(f"Error during creation of .exe file in {exe_path}. Check previous log outputs!")
         return
-    
+
     # Creating Inno Setup-Script and compile installer
-    inno_script_path = create_inno_setup_script(exe_name, __title__, __version__, __author__, __year__, __file_extension__.lstrip('.'))
+    inno_script_path = create_inno_setup_script(
+        exe_name, __title__, __version__,
+        __author__, __year__, __file_extension__.lstrip('.'))
     print(f"Installer script created at: {inno_script_path}")
     compile_inno_setup_script(inno_script_path)
 
     # Checking code quality with pylint
-    run_pylint_analysis(source_dir="./src", fail_under_score=5.0)
+    run_pylint_analysis(source_dir="./src", json_output="src_output.json",
+                        html_output="src_report.html", fail_under_score=5.0)
+    run_pylint_analysis(source_dir="./test", json_output="test_output.json",
+                    html_output="test_report.html", fail_under_score=5.0)
+    run_pylint_analysis(source_dir="./scripts", json_output="scripts_output.json",
+                    html_output="scripts_report.html", fail_under_score=5.0)
 
 if __name__ == "__main__":
-
-    
     # Update/Recreate the list of imports
     findImports.main()
 

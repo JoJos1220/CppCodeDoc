@@ -3,13 +3,21 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Analyzing doxygen strings from comments.
+"""
+
 import re
 
 def analyze_doxygen_todos(doxygen_comment: str):
+    """
+    analysing doxygen todos.
+    """
     lines = doxygen_comment.splitlines()
 
     has_todo_in_brief, has_todo_in_return = False, False
-    total_params, params_with_todo, total_tparams, tparams_with_todo, documented_blocks, open_todo_blocks = 0, 0, 0, 0, 0, 0
+    total_params, params_with_todo, total_tparams = 0, 0, 0
+    tparams_with_todo, documented_blocks, open_todo_blocks = 0, 0, 0
 
     for line in lines:
         line = line.strip()

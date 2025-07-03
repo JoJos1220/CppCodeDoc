@@ -3,15 +3,24 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Calculation of open to-tods
+"""
+
+
 from generator.analyze_doxygen import analyze_doxygen_todos
 
 def calculation_of_todos(functions):
+    """
+    calculation of overall to-dos within functions.
+    """
     total_funcs = len(functions)
     todo_funcs = sum(1 for f in functions if "TODO" in f.get("doxygen", ""))
     done_funcs = total_funcs - todo_funcs
     percent_done = int((done_funcs / total_funcs) * 100) if total_funcs else 0
 
-    return_todo, tparams_todo, params_todo, brief_todo, total_tparams, total_params = 0, 0, 0, 0, 0, 0
+    return_todo, tparams_todo, params_todo = 0, 0, 0
+    brief_todo, total_tparams, total_params = 0, 0, 0
 
     for func in functions:
         func["doxygen_TODO_Analyze"] = analyze_doxygen_todos(func.get("doxygen", ""))
@@ -22,10 +31,18 @@ def calculation_of_todos(functions):
         total_params += func["doxygen_TODO_Analyze"]["total_params"]
         brief_todo += int(func["doxygen_TODO_Analyze"]["todo_in_brief"])
 
-    percent_brief_done = int(((total_funcs - brief_todo) / total_funcs) * 100) if total_funcs else 0
-    percent_tparams_done = int(((total_tparams - tparams_todo) / total_tparams) * 100) if total_tparams else 0
-    percent_params_done = int(((total_params - params_todo) / total_params) * 100) if total_params else 0
-    percent_return_done = int(((total_funcs - return_todo) / total_funcs) * 100) if total_funcs else 0
+    percent_brief_done = (
+        int(((total_funcs - brief_todo) / total_funcs) * 100)
+        if total_funcs else 0)
+    percent_tparams_done = (
+        int(((total_tparams - tparams_todo) / total_tparams) * 100)
+        if total_tparams else 0)
+    percent_params_done = (
+        int(((total_params - params_todo) / total_params) * 100)
+        if total_params else 0)
+    percent_return_done = (
+        int(((total_funcs - return_todo) / total_funcs) * 100)
+        if total_funcs else 0)
 
     return {
         "total_funcs": total_funcs,

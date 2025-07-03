@@ -3,6 +3,10 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Helping functions to ensure modules are installed which are used within CppCodeDoc.
+"""
+
 import sys
 import importlib
 import subprocess
@@ -21,7 +25,8 @@ def ensure_modules(modules):
                 print(f"[installModules] ✔️ Modul '{import_name}' already installed.")
                 continue
             except ImportError:
-                print(f"[installModules] ⚠️ Modul '{import_name}' not found. Try installation of '{pip_name}'...")
+                print(f"[installModules] ⚠️ Modul '{import_name}' not found. "
+                      f"Try installation of '{pip_name}'...")
         else:
             print(f"[installModules] ℹ️ CLI-Modul '{pip_name}' – will only be checked by pip...")
 
@@ -30,7 +35,8 @@ def ensure_modules(modules):
             #pip_name is validadet --> safe to call subprozess
             subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
         except subprocess.CalledProcessError:
-            print(f"[installModules] ❌ Error during installation of '{pip_name}'. Install it manually!")
+            print(f"[installModules] ❌ Error during installation "
+                  f"of '{pip_name}'. Install it manually!")
             sys.exit(1)
 
         # after installation: test import again, if it is not just a cli-tool
@@ -39,7 +45,8 @@ def ensure_modules(modules):
                 importlib.import_module(import_name)
                 print(f"[installModules] ✔️ Modul '{import_name}' successfully installed.")
             except ImportError:
-                print(f"[installModules] ❌ Modulimport '{import_name}' was not successful after installation.")
+                print(f"[installModules] ❌ Modulimport '{import_name}' "
+                      "was not successful after installation.")
                 sys.exit(1)
         else:
             print(f"[installModules] ✔️ CLI-Modul '{pip_name}' successfully installed.")

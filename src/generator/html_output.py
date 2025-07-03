@@ -3,11 +3,18 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Generating html documentation report out of functions.
+"""
+
 import os
 import re
 import html
 
 def write_html_doc(functions, output_path, arguments, todo_stats):
+    """
+    writing documentation in html format
+    """
     document_meta = arguments["document"]
     highlight_todo = document_meta.get("highlightTodo", False)
     show_progress = document_meta.get("showDocProgress", True)
@@ -60,7 +67,7 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
 <body>
     <a id="top"></a>
     <button class="print-btn" onclick="printDoc()">🖨️ Print</button>
-    
+
     {logo_html}
 
     <!-- Document Overview -->
@@ -70,7 +77,7 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
     <p><strong>Datum:</strong> {document_meta.get('date', 'Unbekannt')}</p>
 """)
         if show_progress:
-            f.write(f""" 
+            f.write(f"""
     <h2>📊 Overall Documentation progress</h2>
     <p>{todo_stats["done_funcs"]} of {todo_stats["total_funcs"]} functions are <strong>finished documented</strong>.</p>
     <div style='background-color: #eee; border-radius: 5px; overflow: hidden; width: 100%; max-width: 400px;'>
@@ -115,7 +122,7 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
     </div>
 """)
 
-            
+
         f.write("""
     <h2>📚 Table of Content</h2>
     <ul class="toc">
@@ -154,9 +161,9 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
             """)
             if todo_marker == "❌ ":
                 f.write("<div style='margin-top: 8px; color: #856404; background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px; border-radius: 4px;'>⚠️ <strong>Warning:</strong> Function contains a TODO mark!</div>\n")
-            
+
             f.write(f"<div class='code-block'>{html.escape(func['return_type'])} {html.escape(func['name'])}({html.escape(func['params'])})</div>\n")
-            
+
             if func.get("doxygen"):
                 file_info = f"<div style='font-size: 12px; color: gray;'>📄 {os.path.basename(func['file'])} (Line {func['startLine']})</div>"
                 comment = func["doxygen"]
@@ -176,9 +183,9 @@ def write_html_doc(functions, output_path, arguments, todo_stats):
                     if tag not in tag_classes:
                         return f"<span class='tag'>{tag}</span>"
                     return tag
-                
+
                 comment = re.sub(r'@(\w+)', replace_unknown_tags, comment)
-                
+
                 comment_id = f"comment_{idx}"
                 f.write(f"<button class='toggle-btn active' onclick=\"toggleComment('{comment_id}', this)\">📘 Hide comments</button>\n")
                 f.write(f"<div class='doxygen-comment show' id='{comment_id}'>{file_info}{comment}</div>\n")

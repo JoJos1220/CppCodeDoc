@@ -13,19 +13,19 @@ Link [![Github][github-shield]][github-url]
 - [Interaction by GUI](#interaction-by-gui)
 - [Interaction by CLI](#interaction-by-cli)
 - [Start Tab](#start-tab)
-    - [Enter Config Path](#enter-config-path)
-    - [Select Configuration File](#select-config-file)
-    - [Save Configuration File](#save-config-file)
-    - [Enter Source File or Directory](#enter-file-source)
-    - [Select Source File](#select-source-file)
-    - [Select Source Directory](#select-source-dir)
-    - [Generate Documentation](#generate-doc)
-    - [Status Display](#status-display)
-    - [Open Output Directory](#open-output-dir)
+  - [Enter Config Path](#enter-config-path)
+  - [Select Configuration File](#select-config-file)
+  - [Save Configuration File](#save-config-file)
+  - [Enter Source File or Directory](#enter-file-source)
+  - [Select Source File](#select-source-file)
+  - [Select Source Directory](#select-source-dir)
+  - [Generate Documentation](#generate-doc)
+  - [Status Display](#status-display)
+  - [Open Output Directory](#open-output-dir)
 - [Settings Tab](#settings-tab)
-    - [General Settings](#general-settings)
-    - [Document Settings](#document-settings)
-    - [Output Settings](#output-settings)
+  - [General Settings](#general-settings)
+  - [Document Settings](#document-settings)
+  - [Output Settings](#output-settings)
 - [Logging Tab](#logging-tab)
 - [About Tab](#about-tab)
 
@@ -67,7 +67,6 @@ Furthermore, the CLI based function returns the total commend-covergae percentag
 
 To know more about the application, you can also use the ´--license´ information or the ´--help´ tag to see more within the CMD window.
 
-
 ---
 <a id="start-tab"></a>
 
@@ -77,7 +76,7 @@ Entry point of the UI. The UI starts per default with a standard configuration m
 
 <a id="enter-config-path"></a>
 
--  **Enter Config Path** At the top of the Start Tab, you can manually enter the path to a `.yaml` based configuration file in `.cppDoc` format. This path determines how the documentation process behaves. Any change to this field triggers a configuration update internally.
+- **Enter Config Path** At the top of the Start Tab, you can manually enter the path to a `.yaml` based configuration file in `.cppDoc` format. This path determines how the documentation process behaves. Any change to this field triggers a configuration update internally.
 
 <a id="select-config-file"></a>
 

@@ -3,6 +3,10 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Setup of configuration within Application.
+File handels majorly loading of configuration out of YAML file.
+"""
 import sys
 import os
 
@@ -13,12 +17,16 @@ ensure_modules([("yaml", "pyYAML")])
 import yaml
 
 def load_config(config_path = ""):
+    """
+    loading configuration settings out of .yaml based file.
+    """
     errors = []
 
     def get_with_fallback(d, key, fallback, section="root"):
         value = d.get(key, fallback)
         if key not in d:
-            errors.append(f"[configSetup] Missing key '{key}' in section '{section}', using fallback: {repr(fallback)}")
+            errors.append(f"[configSetup] Missing key '{key}' "
+                          f"in section '{section}', using fallback: {repr(fallback)}")
         return value
 
     def try_load_and_parse(path):
@@ -46,10 +54,15 @@ def load_config(config_path = ""):
         try:
             doc = config_data.get("document", {})
             if "document" not in config_data:
-                errors.append(f"[configSetup] Missing key 'document' in section 'root' in config file '{used_path}'")
+                errors.append(f"[configSetup] Missing key 'document' "
+                              f"in section 'root' in config file '{used_path}'")
 
             raw_date = get_with_fallback(doc, "date", "auto", "document")
-            date = datetime.today().strftime("%Y-%m-%d") if str(raw_date).strip().lower() in ("auto", "today", "") else raw_date
+            date = (
+                datetime.today().strftime("%Y-%m-%d")
+                if str(raw_date).strip().lower() in ("auto", "today", "")
+                else raw_date
+            )
 
             version_raw = get_with_fallback(doc, "version", "1.0", "document")
             version = version_raw.replace(".", "_")
@@ -63,7 +76,9 @@ def load_config(config_path = ""):
                 "version": get_with_fallback(doc, "version", "1.0", "document"),
                 "author": get_with_fallback(doc, "author", "Unknown", "document"),
                 "date": date,
-                "logoPath": resource_path(get_with_fallback(doc, "logoPath", "../generator/img/logo.svg", "document"), "assets/logo.svg"),
+                "logoPath": resource_path(
+                    get_with_fallback(doc, "logoPath", "../generator/img/logo.svg", "document"),
+                    "assets/logo.svg"),
                 "highlightTodo": get_with_fallback(doc, "highlightTodo", True, "document"),
                 "showDocProgress": get_with_fallback(doc, "showDocProgress", True, "document")
             }
@@ -71,13 +86,17 @@ def load_config(config_path = ""):
             return {
                 "document": document_meta,
                 "config_path": used_path,
-                "source_dir": get_with_fallback(config_data, "source_dir", resource_path("../fileExamples", "./assets/fileExamples"), "root"),
+                "source_dir": get_with_fallback(
+                    config_data, "source_dir",
+                    resource_path("../fileExamples", "./assets/fileExamples"), "root"),
                 "recursive": bool(get_with_fallback(config_data, "recursive", True, "root")),
                 "output_format": output_formats,
-                "output_path": get_with_fallback(config_data, "output_path", f"./docs/Documentation_{version}", "root"),
+                "output_path": get_with_fallback(
+                    config_data, "output_path", f"./docs/Documentation_{version}", "root"),
                 "backup_path": get_with_fallback(config_data, "backup_path", None, "root"),
                 "readonly": get_with_fallback(config_data, "readonly", True, "root"),
-                "headerCommentStyle": get_with_fallback(config_data, "headerCommentStyle", None, "root"),
+                "headerCommentStyle": get_with_fallback(
+                    config_data, "headerCommentStyle", None, "root"),
             }, None
         except Exception as e:
             return None, f"[configSetup] Error parsing config file '{used_path}': {e}"
@@ -100,7 +119,8 @@ def resource_path(dev_path, prod_path=None):
     """
     Gibt den Pfad zur Ressource zurück – kompatibel für Entwicklung und PyInstaller (.exe).
     
-    :param dev_path: Pfad zur Ressource während der Entwicklung (Fallback, wenn _MEIPASS NICHT verfügbar).
+    :param dev_path: Pfad zur Ressource während der Entwicklung
+                     (Fallback, wenn _MEIPASS NICHT verfügbar).
     :param prod_path: Produktivpfad zur Ressource (meist in assets folder).
     :return: Absoluter Pfad zur Ressource.
     """

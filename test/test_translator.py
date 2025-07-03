@@ -7,6 +7,7 @@ import sys
 import os
 import tempfile
 import json
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -21,24 +22,20 @@ def create_temp_translation_file(lang_code, data):
         json.dump(data, f)
     return tmp_dir, file_path
 
-
-def test_translate_existing_key(monkeypatch):
+@pytest.fixture
+def translator_with_temp_file(monkeypatch):
     data = {"mainTabs": {"start": "Starten"}}
     _, fake_file = create_temp_translation_file("de", data)
-
     monkeypatch.setattr("src.gui.translator.resource_path", lambda *args: fake_file)
+    return Translator(lang="de")
 
-    tr = Translator(lang="de")
+def test_translate_existing_key(translator_with_temp_file):
+    tr = translator_with_temp_file
     assert tr.translate("mainTabs.start") == "Starten"
 
 
-def test_translate_missing_key(monkeypatch):
-    data = {"mainTabs": {"start": "Starten"}}
-    _, fake_file = create_temp_translation_file("de", data)
-
-    monkeypatch.setattr("src.gui.translator.resource_path", lambda *args: fake_file)
-
-    tr = Translator(lang="de")
+def test_translate_missing_key(translator_with_temp_file):
+    tr = translator_with_temp_file
     assert tr.translate("unknown.key") == "unknown.key"
 
 

@@ -3,6 +3,12 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+Helper file, which contains all relevant information,
+about the application.
+It mainly contains constant variables.
+"""
+
 from datetime import datetime
 
 __GITHUB_REPO__ = "Jojos1220/CppCodeDoc"
@@ -43,10 +49,12 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
-__license_header__ = f"# {__title__} — Licensed under the {__license_name__} ({__license_short__})\n" \
-                     f"# SPDX-License-Identifier: {__license_short__}\n" \
-                     f"# Copyright (C) {__year__} {__author__}\n" \
-                     f"# See {__license_url__}"
+__license_header__ = (
+    f"# {__title__} — Licensed under the {__license_name__} ({__license_short__})\n" \
+    f"# SPDX-License-Identifier: {__license_short__}\n" \
+    f"# Copyright (C) {__year__} {__author__}\n" \
+    f"# See {__license_url__}"
+)
 
 gpl_v3_full_text = """\
 ------------------------------------------------------------------------

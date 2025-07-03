@@ -16,7 +16,6 @@
 [![PayPal][Paypal-shield]][paypal-url]
 [![Ko-Fi][Ko-Fi-shield]][Ko-Fi-url]
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>📚 Table of Contents</summary>
@@ -56,6 +55,7 @@ And so, the **CppCodeDoc** project came to life. The tool now enables automatic 
 1) **Automatic Commenting in .cpp, .h, .hpp, .ino and .cxx files** If no header or footer comment is found, the software can automatically insert one—either in default or Doxygen style.
 
 - **Footer comment example**
+
 ```cpp
     //FunctionBevore;
     } /* "functionName()" */   
@@ -84,6 +84,7 @@ And so, the **CppCodeDoc** project came to life. The tool now enables automatic 
         // blabla
     }
 ```
+
 - **Single-line comment conversion example**
 
 From: 
@@ -107,6 +108,7 @@ To:
 ```       
 
 2) **Auto Documentation Generation**
+
    - Output formats: `.md` or `.html`
    - Highlights TODOs in comments
    - Calculates documentation completion percentage
@@ -130,6 +132,7 @@ python .\CppCodeDoc.py
 2) **Use the installer** (simplest setup) Download the latest .exe, call it with administrator privilegs and follow the setup wizard. Python is not required.
 
 3) **Use the CLI (advanced)** For command-line usage without the GUI, run:
+
 ```bash
 python .\CppCodeDoc.py --NoGui
 ```
@@ -175,9 +178,9 @@ Everybody is welcome to contribute the project - regardless of the experience le
 4a) add you changes
 4b) make a test-case to ensure the design meets your specification
 4c) make and test the software-installer by calling .\scripts\Convert_PyToExe.py script
-6) commit and push
-7) create a pull request
-8) after the pull request is successfull, new release will be created by .\scripts\CreateTagRelease.py script.
+5) commit and push
+6) create a pull request
+7) after the pull request is successfull, new release will be created by .\scripts\CreateTagRelease.py script.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -210,7 +213,7 @@ Well, I like coffee ;) Maybe we got a deal?
 [github-shield]: https://img.shields.io/badge/GitHub-Jojos1220-black?logo=github
 [github-url]: https://github.com/JoJos1220/CppCodeDoc
 [vscode-dev-shield]: https://img.shields.io/badge/preview%20in-vscode.dev-blue
-[vscode-dev-url]: https://open.vscode.dev/JoJos1220/CppCodeDoc
+[vscode-dev-url]: https://vscode.dev/github/JoJos1220/CppCodeDoc
 
 [license-url]:https://img.shields.io/github/license/JoJos1220/CppCodeDoc?style=flat-square
 [build-shield]: https://github.com/JoJos1220/CppCodeDoc/actions/workflows/build_App.yml/badge.svg
@@ -224,7 +227,7 @@ Well, I like coffee ;) Maybe we got a deal?
 [lastcommit-shield]: https://img.shields.io/github/last-commit/JoJos1220/CppCodeDoc?style=plastic
 [lastcommit-url]: https://github.com/JoJos1220/CppCodeDoc/tree
 [depandbot-shield]: https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white
-[depandbot-url]:https://github.com/JoJos1220/CppCodeDoc/actions/workflows/dependabot.yml
+[depandbot-url]:https://github.com/JoJos1220/CppCodeDoc/actions/workflows//dependabot/dependabot-updates
 [githubactions-shield]: https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white
 [githubactions-url]:https://github.com/JoJos1220/CppCodeDoc/actions
 [paypal-shield]: https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white

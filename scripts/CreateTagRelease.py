@@ -3,8 +3,15 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+
+"""
+Automatically create TAG and Release it on github.
+In combination, a Discussion is created and wiki file is updated.
+"""
+
 import os
 import sys
+import re
 import subprocess
 import tempfile
 import getpass
@@ -15,11 +22,16 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.utils.app_info import (__version__, __author__)
 
 # ======= Configuration ==========
-OWNER = f"{__author__}"                                                 # Repository-Owner (GitHub-Username)
-REPO = "CppCodeDoc"                                                     # Repository-Name
-CATEGORY_NAME = "General"                                               # Discussion-Categorie (shown discussion categorie in Github)
-TITLE = "Release of CppCodeDoc Version " + __version__                  # Discussion title
-INSTALLER_PATH = f".\installer\CppCodeDoc_{__version__}_Installer.exe"  # Discussion appendix
+# Repository-Owner (GitHub-Username)
+OWNER = f"{__author__}"
+# Repository-Name
+REPO = "CppCodeDoc"
+# Discussion-Categorie (shown discussion categorie in Github)
+CATEGORY_NAME = "General"
+# Discussion title
+TITLE = "Release of CppCodeDoc Version " + __version__
+# Discussion appendix
+INSTALLER_PATH = f".\installer\CppCodeDoc_{__version__}_Installer.exe"
 # ================================
 
 def update_wiki_from_help(github_token, repo_owner, repo_name, help_md_path, tag_name):
@@ -30,7 +42,7 @@ def update_wiki_from_help(github_token, repo_owner, repo_name, help_md_path, tag
     with tempfile.TemporaryDirectory() as tmpdir:
         try:
             print("Cloning wiki repo...")
-            subprocess.run(["git", "clone", wiki_repo_url, tmpdir], check=True)
+            subprocess.run(["git", "clone", wiki_repo_url, tmpdir], check=True, shell=False)
 
             wiki_home_path = os.path.join(tmpdir, "Home.md")
 
@@ -39,19 +51,23 @@ def update_wiki_from_help(github_token, repo_owner, repo_name, help_md_path, tag
                 content = src_file.read()
             with open(wiki_home_path, "w", encoding="utf-8") as dest_file:
                 dest_file.write(content)
-            
+
             print("Adding changes...")
-            subprocess.run(["git", "add", "Home.md"], cwd=tmpdir, check=True)
-            
+            subprocess.run(["git", "add", "Home.md"], cwd=tmpdir,
+                           check=True, shell=False)
+
             print("Committing changes...")
-            subprocess.run(["git", "commit", "-m", f"Update help file on release {tag_name}"], cwd=tmpdir, check=True)
-            
+            subprocess.run(["git", "commit", "-m",
+                            f"Update help file on release {tag_name}"],
+                            cwd=tmpdir, check=True, shell=False)
+
             print("Pushing changes...")
-            subprocess.run(["git", "push"], cwd=tmpdir, check=True)
-            
+            subprocess.run(["git", "push"], cwd=tmpdir, check=True, shell=False)
+
             print("Wiki updated successfully.")
         except subprocess.CalledProcessError as e:
-            print(f"⚠️ Warning: Failed to update wiki. This will not stop the release process.\nDetails: {e}")
+            print(f"⚠️ Warning: Failed to update wiki. "
+                  f"This will not stop the release process.\nDetails: {e}")
         except Exception as e:
             print(f"⚠️ Warning: Unexpected error while updating wiki: {e}")
 
@@ -61,10 +77,14 @@ def create_tag(version):
     Create a Git tag for the release and push it to the remote repository.
     This function assumes that the current working directory is a Git repository.
     """
+
+    if not re.fullmatch(r'[\w.\-/]+', version):
+        raise ValueError(f"Invalid git tag name: {version}")
+
     try:
-        subprocess.run(['git', 'tag', version], check=True)
+        subprocess.run(['git', 'tag', version], check=True, shell=False)
         print(f"Tag {version} created local.")
-        subprocess.run(['git', 'push', 'origin', version], check=True)
+        subprocess.run(['git', 'push', 'origin', version], check=True, shell=False)
         print(f"Tag {version} pushed to remote repository.")
     except subprocess.CalledProcessError as e:
         print(f"Error during creation or pushing of TAG-Release: {e}")
@@ -87,7 +107,7 @@ def create_github_release(version, github_token, exe_path):
     wiki_url = f"https://github.com/{OWNER}/{REPO}/wiki"
     issues_url = f"https://github.com/{OWNER}/{REPO}/issues"
     latest_release_url = f"https://github.com/{OWNER}/{REPO}/releases/latest"
-    
+
     body_text = f"""
 <img src="img/Banner_CppCodeDoc.png" alt="Banner" height="150" />
 
@@ -202,7 +222,8 @@ def format_changelog_md(changelog_text: str) -> str:
         line = line.strip()
         if line.lower().startswith("###"):
             section = line[3:].strip()
-            emoji = next((icon for name, icon in section_icons.items() if name in section.lower()), "🗂")
+            emoji = next((icon for name, icon in section_icons.items()
+                          if name in section.lower()), "🗂")
             formatted.append(f"### {emoji} {section}")
         elif line.startswith("*"):
             formatted.append("- " + line[1:].strip().capitalize())
@@ -216,14 +237,17 @@ def run_query(query, github_token, variables=None):
     Runs a GraphQL query against the GitHub API.
     Returns the JSON response of the API-Request if successful.
     """
-    API_URL = "https://api.github.com/graphql"
-    HEADERS = {
+    api_url = "https://api.github.com/graphql"
+    headers = {
         "Authorization": f"Bearer {github_token}",
         "Content-Type": "application/json"
     }
-    response = requests.post(API_URL, json={"query": query, "variables": variables or {}}, headers=HEADERS, timeout=10)
+    response = requests.post(api_url,
+                             json={"query": query, "variables": variables or {}},
+                             headers=headers, timeout=10)
     if response.status_code != 200:
-        raise requests.exceptions.HTTPError(f"Query failed with code {response.status_code}: {response.text}")
+        raise requests.exceptions.HTTPError(
+            f"Query failed with code {response.status_code}: {response.text}")
     return response.json()
 
 def get_repository_id(owner, name, github_token):
@@ -296,7 +320,8 @@ if __name__ == "__main__":
 
 
     """
-    Main Script. Ensure that in previous step, the "Convert_PyToExe.py" script was run to create the installer.
+    Main Script.
+    Ensure that in previous step, the "Convert_PyToExe.py" script was run to create the installer.
     This script will create a Git tag, a GitHub release, and a discussion for the release.
     It will also update the GitHub wiki with the content of help.md if available.
     """
@@ -306,7 +331,6 @@ if __name__ == "__main__":
         exit(1)
 
     github_token = getpass.getpass("🔑 Enter GitHub Classic-Token: ")
-    
     # update wiki from help.md bevor creating tag
     update_wiki_from_help(github_token, OWNER, REPO, "./help.md", __version__)
 

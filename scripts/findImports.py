@@ -3,6 +3,11 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
+"""
+file is searching on all modules/packages import and
+writes the information summarized into a requirements.txt file.
+"""
+
 import ast
 import sys
 import os
@@ -25,15 +30,24 @@ KNOWN_PKG_MAP = {
 
 
 def get_stdlib_modules():
+    """
+    getting all stdlib modules
+    """
     version = f"{sys.version_info.major}.{sys.version_info.minor}"
     return set(stdlib_list.stdlib_list(version))
 
 
 def find_python_files(root: Path):
+    """
+    returning all python files in folder
+    """
     return list(root.rglob("*.py"))
 
 
 def find_local_modules(py_files, root: Path):
+    """
+    searching on local modules in folder.
+    """
     local = set()
     for path in py_files:
         rel = path.relative_to(root)
@@ -44,6 +58,9 @@ def find_local_modules(py_files, root: Path):
 
 
 def extract_imports(py_files):
+    """
+    extracting all imports out of src files.
+    """
     imports = set()
     for file_path in py_files:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -61,6 +78,9 @@ def extract_imports(py_files):
 
 
 def resolve_modules(imports, stdlib, local_modules):
+    """
+    resolving modules on network by name.
+    """
     external = sorted(
         mod for mod in imports
         if mod not in stdlib and mod not in local_modules
@@ -83,6 +103,10 @@ def resolve_modules(imports, stdlib, local_modules):
 
 
 def write_requirements_txt(packages):
+    """
+    writing all packages, found to requirements.txt file.
+    if alrady exist, file will be updated.
+    """
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def get_package_version(pkg_name):
@@ -115,6 +139,9 @@ def write_requirements_txt(packages):
 
 
 def print_summary(found, not_found):
+    """
+    printing sumary of found modules into console.
+    """
     print("\n✅ found external modules (via ensure_modules):\n")
     print("ensure_modules([")
     for mod, pkg in found:
@@ -127,6 +154,9 @@ def print_summary(found, not_found):
             print(f"- {mod}")
 
 def print_licenses(packages):
+    """
+    printing package license out of each imported modul.
+    """
     print("📄 Licenseinformationen to the found Packages:\n")
     for _, pkg_name in packages:
         try:
@@ -138,6 +168,9 @@ def print_licenses(packages):
     print("")
 
 def main():
+    """
+    Main function to find imports
+    """
     root = Path(".").resolve()
     stdlib = get_stdlib_modules()
     py_files = find_python_files(root)
