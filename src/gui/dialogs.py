@@ -22,7 +22,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
-def show_user_prompt(self, text: str, title: str = "Info", level: str = "info", 
+def show_user_prompt(self, text: str, title: str = "Info", level: str = "info",
                      icon_path: str | None = None,
                      buttons: QMessageBox.StandardButtons | None = None,
                      default_button: QMessageBox.StandardButton | None = None) -> QMessageBox.StandardButton:

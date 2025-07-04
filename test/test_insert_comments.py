@@ -144,7 +144,6 @@ void func2() {
 """)
 
     patch_functions(monkeypatch, mocks)
-    
     insert_comments(str(file), {"headerCommentStyle": "default"})
 
     content = file.read_text()

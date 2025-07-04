@@ -1318,82 +1318,44 @@ charset="UTF-8";
 		"setuptools._vendor.more_itertools" -> "setuptools._vendor.more_itertools.more" [style="dotted"];
 		"setuptools._vendor.more_itertools" -> "setuptools._vendor.more_itertools.recipes" [style="dotted"];
 	}
-	subgraph "cluster_setuptools._vendor.zipp.compat" {
-		label="setuptools._vendor.zipp.compat";
-		"setuptools._vendor.zipp.compat" -> "setuptools._vendor.zipp.compat.py310" [style="dotted"];
+	subgraph "cluster_asyncio" {
+		label="asyncio";
+		"asyncio" -> "asyncio.constants" [style="dotted"];
+		"asyncio" -> "asyncio.coroutines" [style="dotted"];
+		"asyncio" -> "asyncio.format_helpers" [style="dotted"];
+		"asyncio" -> "asyncio.DefaultEventLoopPolicy" [style="dotted"];
+		"asyncio" -> "asyncio.events" [style="dotted"];
+		"asyncio" -> "asyncio.exceptions" [style="dotted"];
+		"asyncio" -> "asyncio.base_futures" [style="dotted"];
+		"asyncio" -> "asyncio.futures" [style="dotted"];
+		"asyncio" -> "asyncio.protocols" [style="dotted"];
+		"asyncio" -> "asyncio.transports" [style="dotted"];
+		"asyncio" -> "asyncio.sslproto" [style="dotted"];
+		"asyncio" -> "asyncio.mixins" [style="dotted"];
+		"asyncio" -> "asyncio.locks" [style="dotted"];
+		"asyncio" -> "asyncio.base_tasks" [style="dotted"];
+		"asyncio" -> "asyncio.queues" [style="dotted"];
+		"asyncio" -> "asyncio.tasks" [style="dotted"];
+		"asyncio" -> "asyncio.timeouts" [style="dotted"];
+		"asyncio" -> "asyncio.staggered" [style="dotted"];
+		"asyncio" -> "asyncio.trsock" [style="dotted"];
+		"asyncio" -> "asyncio.base_events" [style="dotted"];
+		"asyncio" -> "asyncio.runners" [style="dotted"];
+		"asyncio" -> "asyncio.streams" [style="dotted"];
+		"asyncio" -> "asyncio.subprocess" [style="dotted"];
+		"asyncio" -> "asyncio.taskgroups" [style="dotted"];
+		"asyncio" -> "asyncio.threads" [style="dotted"];
+		"asyncio" -> "asyncio.base_subprocess" [style="dotted"];
+		"asyncio" -> "asyncio.proactor_events" [style="dotted"];
+		"asyncio" -> "asyncio.selector_events" [style="dotted"];
+		"asyncio" -> "asyncio.windows_utils" [style="dotted"];
+		"asyncio" -> "asyncio.windows_events" [style="dotted"];
+		"asyncio" -> "asyncio.unix_events" [style="dotted"];
+		"asyncio" -> "asyncio.log" [style="dotted"];
 	}
 	subgraph "cluster_setuptools._vendor.backports.tarfile.compat" {
 		label="setuptools._vendor.backports.tarfile.compat";
 		"setuptools._vendor.backports.tarfile.compat" -> "setuptools._vendor.backports.tarfile.compat.py38" [style="dotted"];
-	}
-	subgraph "cluster_xml.parsers" {
-		label="xml.parsers";
-		"xml.parsers" -> "xml.parsers.expat" [style="dotted"];
-	}
-	subgraph "cluster_packaging" {
-		label="packaging";
-		"packaging" -> "packaging._manylinux" [style="dotted"];
-		"packaging" -> "packaging._musllinux" [style="dotted"];
-		"packaging" -> "packaging.utils" [style="dotted"];
-		"packaging" -> "packaging.tags" [style="dotted"];
-		"packaging" -> "packaging.version" [style="dotted"];
-		"packaging" -> "packaging._elffile" [style="dotted"];
-		"packaging" -> "packaging._structures" [style="dotted"];
-		"packaging" -> "packaging.markers" [style="dotted"];
-		"packaging" -> "packaging.specifiers" [style="dotted"];
-		"packaging" -> "packaging.requirements" [style="dotted"];
-		"packaging" -> "packaging._parser" [style="dotted"];
-		"packaging" -> "packaging._tokenizer" [style="dotted"];
-		"packaging" -> "packaging.metadata" [style="dotted"];
-		"packaging" -> "packaging.licenses" [style="dotted"];
-	}
-	subgraph "cluster_xml.etree" {
-		label="xml.etree";
-		"xml.etree" -> "xml.etree.ElementPath" [style="dotted"];
-		"xml.etree" -> "xml.etree.ElementTree" [style="dotted"];
-		"xml.etree" -> "xml.etree.ElementInclude" [style="dotted"];
-		"xml.etree" -> "xml.etree.cElementTree" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.jaraco.text" {
-		label="setuptools._vendor.jaraco.text";
-	}
-	subgraph "cluster__distutils_hack" {
-		label="_distutils_hack";
-		"_distutils_hack" -> "_distutils_hack.override" [style="dotted"];
-	}
-	subgraph "cluster__pyi_rth_utils" {
-		label="_pyi_rth_utils";
-		"_pyi_rth_utils" -> "_pyi_rth_utils.qt" [style="dotted"];
-	}
-	subgraph "cluster_urllib3.contrib.emscripten" {
-		label="urllib3.contrib.emscripten";
-		"urllib3.contrib.emscripten" -> "urllib3.contrib.emscripten.connection" [style="dotted"];
-		"urllib3.contrib.emscripten" -> "urllib3.contrib.emscripten.fetch" [style="dotted"];
-		"urllib3.contrib.emscripten" -> "urllib3.contrib.emscripten.request" [style="dotted"];
-		"urllib3.contrib.emscripten" -> "urllib3.contrib.emscripten.response" [style="dotted"];
-	}
-	subgraph "cluster_pkg_resources" {
-		label="pkg_resources";
-	}
-	subgraph "cluster_PyQt5" {
-		label="PyQt5";
-		"PyQt5" -> "PyQt5.QtCore" [style="dotted"];
-		"PyQt5" -> "PyQt5.QtGui" [style="dotted"];
-		"PyQt5" -> "PyQt5.sip" [style="dotted"];
-		"PyQt5" -> "PyQt5.QtWidgets" [style="dotted"];
-	}
-	subgraph "cluster_xmlrpc" {
-		label="xmlrpc";
-		"xmlrpc" -> "xmlrpc.client" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.backports.tarfile.compat" {
-		label="setuptools._vendor.backports.tarfile.compat";
-		"setuptools._vendor.backports.tarfile.compat" -> "setuptools._vendor.backports.tarfile.compat.py38" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.zipp" {
-		label="setuptools._vendor.zipp";
-		"setuptools._vendor.zipp" -> "setuptools._vendor.zipp.glob" [style="dotted"];
-		"setuptools._vendor.zipp" -> "setuptools._vendor.zipp.compat" [style="dotted"];
 	}
 	subgraph "cluster_encodings" {
 		label="encodings";
@@ -2272,110 +2234,6 @@ charset="UTF-8";
 		"markdown" -> "markdown.htmlparser" [style="dotted"];
 		"markdown" -> "markdown.postprocessors" [style="dotted"];
 	}
-	subgraph "cluster_markdown" {
-		label="markdown";
-		"markdown" -> "markdown.util" [style="dotted"];
-		"markdown" -> "markdown.inlinepatterns" [style="dotted"];
-		"markdown" -> "markdown.core" [style="dotted"];
-		"markdown" -> "markdown.__meta__" [style="dotted"];
-		"markdown" -> "markdown.extensions" [style="dotted"];
-		"markdown" -> "markdown.treeprocessors" [style="dotted"];
-		"markdown" -> "markdown.serializers" [style="dotted"];
-		"markdown" -> "markdown.blockprocessors" [style="dotted"];
-		"markdown" -> "markdown.blockparser" [style="dotted"];
-		"markdown" -> "markdown.preprocessors" [style="dotted"];
-		"markdown" -> "markdown.htmlparser" [style="dotted"];
-		"markdown" -> "markdown.postprocessors" [style="dotted"];
-	}
-	subgraph "cluster_formatter" {
-		label="formatter";
-		"formatter" -> "formatter.doc_generator" [style="dotted"];
-		"formatter" -> "formatter.code_parser" [style="dotted"];
-		"formatter" -> "formatter.doxygen_generator" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._distutils.compilers.C" {
-		label="setuptools._distutils.compilers.C";
-		"setuptools._distutils.compilers.C" -> "setuptools._distutils.compilers.C.msvc" [style="dotted"];
-		"setuptools._distutils.compilers.C" -> "setuptools._distutils.compilers.C.base" [style="dotted"];
-		"setuptools._distutils.compilers.C" -> "setuptools._distutils.compilers.C.errors" [style="dotted"];
-	}
-	subgraph "cluster_multiprocessing.dummy" {
-		label="multiprocessing.dummy";
-		"multiprocessing.dummy" -> "multiprocessing.dummy.connection" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.importlib_metadata" {
-		label="setuptools._vendor.importlib_metadata";
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._meta" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata.compat" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._collections" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._compat" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._functools" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._itertools" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._adapters" [style="dotted"];
-		"setuptools._vendor.importlib_metadata" -> "setuptools._vendor.importlib_metadata._text" [style="dotted"];
-	}
-	subgraph "cluster_backports" {
-		label="backports";
-		"backports" -> "backports.tarfile" [style="dotted"];
-	}
-	subgraph "cluster_xml" {
-		label="xml";
-		"xml" -> "xml.parsers" [style="dotted"];
-		"xml" -> "xml.sax" [style="dotted"];
-		"xml" -> "xml.etree" [style="dotted"];
-	}
-	subgraph "cluster_platformdirs" {
-		label="platformdirs";
-		"platformdirs" -> "platformdirs.api" [style="dotted"];
-		"platformdirs" -> "platformdirs.version" [style="dotted"];
-		"platformdirs" -> "platformdirs.windows" [style="dotted"];
-		"platformdirs" -> "platformdirs.macos" [style="dotted"];
-		"platformdirs" -> "platformdirs.unix" [style="dotted"];
-		"platformdirs" -> "platformdirs.android" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.jaraco" {
-		label="setuptools._vendor.jaraco";
-		"setuptools._vendor.jaraco" -> "setuptools._vendor.jaraco.context" [style="dotted"];
-		"setuptools._vendor.jaraco" -> "setuptools._vendor.jaraco.text" [style="dotted"];
-		"setuptools._vendor.jaraco" -> "setuptools._vendor.jaraco.functools" [style="dotted"];
-	}
-	subgraph "cluster_importlib" {
-		label="importlib";
-		"importlib" -> "importlib._bootstrap" [style="dotted"];
-		"importlib" -> "importlib._bootstrap_external" [style="dotted"];
-		"importlib" -> "importlib.util" [style="dotted"];
-		"importlib" -> "importlib.machinery" [style="dotted"];
-		"importlib" -> "importlib.readers" [style="dotted"];
-		"importlib" -> "importlib.metadata" [style="dotted"];
-		"importlib" -> "importlib.abc" [style="dotted"];
-		"importlib" -> "importlib._abc" [style="dotted"];
-		"importlib" -> "importlib.resources" [style="dotted"];
-	}
-	subgraph "cluster_setuptools._vendor.backports" {
-		label="setuptools._vendor.backports";
-		"setuptools._vendor.backports" -> "setuptools._vendor.backports.tarfile" [style="dotted"];
-	}
-	subgraph "cluster_urllib3" {
-		label="urllib3";
-		"urllib3" -> "urllib3.exceptions" [style="dotted"];
-		"urllib3" -> "urllib3._base_connection" [style="dotted"];
-		"urllib3" -> "urllib3._collections" [style="dotted"];
-		"urllib3" -> "urllib3._version" [style="dotted"];
-		"urllib3" -> "urllib3.connectionpool" [style="dotted"];
-		"urllib3" -> "urllib3.filepost" [style="dotted"];
-		"urllib3" -> "urllib3.poolmanager" [style="dotted"];
-		"urllib3" -> "urllib3.response" [style="dotted"];
-		"urllib3" -> "urllib3.fields" [style="dotted"];
-		"urllib3" -> "urllib3.util" [style="dotted"];
-		"urllib3" -> "urllib3.connection" [style="dotted"];
-		"urllib3" -> "urllib3.http2" [style="dotted"];
-		"urllib3" -> "urllib3._request_methods" [style="dotted"];
-		"urllib3" -> "urllib3.contrib" [style="dotted"];
-	}
-	subgraph "cluster_concurrent" {
-		label="concurrent";
-		"concurrent" -> "concurrent.futures" [style="dotted"];
-	}
 	subgraph "cluster_setuptools" {
 		label="setuptools";
 		"setuptools" -> "setuptools._normalization" [style="dotted"];
@@ -2440,6 +2298,211 @@ charset="UTF-8";
 		"setuptools._vendor.packaging" -> "setuptools._vendor.packaging.version" [style="dotted"];
 		"setuptools._vendor.packaging" -> "setuptools._vendor.packaging._structures" [style="dotted"];
 		"setuptools._vendor.packaging" -> "setuptools._vendor.packaging._elffile" [style="dotted"];
+	}
+	subgraph "cluster_urllib3" {
+		label="urllib3";
+		"urllib3" -> "urllib3.exceptions" [style="dotted"];
+		"urllib3" -> "urllib3._base_connection" [style="dotted"];
+		"urllib3" -> "urllib3._collections" [style="dotted"];
+		"urllib3" -> "urllib3._version" [style="dotted"];
+		"urllib3" -> "urllib3.connectionpool" [style="dotted"];
+		"urllib3" -> "urllib3.filepost" [style="dotted"];
+		"urllib3" -> "urllib3.poolmanager" [style="dotted"];
+		"urllib3" -> "urllib3.response" [style="dotted"];
+		"urllib3" -> "urllib3.fields" [style="dotted"];
+		"urllib3" -> "urllib3.util" [style="dotted"];
+		"urllib3" -> "urllib3.connection" [style="dotted"];
+		"urllib3" -> "urllib3.http2" [style="dotted"];
+		"urllib3" -> "urllib3._request_methods" [style="dotted"];
+		"urllib3" -> "urllib3.contrib" [style="dotted"];
+	}
+	subgraph "cluster_email" {
+		label="email";
+		"email" -> "email.errors" [style="dotted"];
+		"email" -> "email.charset" [style="dotted"];
+		"email" -> "email.header" [style="dotted"];
+		"email" -> "email._header_value_parser" [style="dotted"];
+		"email" -> "email.parser" [style="dotted"];
+		"email" -> "email.message" [style="dotted"];
+		"email" -> "email.utils" [style="dotted"];
+		"email" -> "email._policybase" [style="dotted"];
+		"email" -> "email._encoded_words" [style="dotted"];
+		"email" -> "email.generator" [style="dotted"];
+		"email" -> "email.iterators" [style="dotted"];
+		"email" -> "email.policy" [style="dotted"];
+		"email" -> "email.headerregistry" [style="dotted"];
+		"email" -> "email.contentmanager" [style="dotted"];
+		"email" -> "email.quoprimime" [style="dotted"];
+		"email" -> "email.base64mime" [style="dotted"];
+		"email" -> "email.encoders" [style="dotted"];
+		"email" -> "email._parseaddr" [style="dotted"];
+		"email" -> "email.feedparser" [style="dotted"];
+	}
+	subgraph "cluster_setuptools._vendor.backports.tarfile" {
+		label="setuptools._vendor.backports.tarfile";
+		"setuptools._vendor.backports.tarfile" -> "setuptools._vendor.backports.tarfile.compat" [style="dotted"];
+	}
+	subgraph "cluster_unittest" {
+		label="unittest";
+		"unittest" -> "unittest.util" [style="dotted"];
+		"unittest" -> "unittest.result" [style="dotted"];
+		"unittest" -> "unittest.case" [style="dotted"];
+		"unittest" -> "unittest.suite" [style="dotted"];
+		"unittest" -> "unittest.loader" [style="dotted"];
+		"unittest" -> "unittest.runner" [style="dotted"];
+		"unittest" -> "unittest.main" [style="dotted"];
+		"unittest" -> "unittest.signals" [style="dotted"];
+		"unittest" -> "unittest.async_case" [style="dotted"];
+		"unittest" -> "unittest.mock" [style="dotted"];
+		"unittest" -> "unittest._log" [style="dotted"];
+	}
+	subgraph "cluster_tomllib" {
+		label="tomllib";
+		"tomllib" -> "tomllib._parser" [style="dotted"];
+		"tomllib" -> "tomllib._re" [style="dotted"];
+		"tomllib" -> "tomllib._types" [style="dotted"];
+	}
+	subgraph "cluster_setuptools._vendor" {
+		label="setuptools._vendor";
+		"setuptools._vendor" -> "setuptools._vendor.typing_extensions" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.packaging" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.wheel" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.tomli" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.importlib_metadata" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.zipp" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.jaraco" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.backports" [style="dotted"];
+		"setuptools._vendor" -> "setuptools._vendor.more_itertools" [style="dotted"];
+	}
+	subgraph "cluster_utils" {
+		label="utils";
+		"utils" -> "utils.app_info" [style="dotted"];
+		"utils" -> "utils.file_utils" [style="dotted"];
+		"utils" -> "utils.get_files" [style="dotted"];
+	}
+	subgraph "cluster_requests" {
+		label="requests";
+		"requests" -> "requests.exceptions" [style="dotted"];
+		"requests" -> "requests.packages" [style="dotted"];
+		"requests" -> "requests.certs" [style="dotted"];
+		"requests" -> "requests.utils" [style="dotted"];
+		"requests" -> "requests.__version__" [style="dotted"];
+		"requests" -> "requests.sessions" [style="dotted"];
+		"requests" -> "requests.api" [style="dotted"];
+		"requests" -> "requests.models" [style="dotted"];
+		"requests" -> "requests.status_codes" [style="dotted"];
+		"requests" -> "requests.structures" [style="dotted"];
+		"requests" -> "requests.compat" [style="dotted"];
+		"requests" -> "requests._internal_utils" [style="dotted"];
+		"requests" -> "requests.auth" [style="dotted"];
+		"requests" -> "requests.cookies" [style="dotted"];
+		"requests" -> "requests.hooks" [style="dotted"];
+		"requests" -> "requests.adapters" [style="dotted"];
+	}
+	subgraph "cluster_markdown.extensions" {
+		label="markdown.extensions";
+		"markdown.extensions" -> "markdown.extensions.abbr" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.admonition" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.attr_list" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.codehilite" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.def_list" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.extra" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.fenced_code" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.footnotes" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.legacy_attrs" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.legacy_em" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.md_in_html" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.meta" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.nl2br" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.sane_lists" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.smarty" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.tables" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.toc" [style="dotted"];
+		"markdown.extensions" -> "markdown.extensions.wikilinks" [style="dotted"];
+	}
+	subgraph "cluster_pygments.formatters" {
+		label="pygments.formatters";
+		"pygments.formatters" -> "pygments.formatters._mapping" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.bbcode" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.groff" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.html" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.img" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.irc" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.latex" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.other" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.pangomarkup" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.rtf" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.svg" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.terminal" [style="dotted"];
+		"pygments.formatters" -> "pygments.formatters.terminal256" [style="dotted"];
+	}
+	subgraph "cluster_setuptools.command" {
+		label="setuptools.command";
+		"setuptools.command" -> "setuptools.command.bdist_egg" [style="dotted"];
+		"setuptools.command" -> "setuptools.command._requirestxt" [style="dotted"];
+		"setuptools.command" -> "setuptools.command.bdist_wheel" [style="dotted"];
+		"setuptools.command" -> "setuptools.command.egg_info" [style="dotted"];
+		"setuptools.command" -> "setuptools.command.sdist" [style="dotted"];
+		"setuptools.command" -> "setuptools.command.setopt" [style="dotted"];
+		"setuptools.command" -> "setuptools.command.build" [style="dotted"];
+	}
+	subgraph "cluster_setuptools._vendor.zipp" {
+		label="setuptools._vendor.zipp";
+		"setuptools._vendor.zipp" -> "setuptools._vendor.zipp.glob" [style="dotted"];
+		"setuptools._vendor.zipp" -> "setuptools._vendor.zipp.compat" [style="dotted"];
+	}
+	subgraph "cluster_streamLogger" {
+		label="streamLogger";
+		"streamLogger" -> "streamLogger.log_setup" [style="dotted"];
+	}
+	subgraph "cluster_urllib" {
+		label="urllib";
+		"urllib" -> "urllib.parse" [style="dotted"];
+		"urllib" -> "urllib.request" [style="dotted"];
+		"urllib" -> "urllib.error" [style="dotted"];
+		"urllib" -> "urllib.response" [style="dotted"];
+		"urllib" -> "urllib3" [style="dotted"];
+	}
+	subgraph "cluster_setuptools._vendor.wheel" {
+		label="setuptools._vendor.wheel";
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.wheelfile" [style="dotted"];
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.macosx_libfile" [style="dotted"];
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.cli" [style="dotted"];
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.util" [style="dotted"];
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.metadata" [style="dotted"];
+		"setuptools._vendor.wheel" -> "setuptools._vendor.wheel.vendored" [style="dotted"];
+	}
+	subgraph "cluster_configSetup" {
+		label="configSetup";
+		"configSetup" -> "configSetup.installModules" [style="dotted"];
+		"configSetup" -> "configSetup.configSetup" [style="dotted"];
+	}
+	subgraph "cluster_concurrent.futures" {
+		label="concurrent.futures";
+		"concurrent.futures" -> "concurrent.futures._base" [style="dotted"];
+		"concurrent.futures" -> "concurrent.futures.process" [style="dotted"];
+		"concurrent.futures" -> "concurrent.futures.thread" [style="dotted"];
+	}
+	subgraph "cluster_setuptools.compat" {
+		label="setuptools.compat";
+		"setuptools.compat" -> "setuptools.compat.py39" [style="dotted"];
+		"setuptools.compat" -> "setuptools.compat.py311" [style="dotted"];
+		"setuptools.compat" -> "setuptools.compat.py310" [style="dotted"];
+	}
+	subgraph "cluster_PyQt5" {
+		label="PyQt5";
+		"PyQt5" -> "PyQt5.QtCore" [style="dotted"];
+		"PyQt5" -> "PyQt5.QtGui" [style="dotted"];
+		"PyQt5" -> "PyQt5.sip" [style="dotted"];
+		"PyQt5" -> "PyQt5.QtWidgets" [style="dotted"];
+	}
+	subgraph "cluster_setuptools.config._validate_pyproject" {
+		label="setuptools.config._validate_pyproject";
+		"setuptools.config._validate_pyproject" -> "setuptools.config._validate_pyproject.formats" [style="dotted"];
+		"setuptools.config._validate_pyproject" -> "setuptools.config._validate_pyproject.error_reporting" [style="dotted"];
+		"setuptools.config._validate_pyproject" -> "setuptools.config._validate_pyproject.extra_validations" [style="dotted"];
+		"setuptools.config._validate_pyproject" -> "setuptools.config._validate_pyproject.fastjsonschema_exceptions" [style="dotted"];
+		"setuptools.config._validate_pyproject" -> "setuptools.config._validate_pyproject.fastjsonschema_validations" [style="dotted"];
 	}
 	subgraph "cluster_urllib3" {
 		label="urllib3";

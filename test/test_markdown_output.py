@@ -62,7 +62,6 @@ def setup_test_assertion_constants():
 
 def test_write_markdown_doc_creates_expected_file():
     functions, arguments, todo_stats = setup_test_assertion_constants()
-    
     with tempfile.TemporaryDirectory() as temp_dir:
         output_path = os.path.join(temp_dir, "output.md")
         write_markdown_doc(functions, output_path, arguments, todo_stats)
