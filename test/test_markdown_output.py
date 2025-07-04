@@ -10,7 +10,7 @@ import tempfile
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.generator.markdown_output import write_markdown_doc
 
-def test_write_markdown_doc_creates_expected_file():
+def setup_test_assertion_constants():
     functions = [
         {
             "name": "add",
@@ -19,7 +19,11 @@ def test_write_markdown_doc_creates_expected_file():
             "params": "int a, int b",
             "file": "/path/to/file.c",
             "startLine": 42,
-            "doxygen": "@brief Adds two numbers\n@param a First number\n@param b Second number\n@return Sum of a and b\n@see Nothing to see\n@note this is a note"
+            "doxygen": (
+                "@brief Adds two numbers\n@param a First number\n"
+                "@param b Second number\n@return Sum of a and b\n"
+                "@see Nothing to see\n@note this is a note"
+                )
         }
     ]
 
@@ -54,11 +58,13 @@ def test_write_markdown_doc_creates_expected_file():
         "percent_return_done": 100
     }
 
+    return functions, arguments, todo_stats
+
+def test_write_markdown_doc_creates_expected_file():
+    functions, arguments, todo_stats = setup_test_assertion_constants()
     with tempfile.TemporaryDirectory() as temp_dir:
         output_path = os.path.join(temp_dir, "output.md")
-
         write_markdown_doc(functions, output_path, arguments, todo_stats)
-
         assert os.path.exists(output_path)
 
         with open(output_path, "r", encoding="utf-8") as f:

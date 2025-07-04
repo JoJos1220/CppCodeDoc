@@ -24,7 +24,7 @@ def generate_documentation(arguments, source_files):
         if not readonly:
             if backup_path is not None:
                 if not make_file_backup(file_path, backup_path):
-                        return f"ERROR while creating Backupdir: {backup_path}"
+                    return f"ERROR while creating Backupdir: {backup_path}"
             insert_comments(file_path, arguments)
 
         functions = extract_functions(file_path)

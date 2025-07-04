@@ -81,6 +81,25 @@ def convert_single_line_comment_to_header(lines, start_line):
     return lines
 
 # ------------------------------------------------------------------------
+# Setting up monkey patches
+# ------------------------------------------------------------------------
+mocks = {
+    "src.formatter.code_parser.extract_functions": extract_functions,
+    "src.formatter.code_parser.find_function_start_line": find_function_start_line,
+    "src.formatter.code_parser.header_comment_exists": header_comment_exists,
+    "src.formatter.code_parser.add_header_comment": add_header_comment,
+    "src.formatter.code_parser.remove_existing_header": remove_existing_header,
+    "src.formatter.code_parser.add_post_comment": add_post_comment,
+    "src.formatter.code_parser.convert_doxygen_to_default_comment": convert_doxygen_to_default_comment,
+    "src.formatter.code_parser.convert_single_line_comment_to_header": convert_single_line_comment_to_header,
+}
+
+def patch_functions(monkeypatch, mocks):
+    for target, func in mocks.items():
+        monkeypatch.setattr(target, func)
+
+
+# ------------------------------------------------------------------------
 # Starting with test implementation
 # ------------------------------------------------------------------------
 
@@ -88,14 +107,7 @@ def test_insert_comments_inserts_header(tmp_path, monkeypatch):
     file = tmp_path / "test.cpp"
     file.write_text("void func1() {\n}\n")
 
-    monkeypatch.setattr("src.formatter.code_parser.extract_functions", extract_functions)
-    monkeypatch.setattr("src.formatter.code_parser.find_function_start_line", find_function_start_line)
-    monkeypatch.setattr("src.formatter.code_parser.header_comment_exists", header_comment_exists)
-    monkeypatch.setattr("src.formatter.code_parser.add_header_comment", add_header_comment)
-    monkeypatch.setattr("src.formatter.code_parser.remove_existing_header", remove_existing_header)
-    monkeypatch.setattr("src.formatter.code_parser.add_post_comment", add_post_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_doxygen_to_default_comment", convert_doxygen_to_default_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_single_line_comment_to_header", convert_single_line_comment_to_header)
+    patch_functions(monkeypatch, mocks)
 
     insert_comments(str(file), {"headerCommentStyle": "default"})
 
@@ -110,14 +122,7 @@ def test_insert_comments_skips_existing_header(tmp_path, monkeypatch):
     file = tmp_path / "test.cpp"
     file.write_text("// existierender Header\nvoid func2() {\n}\n")
 
-    monkeypatch.setattr("src.formatter.code_parser.extract_functions", extract_functions)
-    monkeypatch.setattr("src.formatter.code_parser.find_function_start_line", find_function_start_line)
-    monkeypatch.setattr("src.formatter.code_parser.header_comment_exists", header_comment_exists)
-    monkeypatch.setattr("src.formatter.code_parser.add_header_comment", add_header_comment)
-    monkeypatch.setattr("src.formatter.code_parser.remove_existing_header", remove_existing_header)
-    monkeypatch.setattr("src.formatter.code_parser.add_post_comment", add_post_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_doxygen_to_default_comment", convert_doxygen_to_default_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_single_line_comment_to_header", convert_single_line_comment_to_header)
+    patch_functions(monkeypatch, mocks)
 
     insert_comments(str(file), {"headerCommentStyle": "doxygen"})
 
@@ -138,15 +143,7 @@ void func2() {
 }
 """)
 
-    monkeypatch.setattr("src.formatter.code_parser.extract_functions", extract_functions)
-    monkeypatch.setattr("src.formatter.code_parser.find_function_start_line", find_function_start_line)
-    monkeypatch.setattr("src.formatter.code_parser.header_comment_exists", header_comment_exists)
-    monkeypatch.setattr("src.formatter.code_parser.add_header_comment", add_header_comment)
-    monkeypatch.setattr("src.formatter.code_parser.remove_existing_header", remove_existing_header)
-    monkeypatch.setattr("src.formatter.code_parser.add_post_comment", add_post_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_doxygen_to_default_comment", convert_doxygen_to_default_comment)
-    monkeypatch.setattr("src.formatter.code_parser.convert_single_line_comment_to_header", convert_single_line_comment_to_header)
-
+    patch_functions(monkeypatch, mocks)
     insert_comments(str(file), {"headerCommentStyle": "default"})
 
     content = file.read_text()

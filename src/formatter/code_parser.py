@@ -126,9 +126,9 @@ def find_function_start_line(
                         actual_params = extract_param_signature(buffer)
                         print(f"  [DEBUG] actual_params = '{actual_params}'")
                         print(f"  [DEBUG] expected      = '{param_signature}'")
-                        if (param_signature is None or
-                            normalize_signature(actual_params).lower() ==
-                            normalize_signature(param_signature).lower()):
+                        if (param_signature is None
+                                or normalize_signature(actual_params).lower() ==
+                                    normalize_signature(param_signature).lower()):
 
                             match_count += 1
                             if match_count == occurrence:
@@ -308,16 +308,17 @@ def join_multiline_function_declarations(lines):
         raw = lines[i].strip()
 
         # Take directly, if empty line, only comment or visibility modifier
-        if (not raw or raw.startswith(("//", "/*", "*", "*/"))
-            or raw in ("public:", "private:", "protected:")):
+        if (not raw
+                or raw.startswith(("//", "/*", "*", "*/"))
+                or raw in ("public:", "private:", "protected:")):
             joined.append(lines[i])
             mapping.append(i)
             starts.append(i)
             i += 1
             continue
 
-        if ('(' in raw and '{' in raw and raw.endswith('}') and
-            raw.count('{') == 1 and raw.count('}') == 1):
+        if ('(' in raw and '{' in raw and raw.endswith('}')
+                and raw.count('{') == 1 and raw.count('}') == 1):
             joined.append(lines[i])
             mapping.append(i)
             starts.append(i)
@@ -503,7 +504,6 @@ def sync_multiline_comments_to_joined_lines(multiline_comments,
                 start_idx_in_joined = i
             if start_line <= c_end < next_start_line:
                 end_idx_in_joined = i
-                
             # If both is found, abort
             if start_idx_in_joined is not None and end_idx_in_joined is not None:
                 break
@@ -813,7 +813,6 @@ def add_header_comment(lines, func_name, start_line, comment_text=None):
     """
     if header_comment_exists(lines, start_line):
         return lines  # valid header already exists.
-
     # Deleting empty lines at the end of the block before the function
     pre_part = lines[:start_line]
     while pre_part and pre_part[-1].strip() == "":

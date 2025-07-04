@@ -6,10 +6,38 @@
 import sys
 import os
 import pytest
+from unittest.mock import patch
 from PyQt5.QtWidgets import QLabel, QApplication
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.gui.dialogs import ContentDialogWindow
+from src.gui.dialogs import ContentDialogWindow, resolve_window_icon
+
+
+def test_resolve_window_icon_path_exists(tmp_path):
+    # Temp Dummy-file
+    icon_file = tmp_path / "icon.ico"
+    icon_file.write_text("dummy icon data")
+
+    # resource_path should return dummy-path
+    with patch("src.gui.dialogs.resource_path", return_value=str(icon_file.resolve())), \
+        patch("src.gui.dialogs.logger") as mock_logger:
+        result = resolve_window_icon("unused_primary", "unused_fallback")
+        assert result == str(icon_file.resolve())
+        mock_logger.log.assert_not_called()
+
+
+def test_resolve_window_icon_path_missing(tmp_path):
+    missing_file = tmp_path / "missing.ico"
+
+    # resource_path should return none
+    with patch("src.gui.dialogs.resource_path", return_value=str(missing_file)), \
+         patch("src.gui.dialogs.logger") as mock_logger:
+        result = resolve_window_icon("unused_primary", "unused_fallback")
+        assert result is None
+        mock_logger.log.assert_called_once()
+        args, _ = mock_logger.log.call_args
+        assert "can't be found" in args[0]
+        assert args[1] == "warning"
 
 # skipping test if no display is available!(e.g. in act or Xvfb environment)
 @pytest.mark.skipif(

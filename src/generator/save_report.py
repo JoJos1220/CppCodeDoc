@@ -32,7 +32,6 @@ def save_documentation(arguments, all_functions):
             file_path = f"{arguments['output_path']}.html"
             write_html_doc(all_functions, file_path, arguments, todo_stats)
         else:
-
             print(f"❌ Invalid Output Format: {doc_format}")
             raise ValueError(f"Invalid Output Format: {doc_format}")
     return file_path, todo_stats

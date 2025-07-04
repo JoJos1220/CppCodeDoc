@@ -3,7 +3,7 @@
 # Copyright (C) 2025 Jojos1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-# requirements.txt generated: 2025-07-03 15:16:13
+# requirements.txt generated: 2025-07-04 08:45:06
 
 # Third-Party Package name/License: pyinstaller: GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)
 pyinstaller==6.14.1
@@ -11,9 +11,12 @@ pyinstaller==6.14.1
 PyQt5==5.15.11
 # Third-Party Package name/License: Markdown: Unknown
 Markdown==3.8.2
+Markdown==3.8.2
 # Third-Party Package name/License: pytest: MIT
 pytest==8.4.1
+pytest==8.4.1
 # Third-Party Package name/License: requests: Apache-2.0
+requests==2.32.4
 requests==2.32.4
 # Third-Party Package name/License: stdlib-list: Unknown
 stdlib-list==0.11.1

@@ -63,7 +63,7 @@ class DocGeneratorApp(QWidget):
     """
     from gui.translator import Translator
     from gui.widgets import ExpandableWidget
-    from gui.dialogs import ContentDialogWindow
+    from gui.dialogs import ContentDialogWindow, show_user_prompt
 
     def __init__(self, config_path=""):
         super().__init__()
@@ -151,7 +151,7 @@ class DocGeneratorApp(QWidget):
         self.switch_dark_mode_button.setFixedSize(48, 48)  # Button size set to 48x48px
 
         # Defining Button-Action
-        self.switch_dark_mode_button.clicked.connect(lambda: self.toggle_dark_mode_on_click())
+        self.switch_dark_mode_button.clicked.connect(self.toggle_dark_mode_on_click)
 
         dark_mode_layout.addWidget(self.switch_dark_mode_button, alignment=Qt.AlignHCenter)
         dark_mode_layout.addStretch()
@@ -223,7 +223,7 @@ class DocGeneratorApp(QWidget):
         Function to toggle dark/light mode.
         """
         if self.is_dark_mode:
-            # Dark Mode aktivieren
+            # activate Dark Mode
             self.setStyleSheet("""
                 QWidget {
                     background-color: #2e2e2e;
@@ -309,7 +309,7 @@ class DocGeneratorApp(QWidget):
             """)
             self.is_dark_mode = True
         else:
-            # Zurück zu Light Mode
+            # back to Light Mode
             self.setStyleSheet("""
                 QWidget {
                     background-color: #f4f4f4;
@@ -396,29 +396,26 @@ class DocGeneratorApp(QWidget):
             """)
             self.is_dark_mode = False
 
-    def close_event(self, event):
+    def closeEvent(self, event):
         """
         event function, called if main window is closed.
         It checks if the config has been changed during runtime.
         If so, the user is asked if he wants to save the changes.
         """
         if self.config_changed:
-            box = QMessageBox()
-            box.setIcon(QMessageBox.Warning)
-            box.setWindowTitle("Unsaved Changes detected")
-            box.setWindowIcon(QIcon(self.icon_path))
-            box.setText("Configuration has been changed.\nDo you want to save it?")
-            box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            box.setDefaultButton(QMessageBox.No)
-
-            result = box.exec()
+            result = self.show_user_prompt(
+                text="Configuration has been changed.\nDo you want to save it?",
+                title="Unsaved Changes detected",
+                level="warning",
+                icon_path=self.icon_path,
+                buttons=QMessageBox.Yes | QMessageBox.No,
+                default_button=QMessageBox.No
+            )
+            
             if result == QMessageBox.Yes:
                 self.save_config_to_yaml()
-                event.accept()
-            else:
-                event.accept()
-        else:
-            event.accept()
+
+        event.accept()
 
         self.save_preferences(self.config_path_input.text(),
                               self.translator.lang, self.is_dark_mode)
@@ -511,7 +508,7 @@ class DocGeneratorApp(QWidget):
         self.config_path_input = QLineEdit()
         self.config_path_input.setPlaceholderText(
             self.translator.translate("startTab.ConfigPathPlaceHolder"))
-        self.config_path_input.textChanged.connect(lambda: self._config_changed())
+        self.config_path_input.textChanged.connect(self._config_changed)
         layout.addWidget(self.config_path_input)
 
         # Button and save button for config file has been changed
@@ -533,7 +530,7 @@ class DocGeneratorApp(QWidget):
         self.file_input = QLineEdit()
         self.file_input.setPlaceholderText(
             self.translator.translate("startTab.FileInputPlaceHolder"))
-        self.file_input.textChanged.connect(lambda: self._config_changed())
+        self.file_input.textChanged.connect(self._config_changed)
         layout.addWidget(self.file_input)
 
         button_layout = QHBoxLayout()
@@ -599,20 +596,20 @@ class DocGeneratorApp(QWidget):
         # Readonly checkbox
         self.readonly_checkbox = QCheckBox(
             self.translator.translate("settingsTab.ReadOnlyCheckBox"))
-        self.readonly_checkbox.stateChanged.connect(lambda: self._config_changed())
+        self.readonly_checkbox.stateChanged.connect(self._config_changed)
         general_layout.addWidget(self.readonly_checkbox)
 
         # Recursive Source Directory parsing checkbox
         self.recursive_checkbox = QCheckBox(
             self.translator.translate("settingsTab.RecursiveCheckbox"))
-        self.recursive_checkbox.stateChanged.connect(lambda: self._config_changed())
+        self.recursive_checkbox.stateChanged.connect(self._config_changed)
         general_layout.addWidget(self.recursive_checkbox)
 
         # (optional) Backup directory input + label
         self.backup_dir_input = QLineEdit()
         self.backup_dir_input.setPlaceholderText(
             self.translator.translate("settingsTab.BackupDirPlaceHolder"))
-        self.backup_dir_input.textChanged.connect(lambda: self._config_changed())
+        self.backup_dir_input.textChanged.connect(self._config_changed)
         self.backup_dir_label = QLabel(self.translator.translate("settingsTab.BackupDirLabel"))
         general_layout.addWidget(self.backup_dir_label)
         general_layout.addWidget(self.backup_dir_input)
@@ -636,20 +633,20 @@ class DocGeneratorApp(QWidget):
         # Document Highlight ToDo Comments in Report Checkbox
         self.highlight_todo = QCheckBox(
             self.translator.translate("settingsTab.HighlightToDoCheckbox"))
-        self.highlight_todo.stateChanged.connect(lambda: self._config_changed())
+        self.highlight_todo.stateChanged.connect(self._config_changed)
         document_layout.addWidget(self.highlight_todo)
 
         # Document Show Documentation Progress Checkbox
         self.showDocProgress = QCheckBox(
             self.translator.translate("settingsTab.showDocProgressCheckbox"))
-        self.showDocProgress.stateChanged.connect(lambda: self._config_changed())
+        self.showDocProgress.stateChanged.connect(self._config_changed)
         document_layout.addWidget(self.showDocProgress)
 
         # Document title input
         self.title_input = QLineEdit()
         self.title_input.setPlaceholderText(
             self.translator.translate("settingsTab.titlePlaceHolder"))
-        self.title_input.textChanged.connect(lambda: self._config_changed())
+        self.title_input.textChanged.connect(self._config_changed)
         self.title_input_label = QLabel(self.translator.translate("settingsTab.titleLabel"))
         document_layout.addWidget(self.title_input_label)
         document_layout.addWidget(self.title_input)
@@ -658,7 +655,7 @@ class DocGeneratorApp(QWidget):
         self.version_input = QLineEdit()
         self.version_input.setPlaceholderText(
             self.translator.translate("settingsTab.docVersionPlaceHolder"))
-        self.version_input.textChanged.connect(lambda: self._config_changed())
+        self.version_input.textChanged.connect(self._config_changed)
         self.version_input_label = QLabel(self.translator.translate("settingsTab.docVersionLabel"))
         document_layout.addWidget(self.version_input_label)
         document_layout.addWidget(self.version_input)
@@ -667,7 +664,7 @@ class DocGeneratorApp(QWidget):
         self.author_input = QLineEdit()
         self.author_input.setPlaceholderText(
             self.translator.translate("settingsTab.docAuthorPlaceHolder"))
-        self.author_input.textChanged.connect(lambda: self._config_changed())
+        self.author_input.textChanged.connect(self._config_changed)
         self.author_input_label = QLabel(self.translator.translate("settingsTab.docAuthorLabel"))
         document_layout.addWidget(self.author_input_label)
         document_layout.addWidget(self.author_input)
@@ -676,7 +673,7 @@ class DocGeneratorApp(QWidget):
         self.date_input = QLineEdit()
         self.date_input.setPlaceholderText(
             self.translator.translate("settingsTab.docDatePlaceHolder"))
-        self.date_input.textChanged.connect(lambda: self._config_changed())
+        self.date_input.textChanged.connect(self._config_changed)
         self.date_input_label = QLabel(self.translator.translate("settingsTab.docDateLabel"))
         document_layout.addWidget(self.date_input_label)
         document_layout.addWidget(self.date_input)
@@ -685,7 +682,7 @@ class DocGeneratorApp(QWidget):
         self.logo_path_input = QLineEdit()
         self.logo_path_input.setPlaceholderText(
             self.translator.translate("settingsTab.docLogoPlaceHolder"))
-        self.logo_path_input.textChanged.connect(lambda: self._config_changed())
+        self.logo_path_input.textChanged.connect(self._config_changed)
         self.logo_path_input_label = QLabel(self.translator.translate("settingsTab.docLogoLabel"))
         document_layout.addWidget(self.logo_path_input_label)
         document_layout.addWidget(self.logo_path_input)
@@ -706,7 +703,7 @@ class DocGeneratorApp(QWidget):
         self.output_format_input.addItems([self.translator.translate(
             "settingsTab.HMTLprefix"), self.translator.translate("settingsTab.MDprefix"),
             self.translator.translate("settingsTab.Allprefix")])
-        self.output_format_input.currentTextChanged.connect(lambda: self._config_changed())
+        self.output_format_input.currentTextChanged.connect(self._config_changed)
         self.output_format_input_label = QLabel(
             self.translator.translate("settingsTab.OutputFormatInputLabel"))
         output_layout.addWidget(self.output_format_input_label)
@@ -716,7 +713,7 @@ class DocGeneratorApp(QWidget):
         self.header_comment_style = QComboBox()
         self.header_comment_style.addItems([self.translator.translate(
             "settingsTab.Doxygenprefix"), self.translator.translate("settingsTab.Defaultprefix")])
-        self.header_comment_style.currentTextChanged.connect(lambda: self._config_changed())
+        self.header_comment_style.currentTextChanged.connect(self._config_changed)
         self.header_comment_style_label = QLabel(
             self.translator.translate("settingsTab.HeaderCommentStyleLabel"))
         output_layout.addWidget(self.header_comment_style_label)
@@ -726,7 +723,7 @@ class DocGeneratorApp(QWidget):
         self.output_path_input = QLineEdit()
         self.output_path_input.setPlaceholderText(
             self.translator.translate("settingsTab.OutputPathInputPlaceholder"))
-        self.output_path_input.textChanged.connect(lambda: self._config_changed())
+        self.output_path_input.textChanged.connect(self._config_changed)
         self.output_path_input_label = QLabel(
             self.translator.translate("settingsTab.OutputPathInputLabel"))
         output_layout.addWidget(self.output_path_input_label)
@@ -904,6 +901,7 @@ class DocGeneratorApp(QWidget):
         Opens a dialog window to select source directory or source file for
         creating documentation on.
         """
+        file_path = None
         if mode == "file":
             if target == "source":
                 file_path, _ = QFileDialog.getOpenFileName(
@@ -966,15 +964,12 @@ class DocGeneratorApp(QWidget):
         }
         if errors:
             for err in errors:
-                logger.log(f"Error while parsing/loading config file: {err}", "warning")
-                box = QMessageBox()
-                box.setIcon(QMessageBox.Warning)
-                box.setWindowTitle("Update config file failed!")
-                box.setWindowIcon(QIcon(self.icon_path))
-                box.setText(
-                    f"Error while parsing/loading config file: {err}"
+                self.show_user_prompt(
+                    text = f"Error while parsing/loading config file: {err}",
+                    title = "Update config file failed!",
+                    level = "warning",
+                    icon_path = self.icon_path
                 )
-                box.exec()
         logger.log(f"Config loaded from: {self.config['config_path']}", "info")
         self.update_settings_tab_from_config()
 
@@ -1183,36 +1178,34 @@ class DocGeneratorApp(QWidget):
             latest_version = data["tag_name"].lstrip("v")
 
             if latest_version > __version__:
-                box = QMessageBox()
-                box.setIcon(QMessageBox.Information)
-                box.setWindowTitle("Update Available")
-                box.setWindowIcon(QIcon(self.icon_path))
-                box.setText(
-                    f"A newer version ({latest_version}) is available on GitHub!\n\n"
-                    f"You're using {__version__}.\n\n"
-                    f"Visit:\nhttps://github.com/{__GITHUB_REPO__}/releases",
+                self.show_user_prompt(
+                    text = (
+                        f"A newer version ({latest_version}) is available on GitHub!\n\n"
+                        f"You're using {__version__}.\n\n"
+                        f"Visit:\nhttps://github.com/{__GITHUB_REPO__}/releases"),
+                    title = "Update Available",
+                    level = "info",
+                    icon_path = self.icon_path
                 )
-                box.exec()
             else:
-                box = QMessageBox()
-                box.setIcon(QMessageBox.Information)
-                box.setWindowTitle("Up to Date")
-                box.setWindowIcon(QIcon(self.icon_path))
-                box.setText(
-                    f"You are already using the latest version ({__version__})."
+                self.show_user_prompt(
+                    text = (
+                        f"You are already using the latest version ({__version__})."
+                    ),
+                    title = "Up to Date",
+                    level = "info",
+                    icon_path = self.icon_path
                 )
-                box.exec()
 
         except Exception as e:
-            logger.log(f"Could not check for updates: {str(e)}", "warning")
-            box = QMessageBox()
-            box.setIcon(QMessageBox.Warning)
-            box.setWindowTitle("Update Check Failed")
-            box.setWindowIcon(QIcon(self.icon_path))
-            box.setText(
-                f"Could not check for updates:\n{str(e)}"
+            self.show_user_prompt(
+                text = (
+                    f"Could not check for updates: {str(e)}"
+                ),
+                title = "Update Check Failed",
+                level = "warning",
+                icon_path = self.icon_path
             )
-            box.exec()
 
     def update_config_from_user_input(self):
         """
@@ -1230,15 +1223,14 @@ class DocGeneratorApp(QWidget):
         self.config, errors = load_config(self.config["config_path"])
         if errors:
             for err in errors:
-                logger.log(f"Error while parsing/loading config file: {err}", "warning")
-                box = QMessageBox()
-                box.setIcon(QMessageBox.Warning)
-                box.setWindowTitle("Update config file failed!")
-                box.setWindowIcon(QIcon(self.icon_path))
-                box.setText(
-                    f"Error while parsing/loading config file: {err}"
+                self.show_user_prompt(
+                    text = (
+                        f"Error while parsing/loading config file: {err}"
+                    ),
+                    title = "Update config file failed!",
+                    level = "warning",
+                    icon_path = self.icon_path
                 )
-                box.exec()
 
         if not self.config:
             logger.log("No Config file found or path invalid!", "warning")

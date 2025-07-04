@@ -3,7 +3,6 @@
 # Copyright (C) 2025 Jojo1220
 # See https://www.gnu.org/licenses/gpl-3.0.html
 
-
 """
 Automatically create TAG and Release it on github.
 In combination, a Discussion is created and wiki file is updated.
