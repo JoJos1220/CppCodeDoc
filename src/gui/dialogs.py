@@ -8,6 +8,7 @@ help/changelog view in new window instance.
 """
 
 import os
+from typing import Optional
 
 from configSetup.installModules import ensure_modules
 from configSetup.configSetup import resource_path
@@ -23,9 +24,9 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
 def show_user_prompt(self, text: str, title: str = "Info", level: str = "info",
-                     icon_path: str | None = None,
-                     buttons: QMessageBox.StandardButtons | None = None,
-                     default_button: QMessageBox.StandardButton | None = None) -> QMessageBox.StandardButton:
+                     icon_path: Optional[str] = None,
+                     buttons: Optional[QMessageBox.StandardButtons] = None,
+                     default_button: Optional[QMessageBox.StandardButton] = None) -> QMessageBox.StandardButton:
     """
     Displays a standardized message box with logging.
     - level: "info", "warning", or "error"
@@ -56,7 +57,7 @@ def show_user_prompt(self, text: str, title: str = "Info", level: str = "info",
 
     return box.exec()
 
-def resolve_window_icon(primary: str, fallback: str) -> str | None:
+def resolve_window_icon(primary: str, fallback: str) -> Optional[str]:
     """
     Resolves a valid QIcon path from the given resource path.
     Logs a warning if icon-path not found.
