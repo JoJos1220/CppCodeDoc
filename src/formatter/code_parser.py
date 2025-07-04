@@ -504,7 +504,6 @@ def sync_multiline_comments_to_joined_lines(multiline_comments,
                 start_idx_in_joined = i
             if start_line <= c_end < next_start_line:
                 end_idx_in_joined = i
-
             # If both is found, abort
             if start_idx_in_joined is not None and end_idx_in_joined is not None:
                 break

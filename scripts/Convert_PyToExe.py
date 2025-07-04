@@ -493,7 +493,6 @@ def convert_to_exe(script_path):
     run_pylint_analysis(source_dir="./scripts", json_output="scripts_output.json",
                     html_output="scripts_report.html", fail_under_score=5.0)
 
-
 if __name__ == "__main__":
 
 
