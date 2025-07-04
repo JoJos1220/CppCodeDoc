@@ -116,6 +116,6 @@ def test_generate_documentation_backup_fails(arguments, tmp_path):
          patch("src.formatter.code_parser.extract_functions"), \
          patch("src.formatter.code_parser.replace_comments"), \
          patch("src.formatter.doxygen_generator.generate_doxygen_comment"):
-        
+
         result = generate_documentation(arguments, source_files)
         assert result == expected_error

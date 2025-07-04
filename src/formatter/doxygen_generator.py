@@ -87,7 +87,7 @@ def extract_brief_and_tags(body_lines):
                 tag = current_tag.split(":", 1)[1]
                 other_tags[tag].append(line)
 
-   # formating of @brief, @param and @return
+    # formating of @brief, @param and @return
     brief_text = "\n".join(f" *        {line.strip()}"
                            if i > 0
                            else line.strip() for i, line in enumerate(brief_lines)).strip()
@@ -116,7 +116,7 @@ def extract_brief_and_tags(body_lines):
 
     notes_text = "\n".join(
         "\n".join(f" *        {line.strip()}"
-                  if i > 0 
+                  if i > 0
                   else line.strip() for i, line in enumerate(note)).strip()
         for note in notes_lines
     )

@@ -25,14 +25,15 @@ def get_cpp_files(path, arguments):
         if recursive:
             for root, _, files in os.walk(path):
                 for file in files:
-                    if (file.endswith(".cpp") or file.endswith(".h") or file.endswith(".hpp") or
-                        file.endswith(".cxx") or file.endswith(".ino")):
+                    if ( file.endswith(".cpp") or file.endswith(".h") or 
+                            file.endswith(".hpp") or file.endswith(".cxx") or
+                            file.endswith(".ino")):
                         cpp_files.append(os.path.join(root, file))
         else:
             for file in os.listdir(path):
                 full_path = os.path.join(path, file)
                 if (os.path.isfile(full_path) and
-                    file.endswith((".cpp", ".h", ".hpp", ".cxx", ".ino"))):
+                        file.endswith((".cpp", ".h", ".hpp", ".cxx", ".ino"))):
                     cpp_files.append(full_path)
 
         return cpp_files

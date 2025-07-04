@@ -302,6 +302,9 @@ def compile_inno_setup_script(iss_path):
         if not iss_path.lower().endswith('.iss') or not re.fullmatch(r'[\w\s\-\./:\\]+', iss_path):
             raise ValueError(f"Unsafe iss_path detected: {iss_path}")
 
+        if not iss_path.lower().endswith('.iss') or not re.fullmatch(r'[\w\s\-\./:\\]+', iss_path):
+            raise ValueError(f"Unsafe iss_path detected: {iss_path}")
+
         # start subprocess to run Inno Setup Compiler and log output in terminal
         process = subprocess.Popen(
             [iscc_exe, iss_path],
@@ -475,9 +478,10 @@ def convert_to_exe(script_path):
         return
 
     # Creating Inno Setup-Script and compile installer
-    inno_script_path = create_inno_setup_script(
-        exe_name, __title__, __version__,
-        __author__, __year__, __file_extension__.lstrip('.'))
+    inno_script_path = (
+        create_inno_setup_script(exe_name, __title__, __version__,
+                                  __author__, __year__, __file_extension__.lstrip('.'))
+        )
     print(f"Installer script created at: {inno_script_path}")
     compile_inno_setup_script(inno_script_path)
 
@@ -489,7 +493,9 @@ def convert_to_exe(script_path):
     run_pylint_analysis(source_dir="./scripts", json_output="scripts_output.json",
                     html_output="scripts_report.html", fail_under_score=5.0)
 
+
 if __name__ == "__main__":
+
 
     # Update/Recreate the list of imports
     findImports.main()

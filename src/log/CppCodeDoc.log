@@ -1,21 +1,558 @@
-2025-07-02 15:20:15,007 - INFO - Logging setup complete
-2025-07-02 15:20:15,018 - INFO - CppCodeDoc 1.0.1 by Jojos1220
-2025-07-02 15:20:15,018 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
-2025-07-02 15:20:15,052 - INFO - Application started
-2025-07-02 15:20:16,018 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
-2025-07-02 15:20:16,021 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
-2025-07-02 15:20:16,021 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
-2025-07-02 15:20:16,025 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
-2025-07-02 15:20:16,028 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
-2025-07-02 15:20:16,031 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
-2025-07-02 15:20:16,033 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
-2025-07-02 15:20:16,034 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
-2025-07-02 15:20:16,036 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
-2025-07-02 15:20:16,049 - INFO - App started (GUI Mode)
-2025-07-02 15:20:16,093 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
-2025-07-02 15:20:17,474 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
-2025-07-02 15:20:18,098 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
-2025-07-02 15:20:19,807 - INFO - Start Documentation
-2025-07-02 15:20:19,810 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
-2025-07-02 15:20:20,821 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
-2025-07-02 15:20:21,313 - INFO - Documentation created successfull at ./docs/Documentation_1_0_0.md
+2025-07-04 08:44:10,546 - INFO - Logging setup complete
+2025-07-04 08:44:10,560 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 08:44:10,561 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 08:44:10,601 - INFO - Application started
+2025-07-04 08:44:11,626 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 08:44:11,630 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 08:44:11,630 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 08:44:11,633 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 08:44:11,636 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 08:44:11,640 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 08:44:11,644 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 08:44:11,644 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 08:44:11,648 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 08:44:11,668 - INFO - App started (GUI Mode)
+2025-07-04 08:44:11,712 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 08:44:13,669 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 08:44:14,176 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 08:44:19,129 - INFO - Start Documentation
+2025-07-04 08:44:19,133 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 08:44:19,951 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 08:44:20,484 - INFO - Documentation created successfull at ./docs/Documentation_1_0_0.md
+2025-07-04 09:14:26,982 - INFO - Logging setup complete
+2025-07-04 09:14:27,009 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 09:14:27,009 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 09:14:27,133 - INFO - Application started
+2025-07-04 09:14:29,111 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 09:14:29,114 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 09:14:29,114 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 09:14:29,116 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 09:14:29,119 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 09:14:29,122 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 09:14:29,125 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 09:14:29,125 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 09:14:29,128 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 09:14:29,143 - INFO - App started (GUI Mode)
+2025-07-04 09:14:29,189 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 09:14:31,296 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 09:14:31,932 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 09:14:33,987 - INFO - Opening Help window
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 09:14:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 09:14:40,358 - INFO - Opening Changelog window
+2025-07-04 09:14:40,365 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 09:14:40,365 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 09:14:40,365 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 09:14:40,365 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 09:14:40,366 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 09:14:40,366 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 09:14:40,366 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 09:14:40,366 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 09:14:40,366 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 09:14:49,427 - INFO - Logging setup complete
+2025-07-04 09:14:49,444 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 09:14:49,444 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 09:14:49,474 - INFO - Application started
+2025-07-04 09:14:50,412 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 09:14:50,413 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 09:14:50,413 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 09:14:50,415 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 09:14:50,416 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 09:14:50,417 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 09:14:50,418 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 09:14:50,418 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 09:14:50,419 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 09:14:50,431 - INFO - App started (GUI Mode)
+2025-07-04 09:14:50,463 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 09:14:53,151 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 09:14:54,907 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:21:10,722 - INFO - Logging setup complete
+2025-07-04 10:21:10,729 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:21:10,729 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:21:10,760 - INFO - Application started
+2025-07-04 10:21:11,688 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:21:11,690 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:21:11,690 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:21:11,693 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:21:11,695 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:21:11,697 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:21:11,699 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:21:11,699 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:21:11,701 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:21:11,713 - INFO - App started (GUI Mode)
+2025-07-04 10:21:59,661 - INFO - Logging setup complete
+2025-07-04 10:21:59,667 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:21:59,667 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:21:59,700 - INFO - Application started
+2025-07-04 10:22:00,583 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:22:00,584 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:22:00,584 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:22:00,585 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:22:00,586 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:22:00,588 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:22:00,589 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:22:00,589 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:22:00,590 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:22:00,604 - INFO - App started (GUI Mode)
+2025-07-04 10:23:24,648 - INFO - Logging setup complete
+2025-07-04 10:23:24,654 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:23:24,655 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:23:24,701 - INFO - Application started
+2025-07-04 10:23:25,585 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:23:25,587 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:23:25,587 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:23:25,589 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:23:25,591 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:23:25,592 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:23:25,593 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:23:25,594 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:23:25,595 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:23:25,611 - INFO - App started (GUI Mode)
+2025-07-04 10:24:01,908 - INFO - Logging setup complete
+2025-07-04 10:24:01,916 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:24:01,916 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:24:01,953 - INFO - Application started
+2025-07-04 10:24:02,689 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:24:02,690 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:24:02,690 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:24:02,692 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:24:02,693 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:24:02,694 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:24:02,696 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:24:02,696 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:24:02,697 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:24:02,710 - INFO - App started (GUI Mode)
+2025-07-04 10:25:20,771 - INFO - Logging setup complete
+2025-07-04 10:25:20,778 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:25:20,778 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:25:20,818 - INFO - Application started
+2025-07-04 10:25:21,811 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:25:21,812 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:25:21,812 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:25:21,814 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:25:21,816 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:25:21,817 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:25:21,818 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:25:21,818 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:25:21,819 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:25:21,835 - INFO - App started (GUI Mode)
+2025-07-04 10:25:32,974 - INFO - Logging setup complete
+2025-07-04 10:25:32,981 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:25:32,981 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:25:33,017 - INFO - Application started
+2025-07-04 10:25:33,791 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:25:33,792 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:25:33,793 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:25:33,794 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:25:33,795 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:25:33,796 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:25:33,797 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:25:33,797 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:25:33,798 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:25:33,812 - INFO - App started (GUI Mode)
+2025-07-04 10:27:09,283 - INFO - Logging setup complete
+2025-07-04 10:27:09,303 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:27:09,303 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:27:09,337 - INFO - Application started
+2025-07-04 10:27:10,451 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:27:10,453 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:27:10,453 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:27:10,454 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:27:10,456 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:27:10,457 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:27:10,458 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:27:10,458 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:27:10,459 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:27:10,472 - INFO - App started (GUI Mode)
+2025-07-04 10:27:10,506 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:27:12,667 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:27:13,428 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:27:20,526 - INFO - Logging setup complete
+2025-07-04 10:27:20,531 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:27:20,531 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:27:20,558 - INFO - Application started
+2025-07-04 10:27:21,299 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:27:21,300 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:27:21,300 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:27:21,301 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:27:21,303 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:27:21,304 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:27:21,305 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:27:21,305 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:27:21,307 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:27:21,319 - INFO - App started (GUI Mode)
+2025-07-04 10:27:21,347 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:27:27,946 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:27:29,282 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:27:38,481 - INFO - Logging setup complete
+2025-07-04 10:27:38,487 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:27:38,487 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:27:38,522 - INFO - Application started
+2025-07-04 10:27:39,256 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:27:39,258 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:27:39,258 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:27:39,259 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:27:39,261 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:27:39,262 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:27:39,263 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:27:39,263 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:27:39,265 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:27:39,281 - INFO - App started (GUI Mode)
+2025-07-04 10:27:39,314 - INFO - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:27:42,140 - INFO - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:27:42,748 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:29:42,876 - INFO - Logging setup complete
+2025-07-04 10:29:42,880 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:29:42,880 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:29:42,907 - INFO - Application started
+2025-07-04 10:29:43,602 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:29:43,603 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:29:43,603 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:29:43,604 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:29:43,605 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:29:43,606 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:29:43,607 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:29:43,607 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:29:43,607 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:29:43,620 - INFO - App started (GUI Mode)
+2025-07-04 10:29:43,647 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:29:45,337 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:29:45,733 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:29:50,433 - DEBUG - Starting new HTTPS connection (1): api.github.com:443
+2025-07-04 10:29:50,683 - DEBUG - https://api.github.com:443 "GET /repos/Jojos1220/CppCodeDoc/releases/latest HTTP/1.1" 200 1434
+2025-07-04 10:30:38,775 - INFO - Logging setup complete
+2025-07-04 10:30:38,780 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:30:38,780 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:30:38,810 - INFO - Application started
+2025-07-04 10:30:39,739 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:30:39,741 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:30:39,741 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:30:39,742 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:30:39,743 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:30:39,744 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:30:39,745 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:30:39,745 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:30:39,746 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:30:39,761 - INFO - App started (GUI Mode)
+2025-07-04 10:30:39,790 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:30:40,809 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:30:41,271 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:30:43,464 - DEBUG - Starting new HTTPS connection (1): api.github.com:443
+2025-07-04 10:30:43,665 - DEBUG - https://api.github.com:443 "GET /repos/Jojos1220/CppCodeDoc/releases/latest HTTP/1.1" 200 1434
+2025-07-04 10:30:43,665 - INFO - You are already using the latest version (1.0.1).
+2025-07-04 10:31:33,201 - INFO - Logging setup complete
+2025-07-04 10:31:33,207 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:31:33,207 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:31:33,235 - INFO - Application started
+2025-07-04 10:31:33,989 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:31:33,991 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:31:33,991 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:31:33,992 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:31:33,993 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:31:33,993 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:31:33,994 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:31:33,994 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:31:33,995 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:31:34,010 - INFO - App started (GUI Mode)
+2025-07-04 10:31:34,039 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:31:35,176 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:31:35,671 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:31:38,860 - DEBUG - Starting new HTTPS connection (1): api.github.com:443
+2025-07-04 10:31:39,235 - DEBUG - https://api.github.com:443 "GET /repos/Jojos1220/CppCodeDoc/releases/latest HTTP/1.1" 200 1434
+2025-07-04 10:31:39,235 - INFO - You are already using the latest version (1.0.1).
+2025-07-04 10:36:32,274 - INFO - Logging setup complete
+2025-07-04 10:36:32,294 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:36:32,294 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:36:32,328 - INFO - Application started
+2025-07-04 10:36:33,115 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:36:33,116 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:36:33,117 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:36:33,117 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:36:33,118 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:36:33,119 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:36:33,120 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:36:33,120 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:36:33,121 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:36:33,134 - INFO - App started (GUI Mode)
+2025-07-04 10:36:33,162 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:36:34,701 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:36:35,666 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:37:25,267 - INFO - Logging setup complete
+2025-07-04 10:37:25,282 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:37:25,283 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:37:25,315 - INFO - Application started
+2025-07-04 10:37:26,269 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:37:26,271 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:37:26,271 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:37:26,272 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:37:26,273 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:37:26,274 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:37:26,275 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:37:26,275 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:37:26,276 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:37:26,291 - INFO - App started (GUI Mode)
+2025-07-04 10:37:26,320 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:37:27,370 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:37:27,854 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:37:39,908 - INFO - Logging setup complete
+2025-07-04 10:37:39,915 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:37:39,915 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:37:39,942 - INFO - Application started
+2025-07-04 10:37:40,578 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:37:40,579 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:37:40,579 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:37:40,580 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:37:40,581 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:37:40,582 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:37:40,583 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:37:40,583 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:37:40,584 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:37:40,596 - INFO - App started (GUI Mode)
+2025-07-04 10:37:40,625 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:37:41,587 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:37:42,046 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:37:56,312 - INFO - Logging setup complete
+2025-07-04 10:37:56,319 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:37:56,319 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:37:56,353 - INFO - Application started
+2025-07-04 10:37:57,345 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:37:57,348 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:37:57,348 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:37:57,349 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:37:57,351 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:37:57,352 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:37:57,353 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:37:57,353 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:37:57,355 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:37:57,369 - INFO - App started (GUI Mode)
+2025-07-04 10:37:57,403 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:37:58,691 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:37:59,220 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:38:05,406 - INFO - No Backup File/Directory selected: 
+2025-07-04 10:39:55,710 - INFO - Logging setup complete
+2025-07-04 10:39:55,716 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:39:55,717 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:39:55,751 - INFO - Application started
+2025-07-04 10:39:56,579 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:39:56,580 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:39:56,581 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:39:56,582 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:39:56,584 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:39:56,585 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:39:56,587 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:39:56,587 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:39:56,588 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:39:56,603 - INFO - App started (GUI Mode)
+2025-07-04 10:39:56,633 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:39:57,797 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:39:58,334 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:40:04,091 - INFO - No Backup File/Directory selected: 
+2025-07-04 10:40:08,082 - WARNING - Configuration has been changed.
+Do you want to save it?
+2025-07-04 10:40:13,020 - INFO - Logging setup complete
+2025-07-04 10:40:13,027 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:40:13,027 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:40:13,059 - INFO - Application started
+2025-07-04 10:40:14,057 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:40:14,058 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:40:14,059 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:40:14,060 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:40:14,061 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:40:14,062 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:40:14,063 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:40:14,063 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:40:14,064 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:40:14,078 - INFO - App started (GUI Mode)
+2025-07-04 10:40:14,107 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:40:15,138 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:40:15,787 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:40:20,466 - WARNING - Configuration has been changed.
+Do you want to save it?
+2025-07-04 10:40:21,300 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:40:22,308 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:40:29,238 - INFO - New configuration saved to C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc
+2025-07-04 10:40:32,112 - INFO - Logging setup complete
+2025-07-04 10:40:32,118 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 10:40:32,118 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 10:40:32,149 - INFO - Application started
+2025-07-04 10:40:32,833 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 10:40:32,834 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 10:40:32,834 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 10:40:32,836 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 10:40:32,837 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 10:40:32,838 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 10:40:32,838 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 10:40:32,839 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 10:40:32,839 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 10:40:32,854 - INFO - App started (GUI Mode)
+2025-07-04 10:40:32,883 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 10:40:34,000 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 10:40:34,496 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 10:40:44,143 - INFO - Config File selected: C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc
+2025-07-04 10:40:44,146 - INFO - Config loaded from: C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc
+2025-07-04 10:40:48,087 - WARNING - Configuration has been changed.
+Do you want to save it?
+2025-07-04 10:40:53,336 - INFO - New configuration saved to C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc
+2025-07-04 11:07:35,058 - INFO - Logging setup complete
+2025-07-04 11:07:35,071 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:07:35,071 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:07:35,190 - INFO - Application started
+2025-07-04 11:07:36,794 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:07:36,797 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:07:36,797 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:07:36,800 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:07:36,803 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:07:36,805 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:07:36,808 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:07:36,808 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:07:36,810 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:07:36,823 - INFO - App started (GUI Mode)
+2025-07-04 11:07:36,870 - WARNING - Error while parsing/loading config file: [configSetup] Error loading config file 'C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc': [Errno 2] No such file or directory: 'C:/000_ProjectData/999_Sonstiges/VSCode/CppCodeDoc-private/blabla.cppdoc'
+2025-07-04 11:07:41,800 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:07:42,863 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:07:44,091 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:00,290 - INFO - Logging setup complete
+2025-07-04 11:08:00,302 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:00,302 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:00,366 - INFO - Application started
+2025-07-04 11:08:01,120 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:01,122 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:01,122 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:01,123 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:01,123 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:01,124 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:01,125 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:01,125 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:01,126 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:01,139 - INFO - App started (GUI Mode)
+2025-07-04 11:08:01,167 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:02,371 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:02,883 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:08,140 - INFO - Logging setup complete
+2025-07-04 11:08:08,145 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:08,145 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:08,180 - INFO - Application started
+2025-07-04 11:08:08,943 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:08,944 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:08,944 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:08,946 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:08,947 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:08,948 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:08,950 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:08,950 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:08,951 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:08,967 - INFO - App started (GUI Mode)
+2025-07-04 11:08:08,997 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:10,200 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:10,759 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:19,073 - INFO - Logging setup complete
+2025-07-04 11:08:19,080 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:19,080 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:19,115 - INFO - Application started
+2025-07-04 11:08:20,027 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:20,029 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:20,029 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:20,030 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:20,031 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:20,033 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:20,034 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:20,034 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:20,036 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:20,048 - INFO - App started (GUI Mode)
+2025-07-04 11:08:20,075 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:21,500 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:22,015 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:27,096 - INFO - Logging setup complete
+2025-07-04 11:08:27,104 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:27,104 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:27,148 - INFO - Application started
+2025-07-04 11:08:28,374 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:28,376 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:28,376 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:28,378 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:28,380 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:28,381 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:28,383 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:28,383 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:28,384 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:28,406 - INFO - App started (GUI Mode)
+2025-07-04 11:08:28,444 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:30,271 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:31,143 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:35,264 - INFO - Logging setup complete
+2025-07-04 11:08:35,270 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:35,270 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:35,303 - INFO - Application started
+2025-07-04 11:08:36,273 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:36,274 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:36,274 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:36,275 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:36,276 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:36,277 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:36,278 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:36,278 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:36,279 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:36,293 - INFO - App started (GUI Mode)
+2025-07-04 11:08:36,321 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:37,013 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:37,440 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:08:41,566 - INFO - Logging setup complete
+2025-07-04 11:08:41,572 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:08:41,572 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:08:41,606 - INFO - Application started
+2025-07-04 11:08:42,639 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:08:42,640 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:08:42,641 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:08:42,642 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:08:42,643 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:08:42,645 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:08:42,646 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:08:42,646 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:08:42,647 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:08:42,661 - INFO - App started (GUI Mode)
+2025-07-04 11:08:42,688 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:08:43,546 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:08:44,044 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:09:50,543 - INFO - Logging setup complete
+2025-07-04 11:09:50,549 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:09:50,549 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:09:50,581 - INFO - Application started
+2025-07-04 11:09:51,370 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:09:51,371 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:09:51,371 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:09:51,373 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:09:51,374 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:09:51,375 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:09:51,376 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:09:51,376 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:09:51,377 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:09:51,389 - INFO - App started (GUI Mode)
+2025-07-04 11:09:51,419 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:10:25,105 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:10:25,783 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml
+2025-07-04 11:10:29,743 - WARNING - Configuration has been changed.
+Do you want to save it?
+2025-07-04 11:13:55,409 - INFO - Logging setup complete
+2025-07-04 11:13:55,415 - INFO - CppCodeDoc 1.0.1 by Jojos1220
+2025-07-04 11:13:55,415 - INFO - Input arguments: Namespace(license=False, NoGui=False, file=None, config=None)
+2025-07-04 11:13:55,449 - INFO - Application started
+2025-07-04 11:13:56,364 - DEBUG - Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-07-04 11:13:56,365 - DEBUG - Successfully loaded extension "markdown.extensions.footnotes.FootnoteExtension".
+2025-07-04 11:13:56,366 - DEBUG - Successfully loaded extension "markdown.extensions.attr_list.AttrListExtension".
+2025-07-04 11:13:56,367 - DEBUG - Successfully loaded extension "markdown.extensions.def_list.DefListExtension".
+2025-07-04 11:13:56,368 - DEBUG - Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-07-04 11:13:56,370 - DEBUG - Successfully loaded extension "markdown.extensions.abbr.AbbrExtension".
+2025-07-04 11:13:56,371 - DEBUG - Successfully loaded extension "markdown.extensions.md_in_html.MarkdownInHtmlExtension".
+2025-07-04 11:13:56,371 - DEBUG - Successfully loaded extension "markdown.extensions.extra.ExtraExtension".
+2025-07-04 11:13:56,372 - DEBUG - Successfully loaded extension "markdown.extensions.sane_lists.SaneListExtension".
+2025-07-04 11:13:56,402 - INFO - App started (GUI Mode)
+2025-07-04 11:13:56,431 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'source_dir' in section 'root', using fallback: 'C:\\000_ProjectData\\999_Sonstiges\\VSCode\\CppCodeDoc-private\\src\\fileExamples'
+2025-07-04 11:13:57,704 - WARNING - Error while parsing/loading config file: [configSetup] Missing key 'output_path' in section 'root', using fallback: './docs/Documentation_1_0_0'
+2025-07-04 11:13:58,121 - INFO - Config loaded from: C:\000_ProjectData\999_Sonstiges\VSCode\CppCodeDoc-private\src\config.yaml

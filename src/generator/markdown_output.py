@@ -75,42 +75,11 @@ def write_markdown_doc(functions, output_path, arguments, todo_stats):
         return "\n".join(formatted)
 
     with open(output_path, "w", encoding="utf-8") as f:
-        # Logo einfügen (optional)
-        logo_path = document_meta.get("logoPath")
-        if logo_path:
-            f.write(f'<img src="{logo_path}" alt="Logo" style="max-height: 100px;">\n\n')
-
-        # Adding META-Data to Documentation
-        f.write(f"# {document_meta['title']}\n\n")
-        f.write(f"**Version**: {document_meta.get('version', 'Unknown')}\n")
-        f.write(f"**Autor**: {document_meta.get('author', 'Unknown')}\n")
-        f.write(f"**Datum**: {document_meta.get('date', 'Unknown')}\n\n")
-
-        # Top Mark
-        f.write("""<a id="top"></a>""")
+        write_header(f, document_meta)
 
         # Documentation Progress
         if show_progress:
-            bar_length = 20
-            done_blocks = int((todo_stats["percent_done"] / 100) * bar_length)
-            progress_bar_illustration = "█" * done_blocks + "░" * (bar_length - done_blocks)
-
-            f.write("## 📊 Overall Documentation progress\n\n")
-            f.write(f'{todo_stats["done_funcs"]} of {todo_stats["total_funcs"]} functions are **finished documented**\n\n')
-            f.write(f'`{progress_bar_illustration}` **{todo_stats["percent_done"]}%**\n\n')
-
-            f.write("\n## 🛠️ Detailed TODO-Statistics\n\n")
-            f.write(f'- **Brief**: {todo_stats["brief_done"]} / {todo_stats["total_funcs"]} documented\n')
-            f.write(f'  `{make_bar(todo_stats["percent_brief_done"])}` **{todo_stats["percent_brief_done"]}%**\n\n')
-
-            f.write(f'- **Template Params**: {todo_stats["tparams_done"]} / {todo_stats["total_tparams"]} documented\n')
-            f.write(f'  `{make_bar(todo_stats["percent_tparams_done"])}` **{todo_stats["percent_tparams_done"]}%**\n\n')
-
-            f.write(f'- **Params**: {todo_stats["params_done"]} / {todo_stats["total_params"]} documented\n')
-            f.write(f'  `{make_bar(todo_stats["percent_params_done"])}` **{todo_stats["percent_params_done"]}%**\n\n')
-
-            f.write(f'- **Return**: {todo_stats["return_done"]} / {todo_stats["total_funcs"]} documented\n')
-            f.write(f'  `{make_bar(todo_stats["percent_return_done"])}` **{todo_stats["percent_return_done"]}%**\n\n')
+            write_progress(f, todo_stats)
 
         # Adding Table of Content to Documentation
         f.write("## 📚 Table of Content\n\n")
@@ -150,6 +119,46 @@ def write_markdown_doc(functions, output_path, arguments, todo_stats):
         version = arguments.get("app_info", {}).get("version", "1.0")
         f.write("\n---\n")
         f.write(f"<div align='right'>SW-Version: {version}</div>\n")
+
+def write_header(f, document_meta):
+    """
+    writing document header
+    """
+    # inserting Logo
+    logo_path = document_meta.get("logoPath")
+    if logo_path:
+        f.write(f'<img src="{logo_path}" alt="Logo" style="max-height: 100px;">\n\n')
+
+    # Adding META-Data to Documentation
+    f.write(f"# {document_meta['title']}\n\n")
+    f.write(f"**Version**: {document_meta.get('version', 'Unknown')}\n")
+    f.write(f"**Autor**: {document_meta.get('author', 'Unknown')}\n")
+    f.write(f"**Datum**: {document_meta.get('date', 'Unknown')}\n\n")
+
+    # Top Mark
+    f.write("""<a id="top"></a>""")
+
+def write_progress(f, todo_stats):
+    bar_length = 20
+    done_blocks = int((todo_stats["percent_done"] / 100) * bar_length)
+    progress_bar_illustration = "█" * done_blocks + "░" * (bar_length - done_blocks)
+
+    f.write("## 📊 Overall Documentation progress\n\n")
+    f.write(f'{todo_stats["done_funcs"]} of {todo_stats["total_funcs"]} functions are **finished documented**\n\n')
+    f.write(f'`{progress_bar_illustration}` **{todo_stats["percent_done"]}%**\n\n')
+
+    f.write("\n## 🛠️ Detailed TODO-Statistics\n\n")
+    f.write(f'- **Brief**: {todo_stats["brief_done"]} / {todo_stats["total_funcs"]} documented\n')
+    f.write(f'  `{make_bar(todo_stats["percent_brief_done"])}` **{todo_stats["percent_brief_done"]}%**\n\n')
+
+    f.write(f'- **Template Params**: {todo_stats["tparams_done"]} / {todo_stats["total_tparams"]} documented\n')
+    f.write(f'  `{make_bar(todo_stats["percent_tparams_done"])}` **{todo_stats["percent_tparams_done"]}%**\n\n')
+
+    f.write(f'- **Params**: {todo_stats["params_done"]} / {todo_stats["total_params"]} documented\n')
+    f.write(f'  `{make_bar(todo_stats["percent_params_done"])}` **{todo_stats["percent_params_done"]}%**\n\n')
+
+    f.write(f'- **Return**: {todo_stats["return_done"]} / {todo_stats["total_funcs"]} documented\n')
+    f.write(f'  `{make_bar(todo_stats["percent_return_done"])}` **{todo_stats["percent_return_done"]}%**\n\n')
 
 def make_bar(percent, length=20):
     """
