@@ -13,8 +13,8 @@ PyQt5==5.15.11
 Markdown==3.8.2
 Markdown==3.8.2
 # Third-Party Package name/License: pytest: MIT
-pytest==8.4.1
-pytest==8.4.1
+pytest==8.4.2
+pytest==8.4.2
 # Third-Party Package name/License: requests: Apache-2.0
 requests==2.32.4
 requests==2.32.4
