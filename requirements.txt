@@ -10,8 +10,8 @@ pyinstaller==6.14.1
 # Third-Party Package name/License: PyQt5: GPL v3
 PyQt5==5.15.11
 # Third-Party Package name/License: Markdown: Unknown
-Markdown==3.8.2
-Markdown==3.8.2
+Markdown==3.9
+Markdown==3.9
 # Third-Party Package name/License: pytest: MIT
 pytest==8.4.1
 pytest==8.4.1
