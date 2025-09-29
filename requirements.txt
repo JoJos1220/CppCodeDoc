@@ -21,4 +21,4 @@ requests==2.32.4
 # Third-Party Package name/License: stdlib-list: Unknown
 stdlib-list==0.11.1
 # Third-Party Package name/License: PyYAML: MIT
-PyYAML==6.0.2
+PyYAML==6.0.3
