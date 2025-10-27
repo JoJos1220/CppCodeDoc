@@ -19,6 +19,6 @@ pytest==8.4.1
 requests==2.32.4
 requests==2.32.4
 # Third-Party Package name/License: stdlib-list: Unknown
-stdlib-list==0.11.1
+stdlib-list==0.12.0
 # Third-Party Package name/License: PyYAML: MIT
 PyYAML==6.0.2
