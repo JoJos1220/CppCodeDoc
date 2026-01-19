@@ -6,7 +6,7 @@
 # requirements.txt generated: 2025-10-30 10:37:55
 
 # Third-Party Package name/License: pyinstaller: GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)
-pyinstaller==6.16.0
+pyinstaller==6.18.0
 # Third-Party Package name/License: PyQt5: GPL v3
 PyQt5==5.15.11
 # Third-Party Package name/License: Markdown: Unknown
